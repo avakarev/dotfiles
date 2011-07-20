@@ -4,13 +4,13 @@ set nocompatible " Make vim more useful
 " To enable nice coloring features, make sure your terminal supports 256 colors and 
 " set 'report terminal type' as a 'xterm-256color'
 if $TERM == "xterm-256color"
-    set t_Co=256 "Enable 256-color mode
+    set t_Co=256 " Enable 256-color mode
 endif
 set background=dark
 syntax on
 
 if $TERM == "xterm-256color"
-    colorscheme xoria256 "Enable nice 256-color scheme
+    colorscheme xoria256 " Enable nice 256-color scheme
 else
     colorscheme default
 endif
