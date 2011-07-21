@@ -1,4 +1,4 @@
-set nocompatible " Make vim more useful
+set nocompatible " Make Vim behave in a more useful way
 
 " Set syntax highlighting options
 " To enable nice coloring features, make sure your terminal supports 256 colors and 
@@ -23,15 +23,16 @@ highlight SpecialKey ctermfg=DarkGray
 " Display extra whitespace, toggle it with list!
 set list listchars=tab:»·,trail:·
 
-set ruler " Show the cursor position
+set ruler " Show current position of cursor in status line
 
-set expandtab " Expand tabs to spaces
-set tabstop=4 " Tab size in whitespaces
-set softtabstop=4
-set shiftwidth=4
-set smarttab
+set expandtab " Turn tabs to spaces
+set tabstop=4 " Number of spaces that a <Tab> in the file counts for
+set softtabstop=4 " Number of spaces while editiong
+set shiftwidth=4 "Number of spaces to use for each step of (auto)indent
+set smarttab " Be smart about deleting tab space, etc
 
-set autoindent " Copy indent from last line when starting new line
+set autoindent " Indent new line to the level of the previous one
+set copyindent " Copy the previous indentation on autoindenting
 
 if $TERM == "xterm-256color"
     set cursorline " Highlight current line
@@ -39,15 +40,33 @@ endif
 
 set encoding=utf-8 nobomb " BOM often causes trouble
 set number " Enable line numbers
-set showmode " Show the current mode
+
+set nowrap " Do not wrap lines
+set showmode " Show the active mode in status line
+set showmatch " Show matching parentheses
+set showcmd " Show key commands in status line
 set showtabline=2 " Always show tab bar
 set laststatus=2 " Always show status line
+
+set ignorecase " Ignore case in searches
+set smartcase " If the search pattern contains upper case chars, override 'ignorecase' option
+set gdefault " By default add 'g' flag to search/replace. Add 'g' to toggle
+set incsearch " Highlight search matches as you type them
+set hlsearch " Highlight search items
+
+set splitbelow " New window goes below (sp)
+set splitright " New windows goes right (vs)
+
+set wildmenu " Hitting TAB in command mode will show possible completions above command line
 
 set title " Show the filename in the window titlebar
 
 " Make cursor shape as line in insert mode and as block in other cases
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" Restore title on exit to home path instead of default 'Thanks for flying Vim'
+let &titleold = substitute(getcwd(), $HOME, "~", '')
 
 " Setup indentation according to passed value
 function s:SetIndentation (ts)
