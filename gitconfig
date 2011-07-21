@@ -1,0 +1,25 @@
+# --date = (relative|local|default|iso|rfc|short|raw) 
+
+[user]
+    name = NAME
+    email = MAIL
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    st = status
+    sts = status -sb
+    ci = commit
+    br = branch
+    bl = branch -av
+    co = checkout
+    df = diff
+    dfs = diff --stat -r
+    dfn = diff --name-status -r
+    lg = log -p
+    tl = tag -l
+    i = remote -v
+    who = shortlog -s --
+    what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
