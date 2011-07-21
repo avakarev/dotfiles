@@ -9,9 +9,10 @@ VIM_BUNDLE := "vim" \
 
 GIT_BUNDLE := "gitconfig"
 
+# confirmation prompt requires answer "yes" to continue
 all:
 	@while true; do \
-		echo "It might override/delete some you config files. Are you sure ot continue? (yes/no)"; \
+		echo "It might hurt your feelings. Are you sure ot continue? (yes/no)"; \
 		read answer ; \
 		if [[ $$answer != "yes" ]]; then \
 			echo "Nothing was made, exiting..." ; \
