@@ -7,6 +7,23 @@ BASH_BUNDLE := "bash_colors" \
 VIM_BUNDLE := "vim" \
               "vimrc" \
 
+GIT_BUNDLE := "gitconfig"
+
+all:
+	@while true; do \
+		echo "It might override/delete some you config files. Are you sure ot continue? (yes/no)"; \
+		read answer ; \
+		if [[ $$answer != "yes" ]]; then \
+			echo "Nothing was made, exiting..." ; \
+			exit ; \
+		else \
+			$(MAKE) bash vim git ; \
+			exit ; \
+		fi; \
+		break; \
+	done;
+#	bash vim git
+
 # install bash related config files
 # existed file will be overwritten
 bash:
@@ -31,4 +48,13 @@ vim:
 	done
 	@ echo "vim bundle installed!";
 
-.PHONY: all bash vim
+# install git related config files
+git:
+	@for gitfile in $(GIT_BUNDLE) ; do \
+		if [ -f "${PWD}/$$gitfile" ]; then \
+			ln -Ffs "${PWD}/$$gitfile" "${HOME}/.$$gitfile" ; \
+		fi ; \
+	done
+	@ echo "git bundle installed!";
+
+.PHONY: all bash vim git
