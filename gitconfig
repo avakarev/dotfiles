@@ -1,8 +1,10 @@
 # --date = (relative|local|default|iso|rfc|short|raw) 
 
 [user]
-    name = NAME
+    name = Andrey Vakarev
     email = MAIL
+[github]
+    email = avakarev@gmail.com
 [color]
     diff = auto
     status = auto
