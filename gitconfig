@@ -1,14 +1,15 @@
 # --date = (relative|local|default|iso|rfc|short|raw) 
 
 [user]
-    name = Andrey Vakarev
-    email = MAIL
+    name = USERNAME
+    email = EMAIL
 [github]
-    email = avakarev@gmail.com
+    user = LOGIN
 [color]
     diff = auto
     status = auto
     branch = auto
+    interactive = auto
 [alias]
     st = status
     sts = status -sb
