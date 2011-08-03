@@ -91,3 +91,7 @@ endfunction
 autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} call s:CheckIndentation("Makefile")
 autocmd BufNewFile,BufReadPre *.{py} call s:CheckIndentation("Makefile")
 autocmd BufNewFile,BufReadPre *.{yaml} call s:CheckIndentation("yaml")
+
+map  <C-l> :tabn<CR> " Ctrl+l moves to the next tab
+map  <C-h> :tabp<CR> " Ctrl+h moves to the previous tab
+map  <C-n> :tabnew<CR> " Ctrl+n creates a new tab
