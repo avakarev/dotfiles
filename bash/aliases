@@ -1,0 +1,27 @@
+# Bash shortcuts
+alias less='less -r'
+alias la='ls -lhGA'
+alias l='ls -lhGt' # -l long listing, most recent first
+                   # -G color
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias df='df -h'
+alias h='history'
+alias md='mkdir -p'
+alias up='source ~/.bash_profile'
+
+function cdh() {
+    cd "$HOME/$1"
+}
+
+# Processes
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
+
+# Finder
+alias o='open . &'
+alias ff='open -a Firefox'
+
+# Recursively Remove .DS_Store files in OS X
+alias clean='find . -name *.DS_Store -type f -exec rm {} \;'

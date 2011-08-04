@@ -1,7 +1,8 @@
-BASH_BUNDLE := "bash_colors" \
-               "bash_functions" \
+# TODO: code in bash and vim section - the same
+# try to move it to function
+
+BASH_BUNDLE := "bash" \
                "bash_profile" \
-               "bash_prompt" \
                "bashrc"
 
 VIM_BUNDLE := "vim" \
@@ -27,9 +28,14 @@ all:
 # install bash related config files
 # existed file will be overwritten
 bash:
-	@for bashfile in $(BASH_BUNDLE) ; do \
-		if [ -f "${PWD}/$$bashfile" ]; then \
-			ln -Ffs "${PWD}/$$bashfile" "${HOME}/.$$bashfile" ; \
+	@for bashitem in $(BASH_BUNDLE) ; do \
+		if [ -e "${PWD}/$$bashitem" ]; then \
+			if [ -d "${PWD}/$$bashitem" ]; then \
+				if [ -d "${HOME}/.$$bashitem" ]; then \
+					rm -rf "${HOME}/.$$bashitem" ; \
+				fi ; \
+			fi ; \
+		    ln -Ffs "${PWD}/$$bashitem" "${HOME}/.$$bashitem" ; \
 		fi ; \
 	done
 	@ echo "bash bundle installed!";

@@ -1,0 +1,25 @@
+# TODO: move color values in PS1 to variables
+
+function fetch_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+function fetch_git_tag() {
+    git describe --always --tag
+}
+
+function show_git_info() {
+    local OUT="$(fetch_git_branch)"
+
+    if [[ $OUT == "" ]] ; then
+         OUT="";
+    elif [[ "$OUT" == "(no branch)" ]] ; then
+         OUT="{git:t '$(fetch_git_tag)'}";
+    else 
+         OUT="{git:b '"$OUT"'}";
+    fi
+
+    echo "$OUT"
+}
+
+export PS1="\[\033[0;33m\][\h]\[\033[0;32m\][\u]\[\033[1;36m\](\w)\[\033[0;37m\]\$(show_git_info)\n\[\033[0m\]\$:> "
