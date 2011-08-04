@@ -11,17 +11,19 @@
     branch = auto
     interactive = auto
 [alias]
-    st = status
-    sts = status -sb
+    st = status -sbu
+    stat = status
     ci = commit
     br = branch
     bl = branch -av
+    tl = tag -l
+    ls = ls-files
     co = checkout
     df = diff
     dfs = diff --stat -r
     dfn = diff --name-status -r
     lg = log -p
-    tl = tag -l
+    lga = log --graph --decorate --pretty=oneline --abbrev-commit
     i = remote -v
     who = shortlog -s --
     what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
