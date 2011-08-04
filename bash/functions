@@ -1,3 +1,5 @@
+# show you current system colors, cause the might looks different
+# depends on configuration of used terminal application
 function show_current_colors() {
     echo -e "\033[0m COLOR_NC (No color)"
     echo -e "\033[1;37m COLOR_WHITE  \t \033[0;30m COLOR_BLACK"
@@ -10,14 +12,18 @@ function show_current_colors() {
     echo -e "\033[1;30m COLOR_GRAY   \t \033[0;37m COLOR_LIGHT_GRAY"
 }
 
+# shows statictics by most often used commands
 function topcommands() {
     history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
 
+# coloring svn diffs
 function svndiff() {
     svn diff $@ | colordiff | less -SR;
 }
 
+# upload changed files to remote host via scp
+# for properly work, working dir should be root dir of project
 up-tune() {
     # define remote host
     RHOST="host:"
