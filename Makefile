@@ -23,7 +23,6 @@ all:
 		fi; \
 		break; \
 	done;
-#	bash vim git
 
 # install bash related config files
 # existed file will be overwritten
@@ -53,7 +52,14 @@ vim:
 git:
 	@for gitfile in $(GIT_BUNDLE) ; do \
 		if [ -f "${PWD}/$$gitfile" ]; then \
-			ln -Ffs "${PWD}/$$gitfile" "${HOME}/.$$gitfile" ; \
+			if [ "$$gitfile" == "gitconfig" ]; then \
+				if [ -f "${HOME}/.$$gitfile" ]; then \
+					rm "${HOME}/.$$gitfile" ; \
+				fi ; \
+				cp "${PWD}/$$gitfile" "${HOME}/.$$gitfile" ; \
+			else \
+				ln -Ffs "${PWD}/$$gitfile" "${HOME}/.$$gitfile" ; \
+			fi ; \
 		fi ; \
 	done
 	@ echo "git bundle installed!";
