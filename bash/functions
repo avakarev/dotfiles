@@ -17,3 +17,18 @@ function topcommands() {
 function svndiff() {
     svn diff $@ | colordiff | less -SR;
 }
+
+up-tune() {
+    # define remote host
+    RHOST="host:"
+
+    # figure out what was changed and not commited
+    CHANGED=`git diff --name-only`
+
+    # loop through the changed files list and upload each file
+    for FILE in $CHANGED; do
+        echo "Uploading "$FILE
+        scp $FILE $RHOST"www/tune/"$FILE
+    done
+    echo "FINISHED!"
+}
