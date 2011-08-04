@@ -48,11 +48,15 @@ set showcmd " Show key commands in status line
 set showtabline=2 " Always show tab bar
 set laststatus=2 " Always show status line
 
-set ignorecase " Ignore case in searches
-set smartcase " If the search pattern contains upper case chars, override 'ignorecase' option
-set gdefault " By default add 'g' flag to search/replace. Add 'g' to toggle
+set hlsearch " Highlight search matches
 set incsearch " Highlight search matches as you type them
-set hlsearch " Highlight search items
+set ignorecase " Case-insensitive searching
+set smartcase " If the search pattern contains upper case chars, override 'ignorecase' option
+set wrapscan " Set the search scan to wrap around the file
+set gdefault " By default add 'g' flag to search/replace. Add 'g' to toggle
+
+" Press space bar to turn off search highlighting and clear any message displayed
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 set splitbelow " New window goes below (sp)
 set splitright " New windows goes right (vs)
