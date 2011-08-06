@@ -33,8 +33,18 @@ up-tune() {
 
     # loop through the changed files list and upload each file
     for FILE in $CHANGED; do
-        echo "Uploading "$FILE
+        echo "Uploading M "$FILE
         scp $FILE $RHOST"www/tune/"$FILE
     done
+
+    # figure out what was added and not tracked yet
+    UNTRACKED=`git ls-files --others --exclude-standard`
+
+    # loop through the untracked files and upload each of them too
+    for FILE in $UNTRACKED; do
+        echo "Uploading ? "$FILE
+        scp $FILE $RHOST"www/tune/"$FILE
+    done
+
     echo "FINISHED!"
 }
