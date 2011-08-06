@@ -25,6 +25,8 @@
     lg = log -p
     lga = log --graph --decorate --pretty=oneline --abbrev-commit
     i = remote -v
+    su = submodule update --init
+    sp = submodule foreach git pull
     who = shortlog -s --
     what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
