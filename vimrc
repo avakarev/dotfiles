@@ -134,9 +134,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 map <C-e> :NERDTreeToggle<CR> " toggle NERDTree side pane
 map <C-x> :NERDTreeFind<CR> " find current file in NERDtree
 
-autocmd VimEnter * NERDTree " Auto-open NERDTree with vim
-autocmd VimEnter * wincmd p " Focus main window when vim opens with NERDTree
-autocmd BufEnter * NERDTreeMirror " Auto-open NERDTree with new tab
+"autocmd VimEnter * NERDTree " Auto-open NERDTree with vim
+"autocmd VimEnter * wincmd p " Focus main window when vim opens with NERDTree
+"autocmd BufEnter * NERDTreeMirror " Auto-open NERDTree with new tab
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
@@ -155,5 +155,9 @@ endfunction
 " -------------- [Pathogen] --------------
 
 filetype off
+
+" List of disabled plugins, prevent pathogen from self-sourcing
+let g:pathogen_disabled = ["pathogen","jslint"]
+
 call pathogen#infect()
 filetype plugin indent on
