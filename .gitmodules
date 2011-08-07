@@ -1,6 +1,3 @@
-[submodule "vim/bundle/commandt"]
-	path = vim/bundle/commandt
-	url = https://github.com/wincent/Command-T.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
