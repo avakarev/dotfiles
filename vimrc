@@ -3,12 +3,11 @@ set nocompatible " Make Vim behave in a more useful way
 
 " -------------- [Syntax highlighting] --------------
 
-set background=dark
-syntax on
+set background=dark " Text background should be dark
+syntax on " Enable syntax highlighting
 
-" To enable nice coloring features, make sure your terminal supports 256 colors and 
-" set 'report terminal type' as a 'xterm-256color'
-if $TERM == "xterm-256color"
+" To enable 256-color schemes, make sure that terminal supports 256 colors
+if &t_Co >= 256 || has("gui_running") || $TERM_PROGRAM == "iTerm.app"
     set t_Co=256 " Enable 256-color mode
     colorscheme xoria256 " Set nice 256-color scheme
 else
@@ -18,7 +17,7 @@ endif
 
 " -------------- [Cursor] --------------
 
-if $TERM == "xterm-256color"
+if &t_Co >= 256 || has("gui_running") || $TERM_PROGRAM == "iTerm.app"
     set cursorline " Highlight current line
 endif
 
@@ -28,6 +27,33 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
 " -------------- [Common] --------------
+
+set title " Show the filename in the window titlebar
+" Restore title on exit to home path instead of default 'Thanks for flying Vim'
+let &titleold = substitute(getcwd(), $HOME, "~", '')
+
+set wildmenu " Hitting TAB in command mode will show possible completions above command line
+
+set history=1000 " Remember more commands and search history
+set undolevels=1000 " Use many muchos levels of undo
+
+" A file that matches with one of these patterns is ignored when completing file or directory names
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
+set visualbell   " Use visual bell instead of beeping
+set noerrorbells " Ring the bell (beep or screen flash) for error messages
+
+set nobackup " Disable to make a backup before overwriting a file
+set noswapfile " Disable to use a swapfile for the buffer
+
+map  <C-j> :+5<CR> " Ctrl+j moves cursor 5 lines up
+map  <C-k> :-5<CR> " Ctrl+k moves cursor 5 lines down
+
+" Allows use sudo command if file requires it and was open without it
+cmap w!! w !sudo tee % >/dev/null
+
+
+" -------------- [Editor behaviour] --------------
 
 set encoding=utf-8 nobomb " BOM often causes trouble
 set number " Enable line numbers
@@ -39,23 +65,6 @@ set ruler " Show current position of cursor in status line
 set showtabline=2 " Always show tab bar
 set laststatus=2 " Always show status line
 
-set title " Show the filename in the window titlebar
-" Restore title on exit to home path instead of default 'Thanks for flying Vim'
-let &titleold = substitute(getcwd(), $HOME, "~", '')
-
-set wildmenu " Hitting TAB in command mode will show possible completions above command line
-
-set history=1000 " Remember more commands and search history
-set undolevels=1000 " use many muchos levels of undo
-
-" A file that matches with one of these patterns is ignored when completing file or directory names
-set wildignore=*.swp,*.bak,*.pyc,*.class
-
-set visualbell   " Use visual bell instead of beeping
-set noerrorbells " Ring the bell (beep or screen flash) for error messages
-
-set nobackup " Disable to make a backup before overwriting a file
-set noswapfile " Disable to use a swapfile for the buffer
 
 " -------------- [Search] --------------
 
