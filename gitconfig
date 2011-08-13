@@ -14,6 +14,7 @@
     st = status -sbu
     stat = status
     ci = commit
+    uc = reset HEAD^ # undo last local commit
     br = branch
     bl = branch -av
     tl = tag -l
