@@ -31,6 +31,6 @@
 [submodule "vim/bundle/syntax-markdown"]
 	path = vim/bundle/syntax-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "zsh"]
-	path = zsh
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
