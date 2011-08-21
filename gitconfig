@@ -10,6 +10,8 @@
     status = auto
     branch = auto
     interactive = auto
+[core]
+    excludesfile = ~/.gitignore_global
 [alias]
     st = status -sbu
     stat = status
