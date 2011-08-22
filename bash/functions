@@ -1,3 +1,4 @@
+#! /bin/bash
 # show you current system colors, cause the might looks different
 # depends on configuration of used terminal application
 function show_current_colors() {
