@@ -1,3 +1,6 @@
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = https://github.com/Raimondi/delimitMate.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
@@ -16,21 +19,24 @@
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/taglist"]
-	path = vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim
 [submodule "vim/bundle/syntax-jade"]
 	path = vim/bundle/syntax-jade
 	url = https://github.com/digitaltoad/vim-jade.git
 [submodule "vim/bundle/syntax-markdown"]
 	path = vim/bundle/syntax-markdown
 	url = https://github.com/tpope/vim-markdown.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim
 [submodule "zsh/oh-my-zsh"]
 	path = zsh/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
