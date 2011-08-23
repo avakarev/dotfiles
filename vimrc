@@ -56,6 +56,7 @@ cmap w!! w !sudo tee % >/dev/null
 " -------------- [Editor behaviour] --------------
 
 set encoding=utf-8 nobomb " BOM often causes trouble
+set fileencodings=utf-8,cp1251
 set number " Enable line numbers
 set nowrap " Do not wrap lines
 set showmode " Show the active mode in status line
