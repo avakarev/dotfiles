@@ -34,7 +34,7 @@ export SVN_EDITOR=vi
 export NODE_PATH=/usr/local/lib/node_modules
 
 
-PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:$PATH:$HOME/.bash/scripts
 export PATH
 
 # Add aliases.
@@ -43,10 +43,5 @@ if [ -f ~/.bash/aliases ]; then
   alias up='source ~/.zshrc'
 fi
 
-# Enable custom functions.
-if [ -f ~/.bash/functions ]; then
-  . ~/.bash/functions
-fi
-
 # This loads RVM into a shell session.
-[[ -s "/Users/avakarev/.rvm/scripts/rvm" ]] && source "/Users/avakarev/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

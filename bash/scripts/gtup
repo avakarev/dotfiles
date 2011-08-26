@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# script for uploading changed files to remote host via scp
+
+# config example:
+# GTUP_RHOST="srv.host.net:"
+# GTUP_RPATH="www/my-prj-repo/"
+
+# passing config is nessesary for proper gtup work
+if [[ $1 == "" ]]; then
+    echo "usage: gtup config [mode]"
+    echo "mode can be M and/or ? (by default M?)"
+    exit 0;
+fi
+
+conf=$HOME/.bash/local/$1".cfg"
+
+mode=$2
+if [[ $mode == "" ]]; then
+    mode="mu"
+fi
+
+# trying read config
+if [ -f $conf ]; then
+    source $conf;
+else
+    echo $conf "not found";
+    exit 0;
+fi
+
+if [[ $mode == "m" || $mode == "mu" || $mode == "um" ]]; then
+    # figure out what was changed and not commited
+    CHANGED=`git diff --name-only`
+
+    # loop through the changed files list and upload each file
+    for FILE in $CHANGED; do
+        echo "Uploading M "$FILE
+        scp $FILE $GTUP_RHOST$GTUP_RPATH$FILE
+    done
+fi
+
+if [[ $mode == "u" || $mode == "mu" || $mode == "um" ]]; then
+    # figure out what was added and not tracked yet
+    UNTRACKED=`git ls-files --others --exclude-standard`
+
+    # loop through the untracked files and upload each of them too
+    for FILE in $UNTRACKED; do
+        echo "Uploading ? "$FILE
+        scp $FILE $GTUP_RHOST$GTUP_RPATH$FILE
+    done
+fi
+
+echo "FINISHED!"

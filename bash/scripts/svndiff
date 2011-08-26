@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# coloring svn diffs
+svn diff $@ | colordiff | less -SR;

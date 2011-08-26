@@ -24,8 +24,3 @@ fi
 if [ -f ~/.bash/colors ]; then
   . ~/.bash/colors
 fi
-
-# enable custom functions
-if [ -f ~/.bash/functions ]; then
-  . ~/.bash/functions
-fi
