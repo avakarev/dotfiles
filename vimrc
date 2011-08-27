@@ -14,6 +14,8 @@ else
     colorscheme default
 endif
 
+autocmd BufNewFile,BufRead *vimpagerrc* exe 'setf vim'
+
 
 " -------------- [Cursor] --------------
 
@@ -46,11 +48,20 @@ set noerrorbells " Ring the bell (beep or screen flash) for error messages
 set nobackup " Disable to make a backup before overwriting a file
 set noswapfile " Disable to use a swapfile for the buffer
 
-map  <C-j> :+5<CR> " Ctrl+j moves cursor 5 lines up
-map  <C-k> :-5<CR> " Ctrl+k moves cursor 5 lines down
+nmap <C-j> 5j<CR> " Ctrl+j moves cursor 5 lines up
+nmap <C-k> 5k<CR> " Ctrl+k moves cursor 5 lines down
 
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
+
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost * call RestoreCurPrevPos()
+
+function! RestoreCurPrevPos()
+    if line("'\"") > 1 && line("'\"") <= line("$")
+        execute "normal! g`\"" |
+    endif
+endfunction
 
 
 " -------------- [Remap arrow keys] --------------
@@ -232,15 +243,11 @@ map <C-x> :NERDTreeFind<CR> " find current file in NERDtree
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
-" " buffer that's left is the NERDTree buffer
+" buffer that's left is the NERDTree buffer
 function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
+    if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1 && winnr("$") == 1
         q
-      endif
     endif
-  endif
 endfunction
 
 
