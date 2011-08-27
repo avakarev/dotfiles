@@ -1,0 +1,49 @@
+nCmd        repeat n times every Cmd command (ex: 7j, 4{}, 2w)
+.           repeat last command
+
+
+:help word-motions
+:help cursor-motions
+" -------------- [Moving] --------------
+h           left
+j           down
+k           up
+l           right
+n(h|j|k|l)  repeat jump operation n times (4j, 16k)
+w           next word, moves to first symbol
+e           next word, moves to last symbol
+b           previous word
+}           next paragraph
+{           previous paragraph
+)           next sentence
+(           previous sentence
+3fh         3rd occurrence of the letter 'h'
+35j         35 lines downwards
+ctrl+o      jump back to the previous location
+^           moves to the start of the line
+$           moves to the end of the line
+ctrl+b      moves one screen up
+ctrl+f      moves one screen down
+1G          moves to the first line of the file
+G           jump to the last line of the file
+nG          jump to n line
+H           jump to the first line of the display ('H'ighest)
+M           jump to the middle of the display ('M'iddle)
+L           jump to the last line of the display ('L'owest)
+
+
+:help vim-modes-intro
+:help mode-switching
+" -------------- [Modes] --------------
+i           insert text just before the cursor
+I           insert text at the start of the line
+a           append text just after the cursor
+A           append text at the end of the line
+o           open a new line below
+O           open a new line above
+s           substitute the current character
+S           substitute the current line
+r           replace the current character
+R           replace continuous characters
+v           go to visual mode and operate in terms of characters
+V           go to visual mode and operate in terms of lines
