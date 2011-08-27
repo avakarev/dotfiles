@@ -113,14 +113,14 @@ if g:lucius_style == "dark"
     hi PmenuSel     guifg=#e0e0e0   guibg=#304050   ctermfg=fg     ctermbg=24        gui=none      cterm=none
     hi PMenuSbar    guifg=#202020   guibg=#d0d0d0   ctermfg=bg     ctermbg=254       gui=none      cterm=none
     hi PMenuThumb   guifg=NONE      guibg=#808080   ctermfg=fg     ctermbg=244       gui=none      cterm=none
-    hi StatusLine   guifg=#202020   guibg=#c0c0c0   ctermfg=bg     ctermbg=252       gui=bold      cterm=bold
-    hi StatusLineNC guifg=#404040   guibg=#c0c0c0   ctermfg=240    ctermbg=252       gui=none      cterm=none
-    hi TabLine      guifg=#202020   guibg=#e0e0e0   ctermfg=bg     ctermbg=252       gui=none      cterm=none
-    hi TabLineFill  guifg=#404040   guibg=#e0e0e0   ctermfg=240    ctermbg=252       gui=none      cterm=none
-    hi TabLineSel   guifg=#e0e0e0   guibg=#304050   ctermfg=fg     ctermbg=24        gui=bold      cterm=bold
-    hi VertSplit    guifg=#606060   guibg=#c0c0c0   ctermfg=245    ctermbg=252       gui=none      cterm=none
-    hi Folded       guifg=#202020   guibg=#808080   ctermfg=bg     ctermbg=246       gui=none      cterm=none
-    hi FoldColumn   guifg=#202020   guibg=#808080   ctermfg=bg     ctermbg=246       gui=none      cterm=none
+    hi StatusLine   guifg=#ffffff   guibg=#4e4e4e   ctermfg=15     ctermbg=239       gui=bold      cterm=bold
+    hi StatusLineNC guifg=#b2b2b2   guibg=#3a3a3a   ctermfg=249    ctermbg=237       gui=none      cterm=none
+    hi TabLine      guifg=fg        guibg=#666666   ctermfg=fg     ctermbg=242       gui=none      cterm=none
+    hi TabLineFill  guifg=fg        guibg=#3a3a3a   ctermfg=fg     ctermbg=237       gui=none      cterm=none
+    hi TabLineSel   guifg=#e0e0e0   guibg=#304050   ctermfg=52     ctermbg=248       gui=bold      cterm=bold
+    hi VertSplit    guifg=#3a3a3a   guibg=#3a3a3a   ctermfg=237    ctermbg=237       gui=none      cterm=none
+    hi Folded       guifg=#9e9e9e   guibg=#121212   ctermfg=247    ctermbg=233       gui=none      cterm=none
+    hi FoldColumn   guifg=#eeeeee   guibg=#5f5f87   ctermfg=255    ctermbg=60        gui=none      cterm=none
 
     " == Spelling ==
     hi SpellBad     guisp=#ee0000                   ctermfg=fg     ctermbg=160       gui=undercurl cterm=undercurl
@@ -138,7 +138,7 @@ if g:lucius_style == "dark"
     hi Directory    guifg=#c0e0b0   guibg=NONE      ctermfg=151    ctermbg=NONE      gui=none      cterm=none
     hi ErrorMsg     guifg=#ee0000   guibg=NONE      ctermfg=196    ctermbg=NONE      gui=none      cterm=none
     hi SignColumn   guifg=#a0b0b0   guibg=#282828   ctermfg=145    ctermbg=233       gui=none      cterm=none
-    hi LineNr       guifg=#202020   guibg=#808080   ctermfg=bg     ctermbg=246       gui=none      cterm=none
+    hi LineNr       guifg=#9e9e9e   guibg=#121212   ctermfg=247    ctermbg=233       gui=none      cterm=none
     hi MoreMsg      guifg=#70d0f0   guibg=NONE      ctermfg=117    ctermbg=NONE      gui=none      cterm=none
     hi ModeMsg      guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
     hi Question     guifg=fg        guibg=NONE      ctermfg=fg     ctermbg=NONE      gui=none      cterm=none
