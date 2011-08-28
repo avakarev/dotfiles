@@ -14,7 +14,8 @@ else
     colorscheme default
 endif
 
-autocmd BufNewFile,BufRead *vimpagerrc* exe 'setf vim'
+autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
 
 " -------------- [Cursor] --------------
