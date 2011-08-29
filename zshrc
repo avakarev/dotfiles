@@ -9,7 +9,7 @@ export ZSH=$HOME/.zsh/oh-my-zsh
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -32,7 +32,6 @@ source "$HOME/.zsh/avakarev.zsh-theme"
 # Customize to your needs...
 export SVN_EDITOR=vi
 export NODE_PATH=/usr/local/lib/node_modules
-
 
 PATH=/usr/local/bin:$PATH:$HOME/.bash/scripts
 export PATH
