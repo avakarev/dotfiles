@@ -16,6 +16,7 @@ endif
 
 autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
 autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufNewFile,BufRead *bash_profile set filetype=sh
 
 
 " -------------- [Cursor] --------------
@@ -162,12 +163,28 @@ set encoding=utf-8 nobomb " BOM often causes trouble
 set fileencodings=utf-8,cp1251
 set number " Enable line numbers
 set nowrap " Do not wrap lines
+set scrolloff=999 " Minimal number of screen lines to keep above and below the cursor
 set showmode " Show the active mode in status line
 set showmatch " Show matching parentheses
 set showcmd " Show key commands in status line
 set ruler " Show current position of cursor in status line
 set showtabline=2 " Always show tab bar
+
+
+" -------------- [Status line] --------------
+
 set laststatus=2 " Always show status line
+set statusline=
+set statusline+=%h%m%r%w\                       " status flags
+set statusline+=(%n)\                           " buffer number
+set statusline+=%f\                             " filename
+set statusline+=[%{strlen(&ft)?&ft:'none'}]\    " file type
+set statusline+=[%{&ff}/%{v:lang}]\             " file format / current language
+set statusline+=%{strftime(\"%Y-%m-%d\ %T\",getftime(expand(\"\%\%\")))} " last modification time
+set statusline+=%=                              " right align remainder
+set statusline+=0x%-8B                          " character value
+set statusline+=%-12(%l/%L:%c%V%)               " line, character
+set statusline+=(%p%%)                          " cursor position in percent
 
 
 " -------------- [Search] --------------
