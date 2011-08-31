@@ -1,4 +1,4 @@
-colorscheme jellybeans
+colorscheme lucius-fixed
 
 set lines=30 columns=99 " Size of MacVim window
 
