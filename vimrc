@@ -2,7 +2,6 @@ set nocompatible " Make Vim behave in a more useful way
 
 
 " -------------- [Syntax highlighting] --------------
-
 set background=dark " Text background should be dark
 syntax on " Enable syntax highlighting
 
@@ -240,6 +239,13 @@ autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth
 map  <C-l> :tabnext<CR> " Ctrl+l moves to the next tab
 map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
 map  <C-n> :tabnew<CR> " Ctrl+n creates a new tab
+
+
+" -------------- [Utils] --------------
+
+" Prints current file full path
+" TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
+command ShowPath echo expand("%:p")
 
 
 " -------------- [vimrc] --------------
