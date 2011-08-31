@@ -16,7 +16,9 @@ endif
 
 autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
 autocmd BufNewFile,BufRead *.json set filetype=javascript
-autocmd BufNewFile,BufRead *bash_profile set filetype=sh
+autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
+autocmd BufNewFile,BufRead *bash/* set filetype=sh
+autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 
 
 " -------------- [Cursor] --------------
@@ -168,7 +170,7 @@ set showmode " Show the active mode in status line
 set showmatch " Show matching parentheses
 set showcmd " Show key commands in status line
 set ruler " Show current position of cursor in status line
-set showtabline=2 " Always show tab bar
+set showtabline=1 " Show tab bar only if there are more than 1 tab
 
 
 " -------------- [Status line] --------------
@@ -177,7 +179,7 @@ set laststatus=2 " Always show status line
 set statusline=
 set statusline+=%h%m%r%w\                       " status flags
 set statusline+=(%n)\                           " buffer number
-set statusline+=%f\                             " filename
+set statusline+=%t\                             " just filename, without path
 set statusline+=[%{strlen(&ft)?&ft:'none'}]\    " file type
 set statusline+=[%{&ff}/%{v:lang}]\             " file format / current language
 set statusline+=%{strftime(\"%Y-%m-%d\ %T\",getftime(expand(\"\%\%\")))} " last modification time
@@ -251,6 +253,11 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 
 
 " -------------- [NERDTree] --------------
+
+let NERDTreeQuitOnOpen = 1 " Closes the tree window after opening a file
+let NERDTreeWinSize = 45 " Sets the window size when the NERD tree is opened
+let NERDTreeMinimalUI = 1 " Disables display of the 'Bookmarks' label and 'Press ? for help' text
+let NERDTreeDirArrows = 1 " Use arrows instead of + ~ chars when displaying directories
 
 map <C-e> :NERDTreeToggle<CR> " toggle NERDTree side pane
 map <C-x> :NERDTreeFind<CR> " find current file in NERDtree
