@@ -25,3 +25,5 @@ alias ff='open -a Firefox'
 
 # Recursively Remove .DS_Store files in OS X
 alias clean='find . -name *.DS_Store -type f -exec rm {} \;'
+
+alias view="vim -u ~/.vimpagerrc"

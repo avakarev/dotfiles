@@ -9,7 +9,9 @@ ZSH_BUNDLE := "zsh" \
               "zshrc"
 
 VIM_BUNDLE := "vim" \
-              "vimrc"
+              "vimrc" \
+              "gvimrc" \
+              "vimpagerrc"
 
 GIT_BUNDLE := "gitconfig"
 

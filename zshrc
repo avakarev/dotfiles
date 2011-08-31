@@ -33,7 +33,7 @@ source "$HOME/.zsh/avakarev.zsh-theme"
 export SVN_EDITOR=vi
 export NODE_PATH=/usr/local/lib/node_modules
 
-PATH=/usr/local/bin:$PATH:$HOME/.bash/scripts
+PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
 export PATH
 
 # Add aliases.
