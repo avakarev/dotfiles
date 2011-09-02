@@ -1,6 +1,6 @@
 colorscheme lucius-fixed
 
-set lines=30 columns=99 " Size of MacVim window
+set lines=30 columns=120 " Size of MacVim window
 
 set guioptions-=m " Do not display menu
 set guioptions-=T " Do not display toolbar
