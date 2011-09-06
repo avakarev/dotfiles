@@ -83,6 +83,8 @@ set fileencodings=utf-8,cp1251
 set number " Enable line numbers
 set nowrap " Do not wrap lines
 set scrolloff=999 " Minimal number of screen lines to keep above and below the cursor
+set sidescroll=1 " Minimal number of columns to scroll horizontally
+set sidescrolloff=3 " Minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set
 set showmode " Show the active mode in status line
 set showmatch " Show matching parentheses
 set showcmd " Show key commands in status line
