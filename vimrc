@@ -66,6 +66,9 @@ function! RestoreCurPrevPos()
     endif
 endfunction
 
+" Resize splits when the window is resized
+autocmd VimResized * execute "normal! \<c-w>="
+
 
 " -------------- [Remap arrow keys] --------------
 if filereadable(expand("~/.vim/cfg/arrow-keys.vimrc"))
