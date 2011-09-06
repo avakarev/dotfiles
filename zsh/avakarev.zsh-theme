@@ -31,7 +31,7 @@ git_custom_status() {
 }
 
 # git settings
-RPS1='$(git_custom_status) $EPS1'
+# RPS1='$(git_custom_status) $EPS1'
 
 PROMPT="${path_p}${host_p}
 $:> "
