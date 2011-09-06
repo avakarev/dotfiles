@@ -120,6 +120,10 @@ set gdefault " By default add 'g' flag to search/replace. Add 'g' to toggle
 " Press space bar to turn off search highlighting and clear any message displayed
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 
 " -------------- [Windows] --------------
 
