@@ -1,4 +1,4 @@
-colorscheme lucius-fixed
+colorscheme xoria256
 
 set lines=30 columns=120 " Size of MacVim window
 
