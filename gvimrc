@@ -11,3 +11,8 @@ set guioptions-=b " Do not display bottom (horizontal) scrollbar
 if has("unix")
     set guifont=Monaco:h13 " Make font size bigger
 endif
+
+if exists('+colorcolumn')
+    set colorcolumn=80
+    highlight ColorColumn guibg=#262626
+endif

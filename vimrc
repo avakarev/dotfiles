@@ -91,6 +91,10 @@ set showcmd " Show key commands in status line
 set ruler " Show current position of cursor in status line
 set showtabline=1 " Show tab bar only if there are more than 1 tab
 
+" Highlight string parts that goes over the 80 column limit
+highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
+match OverLength /\%81v.\+/
+
 
 " -------------- [Status line] --------------
 
