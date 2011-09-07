@@ -19,6 +19,10 @@ function cdh() {
 alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
 # Finder
 alias o='open . &'
 alias ff='open -a Firefox'
