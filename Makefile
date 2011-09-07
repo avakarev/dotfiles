@@ -3,7 +3,8 @@
 
 BASH_BUNDLE := "bash" \
                "bash_profile" \
-               "bashrc"
+               "bashrc" \
+               "inputrc"
 
 ZSH_BUNDLE := "zsh" \
               "zshrc"
@@ -13,7 +14,8 @@ VIM_BUNDLE := "vim" \
               "gvimrc" \
               "vimpagerrc"
 
-GIT_BUNDLE := "gitconfig"
+GIT_BUNDLE := "gitconfig" \
+              "gitignore-global"
 
 # Function to deploy config files. Takes 1 argument: name-of-bundle.
 # It will loop through all bundle items and create symlinks according to.

@@ -5,13 +5,26 @@
     email = EMAIL
 [github]
     user = LOGIN
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore-global
 [color]
     diff = auto
     status = auto
     branch = auto
     interactive = auto
-[core]
-    excludesfile = ~/.gitignore_global
+    ui = auto
+[color "diff"]
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[color "branch"]
+    current = blue reverse
+    local = green
+    remote = yellow
 [alias]
     st = status -sbu
     stat = status

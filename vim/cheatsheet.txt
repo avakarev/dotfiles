@@ -3,6 +3,7 @@ vim -u ~/.my-custom-vimrc   run vim with some custom config
 
 nCmd        repeat n times every Cmd command (ex: 7j, 4{}, 2w)
 .           repeat last command
+*           will highlight all occurrences of the word that is under the cursor
 
 
 :help word-motions

@@ -1,0 +1,20 @@
+# To make sense for this file, just install readline
+# brew install readline
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# Append a slash when autocompleting symbolic links to directories
+set mark-symlinked-directories on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# Key bindings for better cursor movement and history search
+"\e[1~": beginning-of-line       # Home
+"\e[4~": end-of-line             # End
+"\e[5~": history-search-backward # Page Up
+"\e[6~": history-search-forward  # Page Down
+"\e[3~": delete-char             # Delete
+"\e[5C": forward-word            # Ctrl + Right
+"\e[5D": backward-word           # Ctrl + Left
