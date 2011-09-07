@@ -1,26 +1,23 @@
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc   # read ~/.bashrc, if present
-  ENV=~/.bashrc
+# Aplly ~/.bashrc with addition settings
+if [ -f $HOME/.bashrc ]; then
+  source $HOME/.bashrc
+  ENV=$HOME/.bashrc
   export ENV
 fi
 
-# enabling bash auto-complete
-# to install it, run "brew install bash-completion"
+# 'Switch on' bash auto-complete
+# To install it, just run "brew install bash-completion"
 if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+  source `brew --prefix`/etc/bash_completion
 fi
 
-# add aliases
-if [ -f ~/.bash/aliases ]; then
-  . ~/.bash/aliases
-fi
-
-# improve bash command prompt
-if [ -f ~/.bash/prompt ]; then
-  . ~/.bash/prompt
-fi
-
-# add custom coloring
-if [ -f ~/.bash/colors ]; then
-  . ~/.bash/colors
-fi
+# Load
+#   ~/.bash/aliases  apply command aliases
+#   ~/.bash/prompt   customize bash command prompt
+#   ~/.bash/colors   add custom coloring in terminal
+for file in aliases prompt colors; do
+    file="$HOME/.bash/$file"
+    if [ -e "$file" ]; then
+        source "$file"
+    fi
+done

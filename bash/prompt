@@ -22,4 +22,9 @@ function show_git_info() {
     echo "$OUT"
 }
 
-export PS1="\[\033[0;33m\][\h]\[\033[0;32m\][\u]\[\033[1;36m\](\w)\[\033[0;37m\]\$(show_git_info)\n\[\033[0m\]\$:> "
+cl_yellow="\033[0;33m"
+cl_lblue="\033[1;34m"
+cl_cyan="\033[1;36m"
+cl_lgray="\033[0;37m"
+cl_reset="\033[0m"
+export PS1="\[$cl_yellow\][\h]\[$cl_lblue\][\u]\[$cl_cyan\](\w)\[$cl_lgray\]\$(show_git_info)\n\[$cl_reset\]\$:> "
