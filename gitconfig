@@ -15,11 +15,11 @@
     interactive = auto
     ui = auto
 [color "diff"]
-    old = red bold
-    new = green bold
+    old = red
+    new = green
 [color "status"]
     added = green
-    changed = yellow
+    changed = red bold
     untracked = cyan
 [color "branch"]
     current = blue reverse
@@ -29,6 +29,7 @@
     st = status -sbu
     stat = status
     ci = commit
+    cm = commit -m
     uc = reset HEAD^ # undo last local commit
     br = branch
     bl = branch -av
@@ -36,10 +37,12 @@
     ls = ls-files
     co = checkout
     df = diff
+    dc = diff --cached
     dfs = diff --stat -r
     dfn = diff --name-status -r
-    lg = log -p
+    lg  = log -p
     lga = log --graph --decorate --pretty=oneline --abbrev-commit
+    gl  = log --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
     i = remote -v
     su = submodule update --init
     sp = submodule foreach git pull origin master
