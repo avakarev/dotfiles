@@ -29,17 +29,15 @@ source $ZSH/oh-my-zsh.sh
 # My custom theme
 source "$HOME/.zsh/avakarev.zsh-theme"
 
-# Customize to your needs...
-export SVN_EDITOR=vi
-export NODE_PATH=/usr/local/lib/node_modules
-
-PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
-export PATH
-
 # Add aliases.
-if [ -f ~/.bash/aliases ]; then
-  . ~/.bash/aliases
+if [ -e $HOME/.bash/aliases ]; then
+  source $HOME/.bash/aliases
   alias up='source ~/.zshrc'
+fi
+
+# Apply exports.
+if [ -e $HOME/.bash/exports ]; then
+  source $HOME/.bash/exports
 fi
 
 # This loads RVM into a shell session.

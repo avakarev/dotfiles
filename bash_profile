@@ -15,7 +15,8 @@ fi
 #   ~/.bash/aliases  apply command aliases
 #   ~/.bash/prompt   customize bash command prompt
 #   ~/.bash/colors   add custom coloring in terminal
-for file in aliases prompt colors; do
+#   ~/.bash/exports  apply some environment vars: like EDITOR, PATH and so
+for file in aliases prompt colors exports; do
     file="$HOME/.bash/$file"
     if [ -e "$file" ]; then
         source "$file"

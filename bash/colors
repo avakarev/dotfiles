@@ -1,3 +1,4 @@
 export CLICOLOR=1
 
 # add custom colors for different file types
+export LSCOLORS="ExGxcxdxbxegedabagacad"
