@@ -33,10 +33,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " -------------- [Common] --------------
 
-set title " Show the filename in the window titlebar
-" Restore title on exit to home path instead of default 'Thanks for flying Vim'
-let &titleold = substitute(getcwd(), $HOME, "~", '')
-
 set wildmenu " Hitting TAB in command mode will show possible completions above command line
 
 set history=1000 " Remember more commands and search history
@@ -82,7 +78,7 @@ set encoding=utf-8 nobomb " BOM often causes trouble
 set fileencodings=utf-8,cp1251
 set number " Enable line numbers
 set nowrap " Do not wrap lines
-set scrolloff=999 " Minimal number of screen lines to keep above and below the cursor
+set scrolloff=3 " Minimal number of screen lines to keep above and below the cursor
 set sidescroll=1 " Minimal number of columns to scroll horizontally
 set sidescrolloff=3 " Minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set
 set showmode " Show the active mode in status line
@@ -111,6 +107,17 @@ set statusline+=0x%-8B                          " character value
 set statusline+=%-12(%l/%L:%c%V%)               " line, character
 set statusline+=(%p%%)                          " cursor position in percent
 
+set title " Show the filename in the window titlebar
+" Restore title on exit to home path instead of default 'Thanks for flying Vim'
+let &titleold = substitute(getcwd(), $HOME, "~", '')
+
+" Nice window title
+if has('title') && (has('gui_running') || &title)
+    set titlestring=
+    set titlestring+=%(\ %{expand(\"%:p:h\")}/%t%)%(\ %a%) " fullpath/name of current fule
+    set titlestring+=\ -\ %{v:servername}                  " editor name
+endif
+
 
 " -------------- [Search] --------------
 
@@ -131,7 +138,7 @@ nnoremap N Nzzzv
 
 " -------------- [Windows] --------------
 
-set splitbelow " New window goes below (sp)
+set splitbelow " New windows goes below (sp)
 set splitright " New windows goes right (vs)
 
 
@@ -147,13 +154,12 @@ set smarttab " Be smart about deleting tab space, etc
 set autoindent " Indent new line to the level of the previous one
 set copyindent " Copy the previous indentation on autoindenting
 
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
 " Highlight trailing whitespace and tabs
 " The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'.
 " 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
 highlight SpecialKey ctermfg=DarkGray
-
 " Display extra whitespace, toggle it with list!
 set list listchars=tab:»·,trail:·
 
@@ -189,9 +195,10 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 " -------------- [NERDTree] --------------
 
 let NERDTreeQuitOnOpen = 1 " Closes the tree window after opening a file
-let NERDTreeWinSize = 45 " Sets the window size when the NERD tree is opened
-let NERDTreeMinimalUI = 1 " Disables display of the 'Bookmarks' label and 'Press ? for help' text
-let NERDTreeDirArrows = 1 " Use arrows instead of + ~ chars when displaying directories
+let NERDTreeWinSize    = 45 " Sets the window size when the NERD tree is opened
+let NERDTreeMinimalUI  = 1 " Disables display of the 'Bookmarks' label and 'Press ? for help' text
+let NERDTreeDirArrows  = 1 " Use arrows instead of + ~ chars when displaying directories
+let NERDTreeIgnore     = ['\.git','\.hg','\.svn','\.DS_Store']
 
 map <C-e> :NERDTreeToggle<CR> " toggle NERDTree side pane
 map <C-x> :NERDTreeFind<CR> " find current file in NERDtree
@@ -208,6 +215,11 @@ function! s:CloseIfOnlyNerdTreeLeft()
         q
     endif
 endfunction
+
+
+" -------------- [NERDCommenter] --------------
+
+let NERDSpaceDelims = 1  " Use a space after comment chars
 
 
 " -------------- [Pathogen] --------------
