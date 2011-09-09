@@ -42,6 +42,8 @@ vim -d file1 file2  show the difference between two files
 :sh or :shell       to open a console (then exit to come back to vim)
 u / ctrl-r  (in normal mode): undo / redo
 J           join two lines
+gt          next tab
+gT          previous tab
 
 
 :help vim-modes-intro

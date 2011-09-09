@@ -71,8 +71,8 @@ let use_html=1
 
 
 " -------------- [Remap arrow keys] --------------
-if filereadable(expand("~/.vim/cfg/arrow-keys.vimrc"))
-    source ~/.vim/cfg/arrow-keys.vimrc
+if filereadable(expand("~/.vim/configlets/arrowkeys-remap.vim"))
+    source ~/.vim/configlets/arrowkeys-remap.vim
 endif
 
 
@@ -111,29 +111,16 @@ map Q gq
 " -------------- [Statusline/titlestring] --------------
 
 set laststatus=2 " Always show status line
-set statusline=
-set statusline+=%h%m%r%w\                       " status flags
-set statusline+=(%n)\                           " buffer number
-set statusline+=%t\                             " just filename, without path
-set statusline+=[%{strlen(&ft)?&ft:'none'}]\    " file type
-set statusline+=[%{&ff}/%{v:lang}]\             " file format / current language
-set statusline+=%{fugitive#statusline()}\       " SCM status
-" current file modification date/time
-set statusline+=%{strftime(\"%Y-%m-%d\ %T\",getftime(expand(\"\%\%\")))}
-set statusline+=%=                              " right align remainder
-set statusline+=0x%-8B                          " character value
-set statusline+=%-12(%l/%L:%c%V%)               " line, character
-set statusline+=(%p%%)                          " cursor position in percent
+if has("statusline") && filereadable(expand("~/.vim/configlets/statusline-format.vim"))
+    source ~/.vim/configlets/statusline-format.vim
+endif
 
 set title " Show the filename in the window titlebar
 " Restore title on exit to home path instead of default 'Thanks for flying Vim'
 let &titleold = substitute(getcwd(), $HOME, "~", '')
-
 " Nice window title
-if has('title') && (has('gui_running') || &title)
-    set titlestring=
-    set titlestring+=%(\ %{expand(\"%:p:h\")}/%t%)%(\ %a%) " fullpath/name of current fule
-    set titlestring+=\ -\ %{v:servername}                  " editor name
+if has('title') && (has('gui_running') || &title) && filereadable(expand("~/.vim/configlets/titlestring-format.vim"))
+    source ~/.vim/configlets/titlestring-format.vim
 endif
 
 
