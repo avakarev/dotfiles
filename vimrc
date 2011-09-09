@@ -65,6 +65,10 @@ endfunction
 " Resize splits when the window is resized
 autocmd VimResized * execute "normal! \<c-w>="
 
+" For modern standards in :TOhtml output
+let html_use_css=1
+let use_html=1
+
 
 " -------------- [Remap arrow keys] --------------
 if filereadable(expand("~/.vim/cfg/arrow-keys.vimrc"))
@@ -75,7 +79,16 @@ endif
 " -------------- [Editor behaviour] --------------
 
 set encoding=utf-8 nobomb " BOM often causes trouble
-set fileencodings=utf-8,cp1251
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+set fileformat=unix " This affects the <EOL> of the current buffer
+set fileformats=unix,dos " <EOL> formats that will be tried when edition starts
+
+if has("unix")
+    " Try to use english locale on every system
+    language en_US.UTF-8
+endif
+
+set autoread " Re-read file if it was changed outside of Vim
 set number " Enable line numbers
 set nowrap " Do not wrap lines
 set scrolloff=3 " Minimal number of screen lines to keep above and below the cursor
@@ -92,7 +105,7 @@ highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
 
-" -------------- [Status line] --------------
+" -------------- [Statusline/titlestring] --------------
 
 set laststatus=2 " Always show status line
 set statusline=
@@ -101,7 +114,9 @@ set statusline+=(%n)\                           " buffer number
 set statusline+=%t\                             " just filename, without path
 set statusline+=[%{strlen(&ft)?&ft:'none'}]\    " file type
 set statusline+=[%{&ff}/%{v:lang}]\             " file format / current language
-set statusline+=%{strftime(\"%Y-%m-%d\ %T\",getftime(expand(\"\%\%\")))} " last modification time
+set statusline+=%{fugitive#statusline()}\       " SCM status
+" current file modification date/time
+set statusline+=%{strftime(\"%Y-%m-%d\ %T\",getftime(expand(\"\%\%\")))}
 set statusline+=%=                              " right align remainder
 set statusline+=0x%-8B                          " character value
 set statusline+=%-12(%l/%L:%c%V%)               " line, character
@@ -160,6 +175,7 @@ set backspace=indent,eol,start " Allow backspacing over everything in insert mod
 " The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'.
 " 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
 highlight SpecialKey ctermfg=DarkGray
+highlight NonText ctermfg=DarkGray
 " Display extra whitespace, toggle it with list!
 set list listchars=tab:»·,trail:·
 
