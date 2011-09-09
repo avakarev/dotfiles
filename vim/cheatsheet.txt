@@ -34,6 +34,14 @@ nG          jump to n line
 H           jump to the first line of the display ('H'ighest)
 M           jump to the middle of the display ('M'iddle)
 L           jump to the last line of the display ('L'owest)
+:tabo       close all tabs except the current tab
+guu         make current line lowercase
+gUU         make current line uppercase
+:Ex         open the file explorer
+vim -d file1 file2  show the difference between two files
+:sh or :shell       to open a console (then exit to come back to vim)
+u / ctrl-r  (in normal mode): undo / redo
+J           join two lines
 
 
 :help vim-modes-intro
@@ -51,3 +59,11 @@ r           replace the current character
 R           replace continuous characters
 v           go to visual mode and operate in terms of characters
 V           go to visual mode and operate in terms of lines
+
+" -------------- [Fuck you, Windows] --------------
+^M in VIM can be manipulated as it is an \r character.
+Often times other developers would edit files under Windows and ^M characters would be inserted.
+It is quite easy get rid on them. There several method to reach the goal.
+1) :%s/^M//g " Be sure you make the ^M by using Ctrl+v + Ctrl+m, cause of unicode
+2) sed 's/^M//g' dirty.file > clean.file " See line above and use Ctrl+v + Ctrl+m
+3) dos2unix < tempfile > actualfile

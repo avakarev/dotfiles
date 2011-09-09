@@ -104,6 +104,9 @@ set showtabline=1 " Show tab bar only if there are more than 1 tab
 highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
 match OverLength /\%81v.\+/
 
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
 
 " -------------- [Statusline/titlestring] --------------
 
@@ -170,14 +173,15 @@ set autoindent " Indent new line to the level of the previous one
 set copyindent " Copy the previous indentation on autoindenting
 
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-
-" Highlight trailing whitespace and tabs
-" The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'.
-" 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
-highlight SpecialKey ctermfg=DarkGray
-highlight NonText ctermfg=DarkGray
 " Display extra whitespace, toggle it with list!
 set list listchars=tab:»·,trail:·
+" set listchars+=eol:¬,extends:>,precedes:<,nbsp:_
+
+" Highlight trailing whitespace, tabs and other invisible characters
+" The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'
+" 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
+highlight SpecialKey ctermfg=77 guifg=#5fdf5f
+highlight NonText ctermfg=77 guifg=#5fdf5f
 
 " Apply filetype-specific indentation and so
 autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
