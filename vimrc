@@ -9,6 +9,7 @@ syntax on " Enable syntax highlighting
 if &t_Co >= 256 || has("gui_running") || $TERM_PROGRAM == "iTerm.app" || $COLORTERM == "gnome-terminal"
     set t_Co=256         " Enable 256-color mode
     colorscheme xoria256 " Set nice 256-color scheme
+    source ~/.vim/herovim/colors/xoria256.vim
 else
     colorscheme default
 endif
@@ -22,8 +23,8 @@ autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 
 " -------------- [Cursor] --------------
 
-if filereadable(expand("~/.vim/configlets/cursor.vim"))
-    source ~/.vim/configlets/cursor.vim
+if filereadable(expand("~/.vim/herovim/configlets/cursor.vim"))
+    source ~/.vim/herovim/configlets/cursor.vim
 endif
 
 
@@ -56,8 +57,8 @@ let use_html=1
 
 " -------------- [Remap arrow keys] --------------
 
-if filereadable(expand("~/.vim/configlets/arrow-keys.vim"))
-    source ~/.vim/configlets/arrow-keys.vim
+if filereadable(expand("~/.vim/herovim/configlets/arrow-keys.vim"))
+    source ~/.vim/herovim/configlets/arrow-keys.vim
 endif
 
 
@@ -96,8 +97,8 @@ map Q gq
 set laststatus=2 " Always show status line
 
 " More informative status line
-if has("statusline") && filereadable(expand("~/.vim/configlets/statusline-format.vim"))
-    source ~/.vim/configlets/statusline-format.vim
+if has("statusline") && filereadable(expand("~/.vim/herovim/configlets/statusline-format-dynamic.vim"))
+    source ~/.vim/herovim/configlets/statusline-format-dynamic.vim
 endif
 
 set title " Show the filename in the window titlebar
@@ -106,8 +107,8 @@ set title " Show the filename in the window titlebar
 let &titleold = substitute(getcwd(), $HOME, "~", '')
 
 " Nice window title
-if has('title') && (has('gui_running') || &title) && filereadable(expand("~/.vim/configlets/titlestring-format.vim"))
-    source ~/.vim/configlets/titlestring-format.vim
+if has('title') && (has('gui_running') || &title) && filereadable(expand("~/.vim/herovim/configlets/titlestring-format.vim"))
+    source ~/.vim/herovim/configlets/titlestring-format.vim
 endif
 
 

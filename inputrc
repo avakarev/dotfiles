@@ -9,6 +9,8 @@ set mark-symlinked-directories on
 
 # List all matches in case multiple possible completions are possible
 set show-all-if-ambiguous on
+# Show completions immediately if multiple matches
+set show-all-if-unmodified on
 
 # Key bindings for better cursor movement and history search
 "\e[1~": beginning-of-line       # Home
