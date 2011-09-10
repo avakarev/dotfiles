@@ -43,20 +43,8 @@ set noerrorbells " Ring the bell (beep or screen flash) for error messages
 set nobackup   " Disable to make a backup before overwriting a file
 set noswapfile " Disable to use a swapfile for the buffer
 
-nmap <C-j> 5j<CR> " Ctrl+j moves cursor 5 lines up
-nmap <C-k> 5k<CR> " Ctrl+k moves cursor 5 lines down
-
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
-
-" When editing a file, always jump to the last known cursor position.
-autocmd BufReadPost * call RestoreCurPrevPos()
-
-function! RestoreCurPrevPos()
-    if line("'\"") > 1 && line("'\"") <= line("$")
-        execute "normal! g`\"" |
-    endif
-endfunction
 
 " Resize splits when the window is resized
 autocmd VimResized * execute "normal! \<c-w>="
@@ -88,9 +76,6 @@ endif
 set autoread        " Re-read file if it was changed outside of Vim
 set number          " Enable line numbers
 set nowrap          " Do not wrap lines
-set scrolloff=3     " Minimal number of screen lines to keep above and below the cursor
-set sidescroll=1    " Minimal number of columns to scroll horizontally
-set sidescrolloff=3 " Minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set
 set showmode        " Show the active mode in status line
 set showmatch       " Show matching parentheses
 set showcmd         " Show key commands in status line
