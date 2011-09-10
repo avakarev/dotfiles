@@ -62,6 +62,13 @@ if filereadable(expand("~/.vim/herovim/configlets/arrow-keys.vim"))
 endif
 
 
+" -------------- [Map func keys] --------------
+
+if filereadable(expand("~/.vim/herovim/configlets/func-keys.vim"))
+    source ~/.vim/herovim/configlets/func-keys.vim
+endif
+
+
 " -------------- [Editor behaviour] --------------
 
 set encoding=utf-8 nobomb " BOM often causes trouble
