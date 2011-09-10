@@ -13,5 +13,3 @@ set statusline+=%=                              " right align remainder
 set statusline+=0x%-8B                          " character value
 set statusline+=%-12(%l/%L:%c%V%)               " line, character
 set statusline+=(%p%%)                          " cursor position in percent
-
-"set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P

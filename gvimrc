@@ -8,7 +8,7 @@ set guioptions-=r " Do not display right-hand scrollbar
 set guioptions-=L " Do not display left-hand scrollbar
 set guioptions-=b " Do not display bottom (horizontal) scrollbar
 
-if has("unix")
+if has("gui_macvim")
     set guifont=Monaco:h13 " Make font size bigger
 endif
 
