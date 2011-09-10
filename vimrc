@@ -136,6 +136,13 @@ set splitbelow " New windows goes below (sp)
 set splitright " New windows goes right (vs)
 
 
+" -------------- [Completion] --------------
+
+if filereadable(expand("~/.vim/herovim/configlets/completion.vim"))
+    source ~/.vim/herovim/configlets/completion.vim
+endif
+
+
 " -------------- [Indentation] --------------
 
 set expandtab     " Turn tabs to spaces
