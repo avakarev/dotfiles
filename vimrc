@@ -204,8 +204,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 
 " -------------- [NERDTree] --------------
 
-if filereadable(expand("~/.vim/configlets/nerdtree.vim"))
-    source ~/.vim/configlets/nerdtree.vim
+if filereadable(expand("~/.vim/herovim/configlets/nerdtree.vim"))
+    source ~/.vim/herovim/configlets/nerdtree.vim
 endif
 
 
