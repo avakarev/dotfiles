@@ -1,5 +1,3 @@
-let HEROVIM_COLORS_LOADED = 1
-
 " most important
 highlight User1 ctermfg=249 guifg=#b2b2b2 ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
 

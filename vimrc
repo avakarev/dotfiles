@@ -9,10 +9,11 @@ syntax on " Enable syntax highlighting
 if &t_Co >= 256 || has("gui_running") || $TERM_PROGRAM == "iTerm.app" || $COLORTERM == "gnome-terminal"
     set t_Co=256         " Enable 256-color mode
     colorscheme xoria256 " Set nice 256-color scheme
-    source ~/.vim/herovim/colors/xoria256.vim
 else
     colorscheme default
 endif
+
+source ~/.vim/herovim/herovim.vim
 
 autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
 autocmd BufNewFile,BufRead *.json set filetype=javascript
@@ -23,9 +24,7 @@ autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 
 " -------------- [Cursor] --------------
 
-if filereadable(expand("~/.vim/herovim/configlets/cursor.vim"))
-    source ~/.vim/herovim/configlets/cursor.vim
-endif
+call herovim#include("cursor")
 
 
 " -------------- [Common] --------------
@@ -38,17 +37,11 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set history=1000    " Remember more commands and search history
 set undolevels=1000 " Use many muchos levels of undo
 
-set visualbell   " Use visual bell instead of beeping
-set noerrorbells " Ring the bell (beep or screen flash) for error messages
-
 set nobackup   " Disable to make a backup before overwriting a file
 set noswapfile " Disable to use a swapfile for the buffer
 
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
-
-" Resize splits when the window is resized
-autocmd VimResized * execute "normal! \<c-w>="
 
 " For modern standards in :TOhtml output
 let html_use_css=1
@@ -57,16 +50,12 @@ let use_html=1
 
 " -------------- [Remap arrow keys] --------------
 
-if filereadable(expand("~/.vim/herovim/configlets/arrow-keys.vim"))
-    source ~/.vim/herovim/configlets/arrow-keys.vim
-endif
+call herovim#include("arrow-keys")
 
 
 " -------------- [Map func keys] --------------
 
-if filereadable(expand("~/.vim/herovim/configlets/func-keys.vim"))
-    source ~/.vim/herovim/configlets/func-keys.vim
-endif
+call herovim#include("func-keys")
 
 
 " -------------- [Editor behaviour] --------------
@@ -82,14 +71,14 @@ if has("unix")
 endif
 
 set autoread        " Re-read file if it was changed outside of Vim
+set ttimeoutlen=0
+
 set number          " Enable line numbers
 set nowrap          " Do not wrap lines
-set showmode        " Show the active mode in status line
 set showmatch       " Show matching parentheses
-set showcmd         " Show key commands in status line
-set ruler           " Show current position of cursor in status line
-set showtabline=1   " Show tab bar only if there are more than 1 tab
-set ttimeoutlen=0
+
+set visualbell   " Use visual bell instead of beeping
+set noerrorbells " Ring the bell (beep or screen flash) for error messages
 
 " Highlight string parts that goes over the 80 column limit
 highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
@@ -102,39 +91,24 @@ map Q gq
 " -------------- [Statusline/titlestring] --------------
 
 set laststatus=2 " Always show status line
+set showmode     " Show the active mode in status line
+set showcmd      " Show key commands in status line
+set ruler        " Show current position of cursor in status line
 
 " More informative status line
-if has("statusline") && filereadable(expand("~/.vim/herovim/configlets/statusline-format-dynamic.vim"))
-    source ~/.vim/herovim/configlets/statusline-format-dynamic.vim
+if has("statusline")
+    call herovim#include("statusline-format-dynamic")
 endif
 
-set title " Show the filename in the window titlebar
-
-" Restore title on exit to home path instead of default 'Thanks for flying Vim'
-let &titleold = substitute(getcwd(), $HOME, "~", '')
-
 " Nice window title
-if has('title') && (has('gui_running') || &title) && filereadable(expand("~/.vim/herovim/configlets/titlestring-format.vim"))
-    source ~/.vim/herovim/configlets/titlestring-format.vim
+if has('title') && (has('gui_running') || &title)
+    call herovim#include("titlestring-format")
 endif
 
 
 " -------------- [Search] --------------
 
-set hlsearch   " Highlight search matches
-set incsearch  " Highlight search matches as you type them
-set ignorecase " Case-insensitive searching
-set smartcase  " If the search pattern contains upper case chars, override 'ignorecase' option
-set wrapscan   " Set the search scan to wrap around the file
-set gdefault   " By default add 'g' flag to search/replace. Add 'g' to toggle
-
-" Press space bar to turn off search highlighting and clear any message displayed
-nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
-
-
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
+call herovim#include("search")
 
 
 " -------------- [Windows] --------------
@@ -142,12 +116,13 @@ nnoremap N Nzzzv
 set splitbelow " New windows goes below (sp)
 set splitright " New windows goes right (vs)
 
+" Resize splits when the window is resized
+autocmd VimResized * execute "normal! \<c-w>="
+
 
 " -------------- [Completion] --------------
 
-if filereadable(expand("~/.vim/herovim/configlets/completion.vim"))
-    source ~/.vim/herovim/configlets/completion.vim
-endif
+call herovim#include("completion")
 
 
 " -------------- [Indentation] --------------
@@ -180,6 +155,8 @@ autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth
 
 " -------------- [Tabs] --------------
 
+set showtabline=1   " Show tab bar only if there are more than 1 tab
+
 map  <C-l> :tabnext<CR>     " Ctrl+l moves to the next tab
 map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
 map  <C-n> :tabnew<CR>      " Ctrl+n creates a new tab
@@ -204,9 +181,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 
 " -------------- [NERDTree] --------------
 
-if filereadable(expand("~/.vim/herovim/configlets/nerdtree.vim"))
-    source ~/.vim/herovim/configlets/nerdtree.vim
-endif
+call herovim#include("nerdtree")
 
 
 " -------------- [NERDCommenter] --------------
