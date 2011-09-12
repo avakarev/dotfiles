@@ -20,7 +20,7 @@ function! s:UpdateStatusLine(isEnter)
 
     let ret .= "%h%m%r%w"                     " status flags
     let ret .= "(%n)"                         " buffer number
-    let ret .= exists("g:HEROVIM_COLORS_LOADED") ? "%1*" : ""
+    let ret .= exists("g:HEROVIM_COLORS_LOADED") && a:isEnter ? "%1*" : ""
     let ret .= " %t"                          " just filename, without path
     let ret .= exists("g:HEROVIM_COLORS_LOADED") ? "%3*" : ""
     let ret .= " [%{strlen(&ft)?&ft:'none'}]" " file type
