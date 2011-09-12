@@ -1,7 +1,7 @@
-if exists("loaded_herovim_statusline_format_dynamic")
+if exists("loaded_herovim_statusline_dynamic")
     finish
 endif
-let loaded_herovim_statusline_format_static = 1
+let loaded_herovim_statusline_static = 1
 
 
 set laststatus=2 " Always show status line

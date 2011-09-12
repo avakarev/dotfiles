@@ -1,7 +1,7 @@
-if exists("loaded_herovim_statusline_format_static")
+if exists("loaded_herovim_statusline_static")
     finish
 endif
-let loaded_herovim_statusline_format_dynamic = 1
+let loaded_herovim_statusline_dynamic = 1
 
 set laststatus=2 " Always show status line
 set showmode     " Show the active mode in status line

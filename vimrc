@@ -46,7 +46,7 @@ call herovim#include("behaviour")
 
 " More informative status line
 if has("statusline")
-    call herovim#include("statusline-format-dynamic")
+    call herovim#include("statusline-dynamic")
 endif
 
 " Nice window title
