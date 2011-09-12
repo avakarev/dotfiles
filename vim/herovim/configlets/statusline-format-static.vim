@@ -3,6 +3,12 @@ if exists("loaded_herovim_statusline_format_dynamic")
 endif
 let loaded_herovim_statusline_format_static = 1
 
+
+set laststatus=2 " Always show status line
+set showmode     " Show the active mode in status line
+set showcmd      " Show key commands in status line
+set ruler        " Show current position of cursor in status line
+
 set statusline=
 set statusline+=%h%m%r%w\                       " status flags
 set statusline+=(%n)\                           " buffer number

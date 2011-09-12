@@ -3,6 +3,14 @@ if exists("loaded_herovim_statusline_format_static")
 endif
 let loaded_herovim_statusline_format_dynamic = 1
 
+set laststatus=2 " Always show status line
+set showmode     " Show the active mode in status line
+set showcmd      " Show key commands in status line
+set ruler        " Show current position of cursor in status line
+
+autocmd BufWinEnter,WinEnter,CmdwinEnter,CursorHold,CursorHoldI,BufWritePost * call <SID>UpdateStatusLine(1)
+autocmd WinLeave * call <SID>UpdateStatusLine(0)
+
 function! s:UpdateStatusLine(isEnter)
     " TODO: try to compare length of status line with actual window width instead of hardcoding
     let l:isFull = winwidth(0) >= 120
@@ -38,6 +46,3 @@ function! s:UpdateStatusLine(isEnter)
 
     let &l:stl = l:ret
 endfunction
-
-autocmd BufWinEnter,WinEnter,CmdwinEnter,CursorHold,CursorHoldI,BufWritePost * call <SID>UpdateStatusLine(1)
-autocmd WinLeave * call <SID>UpdateStatusLine(0)

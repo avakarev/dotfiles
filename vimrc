@@ -27,27 +27,6 @@ autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 call herovim#include("cursor")
 
 
-" -------------- [Common] --------------
-
-set wildmenu " Hitting TAB in command mode will show possible completions above command line
-
-" A file that matches with one of these patterns is ignored when completing file or directory names
-set wildignore=*.swp,*.bak,*.pyc,*.class
-
-set history=1000    " Remember more commands and search history
-set undolevels=1000 " Use many muchos levels of undo
-
-set nobackup   " Disable to make a backup before overwriting a file
-set noswapfile " Disable to use a swapfile for the buffer
-
-" Allows use sudo command if file requires it and was open without it
-cmap w!! w !sudo tee % >/dev/null
-
-" For modern standards in :TOhtml output
-let html_use_css=1
-let use_html=1
-
-
 " -------------- [Remap arrow keys] --------------
 
 call herovim#include("arrow-keys")
@@ -60,40 +39,10 @@ call herovim#include("func-keys")
 
 " -------------- [Editor behaviour] --------------
 
-set encoding=utf-8 nobomb " BOM often causes trouble
-set fileencodings=utf-8,cp1251,koi8-r,cp866
-set fileformat=unix       " This affects the <EOL> of the current buffer
-set fileformats=unix,dos  " <EOL> formats that will be tried when edition starts
-
-if has("unix")
-    " Try to use english locale on every system
-    language en_US.UTF-8
-endif
-
-set autoread        " Re-read file if it was changed outside of Vim
-set ttimeoutlen=0
-
-set number          " Enable line numbers
-set nowrap          " Do not wrap lines
-set showmatch       " Show matching parentheses
-
-set visualbell   " Use visual bell instead of beeping
-set noerrorbells " Ring the bell (beep or screen flash) for error messages
-
-" Highlight string parts that goes over the 80 column limit
-highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
-match OverLength /\%81v.\+/
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
+call herovim#include("behaviour")
 
 
 " -------------- [Statusline/titlestring] --------------
-
-set laststatus=2 " Always show status line
-set showmode     " Show the active mode in status line
-set showcmd      " Show key commands in status line
-set ruler        " Show current position of cursor in status line
 
 " More informative status line
 if has("statusline")
@@ -109,15 +58,6 @@ endif
 " -------------- [Search] --------------
 
 call herovim#include("search")
-
-
-" -------------- [Windows] --------------
-
-set splitbelow " New windows goes below (sp)
-set splitright " New windows goes right (vs)
-
-" Resize splits when the window is resized
-autocmd VimResized * execute "normal! \<c-w>="
 
 
 " -------------- [Completion] --------------
@@ -138,15 +78,6 @@ set autoindent " Indent new line to the level of the previous one
 set copyindent " Copy the previous indentation on autoindenting
 
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-" Display extra whitespace, toggle it with list!
-set list listchars=tab:»·,trail:·
-" set listchars+=eol:¬,extends:>,precedes:<,nbsp:_
-
-" Highlight trailing whitespace, tabs and other invisible characters
-" The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'
-" 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
-highlight SpecialKey ctermfg=77 guifg=#5fdf5f
-highlight NonText    ctermfg=77 guifg=#5fdf5f
 
 " Apply filetype-specific indentation and so
 autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
@@ -155,7 +86,7 @@ autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth
 
 " -------------- [Tabs] --------------
 
-set showtabline=1   " Show tab bar only if there are more than 1 tab
+set showtabline=1 " Show tab bar only if there are more than 1 tab
 
 map  <C-l> :tabnext<CR>     " Ctrl+l moves to the next tab
 map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
@@ -168,6 +99,8 @@ map  <C-n> :tabnew<CR>      " Ctrl+n creates a new tab
 " TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
 command ShowPath echo expand("%:p")
 
+" Allows use sudo command if file requires it and was open without it
+cmap w!! w !sudo tee % >/dev/null
 
 " -------------- [vimrc] --------------
 
