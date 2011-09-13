@@ -1,7 +1,9 @@
-let s:herovim_colors = expand("~/.vim/herovim/colors/" . colors_name . ".vim")
-if exists("colors_name") && filereadable(s:herovim_colors)
-    execute "source " . s:herovim_colors
-    let HEROVIM_COLORS_LOADED = 1
+if exists("colors_name")
+    let s:herovim_colors = expand("~/.vim/herovim/colors/" . colors_name . ".vim")
+    if exists("colors_name") && filereadable(s:herovim_colors)
+        execute "source " . s:herovim_colors
+        let HEROVIM_COLORS_LOADED = 1
+    endif
 endif
 
 function! herovim#include(configlet_name) abort
