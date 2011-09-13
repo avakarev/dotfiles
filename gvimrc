@@ -10,6 +10,8 @@ set guioptions-=b " Do not display bottom (horizontal) scrollbar
 
 if has("gui_macvim")
     set guifont=Monaco:h13 " Make font size bigger
+elseif has("unix")
+    set guifont=DejaVu\ Sans\ Mono\ 11
 endif
 
 if exists('+colorcolumn')

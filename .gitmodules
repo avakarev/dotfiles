@@ -40,3 +40,9 @@
 [submodule "vim/bundle/syntax-javascript"]
 	path = vim/bundle/syntax-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/archer"]
+	path = vim/bundle/archer
+	url = git://github.com/avakarev/vim-archer.git
+[submodule "vim/bundle/watchdog"]
+	path = vim/bundle/watchdog
+	url = git://github.com/avakarev/vim-watchdog.git

@@ -2,6 +2,7 @@ set nocompatible " Make Vim behave in a more useful way
 
 
 " -------------- [Syntax highlighting] --------------
+
 set background=dark " Text background should be dark
 syntax on " Enable syntax highlighting
 
@@ -27,9 +28,6 @@ autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 call herovim#include("cursor")
 
 
-" -------------- [Remap arrow keys] --------------
-
-call herovim#include("arrow-keys")
 
 
 " -------------- [Map func keys] --------------
@@ -44,10 +42,11 @@ call herovim#include("behaviour")
 
 " -------------- [Statusline/titlestring] --------------
 
-" More informative status line
-if has("statusline")
-    call herovim#include("statusline-dynamic")
-endif
+set laststatus=2 " Always show status line
+set showmode     " Show the active mode in status line
+set showcmd      " Show key commands in status line
+set ruler        " Show current position of cursor in status line
+
 
 " Nice window title
 if has('title') && (has('gui_running') || &title)
