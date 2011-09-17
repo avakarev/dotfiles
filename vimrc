@@ -1,5 +1,16 @@
 set nocompatible " Make Vim behave in a more useful way
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Pathogen                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype off
+
+" List of disabled plugins, prevent pathogen from self-sourcing
+let g:pathogen_disabled = ["pathogen","jslint"]
+call pathogen#infect()
+filetype plugin indent on
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Syntax highlighting                     "
@@ -29,10 +40,36 @@ autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 "                      Cursor                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call herovim#include("cursor")
+set scrolloff=3     " Minimal number of screen lines to keep above and below the cursor
+set sidescroll=1    " Minimal number of columns to scroll horizontally
+set sidescrolloff=3 " Minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set
 
+nmap <C-j> 5j<CR> " Ctrl+j moves cursor 5 lines up
+nmap <C-k> 5k<CR> " Ctrl+k moves cursor 5 lines down
 
+" Highlight current line
+if (&t_Co >= 256) || has("gui_running") || ($TERM_PROGRAM == "iTerm.app") || ($COLORTERM == "gnome-terminal")
+    set cursorline
+endif
 
+" Make cursor shape as line in insert mode and as block in other cases
+if $COLORTERM == "gnome-terminal" && has("autocmd")
+    " Should work in gnome-terminal >= 2.26
+    autocmd InsertEnter          * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+    autocmd InsertLeave,VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+function! RestoreCurPrevPos()
+    if line("'\"") > 1 && line("'\"") <= line("$")
+        execute "normal! g`\"" |
+    endif
+endfunction
+
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost * call RestoreCurPrevPos()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -62,14 +99,41 @@ endif
 "                 Search and Replace                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call herovim#include("search")
+set hlsearch   " Highlight search matches
+set incsearch  " Highlight search matches as you type them
+set ignorecase " Case-insensitive searching
+set smartcase  " If the search pattern contains upper case chars, override 'ignorecase' option
+set wrapscan   " Set the search scan to wrap around the file
+set gdefault   " By default add 'g' flag to search/replace. Add 'g' to toggle
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Press space bar to turn off search highlighting and clear any message displayed
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Completion                         "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call herovim#include("completion")
+" Completion options
+set completeopt-=preview " annoying window on the top
+set completeopt+=longest " do not select the first variant by default
+set completeopt+=menuone " always show the completion menu
+
+" Word completion dictionary
+set complete+=. " current buffer
+set complete+=k " dictionary
+set complete+=b " other bufs
+set complete+=t " tags
+
+" Hitting TAB in command mode will show possible completions above command line
+set wildmenu
+
+" A file that matches with one of these patterns is ignored when completing file or directory names
+set wildignore=*.swp,*.bak,*.pyc,*.class
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,6 +179,7 @@ command ShowPath echo expand("%:p")
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         vimrc                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,16 +204,3 @@ call herovim#include("nerdtree")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims = 1 " Use a space after comment chars
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       Pathogen                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-filetype off
-
-" List of disabled plugins, prevent pathogen from self-sourcing
-let g:pathogen_disabled = ["pathogen","jslint"]
-
-call pathogen#infect()
-filetype plugin indent on
