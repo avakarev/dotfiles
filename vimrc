@@ -1,7 +1,9 @@
 set nocompatible " Make Vim behave in a more useful way
 
 
-" -------------- [Syntax highlighting] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                  Syntax highlighting                     "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set background=dark " Text background should be dark
 syntax on " Enable syntax highlighting
@@ -23,24 +25,26 @@ autocmd BufNewFile,BufRead *bash/* set filetype=sh
 autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 
 
-" -------------- [Cursor] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      Cursor                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call herovim#include("cursor")
 
 
 
 
-" -------------- [Map func keys] --------------
 
-call herovim#include("func-keys")
-
-
-" -------------- [Editor behaviour] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                    Editor behaviour                      "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call herovim#include("behaviour")
 
 
-" -------------- [Statusline/titlestring] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                 Statusline and titlestring               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set laststatus=2 " Always show status line
 set showmode     " Show the active mode in status line
@@ -54,17 +58,23 @@ if has('title') && (has('gui_running') || &title)
 endif
 
 
-" -------------- [Search] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                 Search and Replace                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call herovim#include("search")
 
 
-" -------------- [Completion] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Completion                         "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call herovim#include("completion")
 
 
-" -------------- [Indentation] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      Indentation                         "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab     " Turn tabs to spaces
 set tabstop=4     " Number of spaces that a <Tab> in the file counts for
@@ -83,7 +93,9 @@ autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noex
 autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
 
 
-" -------------- [Tabs] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                         Tabs                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set showtabline=1 " Show tab bar only if there are more than 1 tab
 
@@ -92,7 +104,9 @@ map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
 map  <C-n> :tabnew<CR>      " Ctrl+n creates a new tab
 
 
-" -------------- [Utils] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                         Utils                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Prints current file full path
 " TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
@@ -101,7 +115,9 @@ command ShowPath echo expand("%:p")
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
 
-" -------------- [vimrc] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                         vimrc                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Change the mapleader from \ to ,
 let mapleader = ","
@@ -111,17 +127,23 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>  " Quickly edit the vimrc file
 nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
 
 
-" -------------- [NERDTree] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       NERDTree                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call herovim#include("nerdtree")
 
 
-" -------------- [NERDCommenter] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       NERDCommenter                      "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims = 1 " Use a space after comment chars
 
 
-" -------------- [Pathogen] --------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Pathogen                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 filetype off
 
