@@ -75,10 +75,77 @@ autocmd BufReadPost * call RestoreCurPrevPos()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      Appearance                          "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set lazyredraw         " Screen will not be redrawn while executing macros
+set ttyfast            " Improves smoothness of redrawing
+set winminheight=0     " Minimal height of a window, when it's not the current window
+set cmdheight=1        " Number of screen lines to use for the command-line
+set foldcolumn=3       " 2 lines of column for fold showing, always
+set foldmethod=syntax  " The kind of folding used for the current window
+set foldlevelstart=99  " Useful to always start editing with no folds closed
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                    Editor behaviour                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call herovim#include("behaviour")
+set encoding=utf-8 nobomb " BOM often causes trouble
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+set fileformat=unix       " This affects the <EOL> of the current buffer
+set fileformats=unix,dos  " <EOL> formats that will be tried when edition starts
+
+if has("unix")
+    " Try to use english locale on every system
+    language en_US.UTF-8
+endif
+
+set autoread        " Re-read file if it was changed outside of Vim
+set ttimeoutlen=0   " The time in ms that is waited for a key code to complete.
+
+set number          " Enable line numbers
+set nowrap          " Do not wrap lines
+set showmatch       " Show matching parentheses
+
+set visualbell   " Use visual bell instead of beeping
+set noerrorbells " Ring the bell (beep or screen flash) for error messages
+
+" Display extra whitespace, toggle it with list!
+set list listchars=tab:»·,trail:·
+" set listchars+=eol:¬,extends:>,precedes:<,nbsp:_
+
+" Highlight trailing whitespace, tabs and other invisible characters
+" The 'NonText' highlighting will be used for 'eol', 'extends' and 'precedes'
+" 'SpecialKey' for 'nbsp', 'tab' and 'trail'.
+highlight SpecialKey ctermfg=77 guifg=#5fdf5f
+highlight NonText    ctermfg=77 guifg=#5fdf5f
+
+" Highlight string parts that goes over the 80 column limit
+highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
+match OverLength /\%81v.\+/
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+set splitbelow " New window goes below (sp)
+set splitright " New window goes right (vs)
+
+" Resize splits when the window is resized
+autocmd VimResized * execute "normal! \<c-w>="
+
+" yy, dd and p works with system clipboard
+set clipboard=unnamed " But only 7.03+ version supported
+
+set history=1000    " Remember more commands and search history
+set undolevels=1000 " Use many muchos levels of undo
+
+set nobackup   " Disable to make a backup before overwriting a file
+set noswapfile " Disable to use a swapfile for the buffer
+
+
+" For modern standards in :TOhtml output
+let html_use_css=1
+let use_html=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,7 +159,7 @@ set ruler        " Show current position of cursor in status line
 
 
 " Nice window title
-if has('title') && (has('gui_running') || &title)
+if has('title')
     set title " Show the filename in the window titlebar
 
     " Restore title on exit to home path instead of default 'Thanks for flying Vim'
@@ -101,7 +168,6 @@ if has('title') && (has('gui_running') || &title)
     " Redefine title string format
     set titlestring=
     set titlestring+=%(\ %{expand(\"%:p:~\")}%)%(\ %a%) " fullpath/name of current file
-    set titlestring+=\ -\ %{v:servername}               " editor name
 endif
 
 
