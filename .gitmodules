@@ -46,3 +46,6 @@
 [submodule "vim/bundle/watchdog"]
 	path = vim/bundle/watchdog
 	url = git://github.com/avakarev/vim-watchdog.git
+[submodule "vim/bundle/rusa"]
+	path = vim/bundle/rusa
+	url = git://github.com/avakarev/vim-rusa.git
