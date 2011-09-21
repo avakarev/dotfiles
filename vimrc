@@ -127,6 +127,7 @@ set cmdheight=1    " Number of screen lines to use for the command-line
 set foldcolumn=3      " 2 lines of column for fold showing, always
 set foldmethod=syntax " The kind of folding used for the current window
 set foldlevelstart=99 " Useful to always start editing with no folds closed
+set foldenable        " All folds will be closed by default (really not, see foldlevelstart above)
 
 set splitbelow " New window goes below (sp)
 set splitright " New window goes right (vs)
@@ -277,7 +278,8 @@ let NERDTreeQuitOnOpen = 1  " Closes the tree window after opening a file
 let NERDTreeWinSize    = 45 " Sets the window size when the NERD tree is opened
 let NERDTreeMinimalUI  = 1  " Disables display of the 'Bookmarks' label and 'Press ? for help' text
 let NERDTreeDirArrows  = 1  " Use arrows instead of + ~ chars when displaying directories
-let NERDTreeIgnore     = ['\.git','\.hg','\.svn','\.DS_Store']
+let NERDTreeIgnore     = ['\.git','\.hg','\.svn','\.DS_Store','\.pyc']
+let NERDTreeShowHidden = 1
 
 map <C-e> :NERDTreeToggle<CR> " Toggle NERDTree side pane
 map <C-x> :NERDTreeFind<CR>   " Find current file in NERDtree
