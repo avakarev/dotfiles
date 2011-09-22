@@ -97,6 +97,7 @@ if has("unix")
 endif
 
 set autoread       " Re-read file if it was changed outside of Vim
+set hidden         " When a buffer is brought to foreground, remember undo history and marks
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
 " Don't use Ex mode, use Q for formatting
@@ -114,6 +115,21 @@ set noswapfile " Disable to use a swapfile for the buffer
 " For modern standards in :TOhtml output
 let html_use_css=1
 let use_html=1
+
+" Formatoptions are in the order presented in fo-table
+set formatoptions+=t " Auto-wrap using textwidth (not comments)
+set formatoptions+=c " Auto-wrap comments too
+set formatoptions+=r " Continue the comment header automatically on <CR>
+set formatoptions-=o " Don't insert comment leader with 'o' or 'O'
+set formatoptions+=q " Allow formatting of comments with gq
+set formatoptions-=w " Double-carriage-return indicates paragraph
+set formatoptions-=a " Don't reformat automatically
+set formatoptions+=n " Recognize numbered lists when autoindenting
+set formatoptions+=2 " Use second line of paragraph when autoindenting
+set formatoptions-=v " Don't worry about vi compatiblity
+set formatoptions-=b " Don't worry about vi compatiblity
+set formatoptions+=l " Don't break long lines in insert mode
+set formatoptions+=1 " Don't break lines after one-letter words, if possible
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
