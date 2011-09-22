@@ -45,9 +45,13 @@ set sidescroll=1    " Minimal number of columns to scroll horizontally
 set sidescrolloff=3 " Minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set
 
 " Ctrl+j moves cursor 5 lines up
-nmap <C-j> 5j<CR>
+noremap <C-j> 5j<CR>
 " Ctrl+k moves cursor 5 lines down
-nmap <C-k> 5k<CR>
+noremap <C-k> 5k<CR>
+
+" Differs from 'j' and 'k' when lines wrap, because it's not linewise
+noremap j gj
+noremap k gk
 
 " Highlight current line
 if (&t_Co >= 256) || has("gui_running") || ($TERM_PROGRAM == "iTerm.app") || ($COLORTERM == "gnome-terminal")
@@ -78,6 +82,10 @@ autocmd BufReadPost * call RestoreCurPrevPos()
 "                    Editor behaviour                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set secure      " Disable shell scripts in ./.vimrc
+set nomodeline  " Disable setting vim mode from documents
+set modelines=0 " Disable vim modelines parser
+
 set encoding=utf-8 nobomb " BOM often causes trouble
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 set fileformat=unix       " This affects the <EOL> of the current buffer
@@ -88,8 +96,8 @@ if has("unix")
     language en_US.UTF-8
 endif
 
-set autoread      " Re-read file if it was changed outside of Vim
-set ttimeoutlen=0 " The time in ms that is waited for a key code to complete.
+set autoread       " Re-read file if it was changed outside of Vim
+set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -112,11 +120,17 @@ let use_html=1
 "                      Appearance                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number    " Enable line numbers
-set nowrap    " Do not wrap lines
 set showmatch " Show matching parentheses
+set wrap      " Wrap lines
+set linebreak " Do not break words
+if has("linebreak")
+    " String to put at the beginning of lines that have been wrapped: ↪
+    let &showbreak = nr2char(8618).' '
+endif
 
 set visualbell   " Use visual bell instead of beeping
 set noerrorbells " Ring the bell (beep or screen flash) for error messages
+set t_vb=        " Turn off error beep/flash
 
 set lazyredraw " Screen will not be redrawn while executing macros
 set ttyfast    " Improves smoothness of redrawing
