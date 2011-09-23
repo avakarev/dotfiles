@@ -110,7 +110,7 @@ if has("unix")
     language en_US.UTF-8
 endif
 
-set autoread       " Re-read file if it was changed outside of Vim
+set autoread " Re-read file if it was changed outside of Vim
 
 " Do not write contents of the file automatically
 set noautowrite
@@ -147,6 +147,23 @@ nnoremap <leader>th :set invhls hls?<CR>
 nnoremap <leader>tn :set number!<Bar> set number?<CR>
 "  spell
 nnoremap <leader>ts :set spell! <Bar> set spell?<CR>
+
+"  highlighting of overlength
+nnoremap <leader>to :call ToggleOverLengthHi()<CR>
+function! ToggleOverLengthHi()
+    if exists("b:overlengthhi") && b:overlengthhi
+        " highlight clear OverLength
+        match none
+        let b:overlengthhi = 0
+        echo "overlength highlight off"
+    else
+        " Highlight string parts that goes over the 80 column limit
+        highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
+        match OverLength /\%81v.\+/
+        let b:overlengthhi = 1
+        echo "overlength highlight on"
+    endif
+endfunction
 
 " yy, dd and p works with system clipboard
 set clipboard=unnamed " But only 7.03+ version supported
@@ -224,10 +241,6 @@ set list listchars=tab:»·,trail:·
 highlight SpecialKey ctermfg=77 guifg=#5fdf5f
 " And 'NonText' for 'eol', 'extends' and 'precedes'
 highlight NonText ctermfg=77 guifg=#5fdf5f
-
-" Highlight string parts that goes over the 80 column limit
-highlight OverLength ctermbg=darkgrey ctermfg=lightgrey guibg=#FFD9D9
-match OverLength /\%81v.\+/
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
