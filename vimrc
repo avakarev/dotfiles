@@ -1,5 +1,6 @@
 set nocompatible " Make Vim behave in a more useful way
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Pathogen                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,11 +30,24 @@ endif
 
 source ~/.vim/herovim/herovim.vim
 
+" Custom filetype settings
 autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
 autocmd BufNewFile,BufRead *bash/* set filetype=sh
 autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
+
+" Easy filetype switching
+nnoremap _m :set ft=markdown<CR>
+nnoremap _l :set ft=lua<CR>
+nnoremap _x :set ft=xml<CR>
+nnoremap _j :set ft=javascript<CR>
+nnoremap _t :set ft=tt2<CR>
+nnoremap _v :set ft=vim<CR>
+nnoremap _s :set ft=sh<CR>
+nnoremap _h :set ft=html<CR>
+nnoremap _p :set ft=python<CR>
+nnoremap _r :set ft=ruby<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,8 +114,33 @@ set autoread       " Re-read file if it was changed outside of Vim
 set hidden         " When a buffer is brought to foreground, remember undo history and marks
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
+let mapleader = "," " Change the mapleader from \ to ,
+
+set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
+
+
 " Don't use Ex mode, use Q for formatting
-map Q gq
+nnoremap Q gqap
+vnoremap Q gq
+
+" Toggle command mode by hitting Enter key
+nmap <CR> :
+
+" Yanking/deleting till end of the line
+nnoremap Y y$
+nnoremap D d$
+nnoremap C c$
+
+" Toggle variable and report the change:
+"  paste
+nnoremap <leader>tp :set invpaste paste?<CR>
+"  list
+nnoremap <leader>tl :set invlist list?<CR>
+"  highlighting of search matches
+nnoremap <leader>th :set invhls hls?<CR>
+"  numbers
+nnoremap <leader>tn :set number!<Bar> set number?<CR>
 
 " yy, dd and p works with system clipboard
 set clipboard=unnamed " But only 7.03+ version supported
@@ -136,6 +175,7 @@ set formatoptions+=1 " Don't break lines after one-letter words, if possible
 "                      Appearance                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number    " Enable line numbers
+set mousehide " Hide mouse pointer when characters are typed
 set showmatch " Show matching parentheses
 set wrap      " Wrap lines
 set linebreak " Do not break words
@@ -262,8 +302,6 @@ set smarttab      " Be smart about deleting tab space, etc
 set autoindent " Indent new line to the level of the previous one
 set copyindent " Copy the previous indentation on autoindenting
 
-set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-
 " Apply filetype-specific indentation and so
 autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
 autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
@@ -295,9 +333,6 @@ cmap w!! w !sudo tee % >/dev/null
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         vimrc                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Change the mapleader from \ to ,
-let mapleader = ","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>  " Quickly edit the vimrc file

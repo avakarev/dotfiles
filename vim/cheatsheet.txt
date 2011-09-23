@@ -69,3 +69,11 @@ It is quite easy get rid on them. There several method to reach the goal.
 1) :%s/^M//g " Be sure you make the ^M by using Ctrl+v + Ctrl+m, cause of unicode
 2) sed 's/^M//g' dirty.file > clean.file " See line above and use Ctrl+v + Ctrl+m
 3) dos2unix < tempfile > actualfile
+
+
+" ------------------- [Debug] ----------------------
+:verbose set varname    Let you know from which file script variable was changed
+:let                    List of all variables
+:set                    List of all not-default settings
+:function               List of all non-built-in functions
+:map                    List of all mappings
