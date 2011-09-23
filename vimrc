@@ -180,8 +180,10 @@ set nobackup   " Disable to make a backup before overwriting a file
 set noswapfile " Disable to use a swapfile for the buffer
 
 " For modern standards in :TOhtml output
-let html_use_css=1
-let use_xhtml=1
+let html_use_css        = 1
+let use_xhtml           = 1
+let html_ignore_folding = 1
+let html_number_lines   = 0
 
 " Formatoptions are in the order presented in fo-table
 set formatoptions+=t " Auto-wrap using textwidth (not comments)
@@ -222,6 +224,7 @@ set ttyfast    " Improves smoothness of redrawing
 
 set winminheight=0 " Minimal height of a window, when it's not the current window
 set cmdheight=1    " Number of screen lines to use for the command-line
+set report=0       " Show a report when something was changed. 0 means 'all'
 
 set foldcolumn=3      " 2 lines of column for fold showing, always
 set foldmethod=syntax " The kind of folding used for the current window
