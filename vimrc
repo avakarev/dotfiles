@@ -38,16 +38,16 @@ autocmd BufNewFile,BufRead *bash/* set filetype=sh
 autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
 
 " Easy filetype switching
-nnoremap _m :set ft=markdown<CR>
-nnoremap _l :set ft=lua<CR>
-nnoremap _x :set ft=xml<CR>
-nnoremap _j :set ft=javascript<CR>
-nnoremap _t :set ft=tt2<CR>
-nnoremap _v :set ft=vim<CR>
-nnoremap _s :set ft=sh<CR>
-nnoremap _h :set ft=html<CR>
-nnoremap _p :set ft=python<CR>
-nnoremap _r :set ft=ruby<CR>
+nnoremap _m :set filetype=markdown<CR>
+nnoremap _l :set filetype=lua<CR>
+nnoremap _x :set filetype=xml<CR>
+nnoremap _j :set filetype=javascript<CR>
+nnoremap _t :set filetype=tt2<CR>
+nnoremap _v :set filetype=vim<CR>
+nnoremap _s :set filetype=sh<CR>
+nnoremap _h :set filetype=html<CR>
+nnoremap _p :set filetype=python<CR>
+nnoremap _r :set filetype=ruby<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,6 +111,11 @@ if has("unix")
 endif
 
 set autoread       " Re-read file if it was changed outside of Vim
+
+" Do not write contents of the file automatically
+set noautowrite
+set noautowriteall
+
 set hidden         " When a buffer is brought to foreground, remember undo history and marks
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
@@ -118,7 +123,6 @@ let mapleader = "," " Change the mapleader from \ to ,
 
 set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-
 
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gqap
@@ -141,6 +145,8 @@ nnoremap <leader>tl :set invlist list?<CR>
 nnoremap <leader>th :set invhls hls?<CR>
 "  numbers
 nnoremap <leader>tn :set number!<Bar> set number?<CR>
+"  spell
+nnoremap <leader>ts :set spell! <Bar> set spell?<CR>
 
 " yy, dd and p works with system clipboard
 set clipboard=unnamed " But only 7.03+ version supported
@@ -174,6 +180,7 @@ set formatoptions+=1 " Don't break lines after one-letter words, if possible
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      Appearance                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set number    " Enable line numbers
 set mousehide " Hide mouse pointer when characters are typed
 set showmatch " Show matching parentheses
@@ -198,6 +205,9 @@ set foldcolumn=3      " 2 lines of column for fold showing, always
 set foldmethod=syntax " The kind of folding used for the current window
 set foldlevelstart=99 " Useful to always start editing with no folds closed
 set foldenable        " All folds will be closed by default (really not, see foldlevelstart above)
+
+" Spelling
+set spelllang=en_us
 
 set splitbelow " New window goes below (sp)
 set splitright " New window goes right (vs)
@@ -228,7 +238,6 @@ set laststatus=2 " Always show status line
 set showmode     " Show the active mode in status line
 set showcmd      " Show key commands in status line
 set ruler        " Show current position of cursor in status line
-
 
 " Nice window title
 if has('title')
@@ -278,6 +287,8 @@ set complete+=. " current buffer
 set complete+=k " dictionary
 set complete+=b " other bufs
 set complete+=t " tags
+
+set pumheight=8 " Keep a small completion window
 
 " Hitting TAB in command mode will show possible completions above command line
 set wildmenu
