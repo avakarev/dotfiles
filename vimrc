@@ -214,6 +214,8 @@ set smartcase  " If the search pattern contains upper case chars, override 'igno
 set wrapscan   " Set the search scan to wrap around the file
 set gdefault   " By default add 'g' flag to search/replace. Add 'g' to toggle
 
+nnoremap * *<C-o> " Don't move on *
+
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -241,7 +243,9 @@ set complete+=t " tags
 set wildmenu
 
 " A file that matches with one of these patterns is ignored when completing file or directory names
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore+=.hg,.git,.svn                  " Version control
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg " Binary images
+set wildignore+=*.swp,*.bak,*.pyc,*.class      " Other
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
