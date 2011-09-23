@@ -139,6 +139,8 @@ nnoremap C c$
 " Toggle variable and report the change:
 "  paste
 nnoremap <leader>tp :set invpaste paste?<CR>
+"  wrap
+nnoremap <leader>tw :set invwrap wrap?<CR>
 "  list
 nnoremap <leader>tl :set invlist list?<CR>
 "  highlighting of search matches
@@ -147,7 +149,10 @@ nnoremap <leader>th :set invhls hls?<CR>
 nnoremap <leader>tn :set number!<Bar> set number?<CR>
 "  spell
 nnoremap <leader>ts :set spell! <Bar> set spell?<CR>
-
+"  relative number
+if exists("&relativenumber")
+    nnoremap <leader>tr :set relativenumber!<Bar> set relativenumber?<CR>
+endif
 "  highlighting of overlength
 nnoremap <leader>to :call ToggleOverLengthHi()<CR>
 function! ToggleOverLengthHi()
@@ -176,7 +181,7 @@ set noswapfile " Disable to use a swapfile for the buffer
 
 " For modern standards in :TOhtml output
 let html_use_css=1
-let use_html=1
+let use_xhtml=1
 
 " Formatoptions are in the order presented in fo-table
 set formatoptions+=t " Auto-wrap using textwidth (not comments)
@@ -224,7 +229,13 @@ set foldlevelstart=99 " Useful to always start editing with no folds closed
 set foldenable        " All folds will be closed by default (really not, see foldlevelstart above)
 
 " Spelling
-set spelllang=en_us
+if filereadable(expand("~/.vim/spell/ru.utf-8.spl"))
+    set spelllang=en,ru
+else
+    set spelllang=en
+endif
+
+autocmd FileType markdown set spell
 
 set splitbelow " New window goes below (sp)
 set splitright " New window goes right (vs)
