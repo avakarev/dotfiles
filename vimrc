@@ -36,6 +36,7 @@ autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
 autocmd BufNewFile,BufRead *bash/* set filetype=sh
 autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
+autocmd BufNewFile,BufRead *.tt2 set filetype=tt2
 
 " Easy filetype switching
 nnoremap _m :set filetype=markdown<CR>
