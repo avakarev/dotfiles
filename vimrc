@@ -238,6 +238,10 @@ else
     set spelllang=en
 endif
 
+if &diff
+   set nospell " If we're running in vimdiff, then disable spelling
+endif
+
 autocmd FileType markdown set spell
 
 set splitbelow " New window goes below (sp)
@@ -245,6 +249,12 @@ set splitright " New window goes right (vs)
 
 " Resize splits when the window is resized
 autocmd VimResized * execute "normal! \<c-w>="
+
+" Resize windows
+nmap <C-Left> <C-W><<C-W><
+nmap <C-Right> <C-W>><C-W>>
+" nmap <C-Up> <C-W>+<C-W>+
+" nmap <C-Down> <C-W>-<C-W>-
 
 " Display extra whitespace, toggle it with list!
 set list listchars=tab:»·,trail:·
