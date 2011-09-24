@@ -109,6 +109,8 @@ set fileformats=unix,dos  " <EOL> formats that will be tried when edition starts
 if has("unix")
     " Try to use english locale on every system
     language en_US.UTF-8
+    language message en_US.UTF-8
+    set langmenu=en_US.UTF-8
 endif
 
 set autoread " Re-read file if it was changed outside of Vim
