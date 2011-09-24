@@ -119,6 +119,9 @@ set autoread " Re-read file if it was changed outside of Vim
 set noautowrite
 set noautowriteall
 
+" Don't jump to the start of line when moving around (scrolling)
+set nostartofline " Affects: CTRL-D, CTRL-U, CTRL-B, CTRL-F, G, H, M, L, gg
+
 set hidden         " When a buffer is brought to foreground, remember undo history and marks
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
@@ -423,3 +426,11 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims = 1 " Use a space after comment chars
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Supertab                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabLongestHighlight = 1
