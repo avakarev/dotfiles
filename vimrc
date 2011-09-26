@@ -434,3 +434,10 @@ let NERDSpaceDelims = 1 " Use a space after comment chars
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabLongestHighlight = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       TaskList                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <leader>tt <Plug>TaskList
