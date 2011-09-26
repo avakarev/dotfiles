@@ -55,3 +55,6 @@
 [submodule "vim/bundle/syntax-perl"]
 	path = vim/bundle/syntax-perl
 	url = git://github.com/petdance/vim-perl.git
+[submodule "vim/bundle/tasklist"]
+	path = vim/bundle/tasklist
+	url = git://github.com/vim-scripts/TaskList.vim.git
