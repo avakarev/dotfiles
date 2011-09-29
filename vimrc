@@ -1,4 +1,5 @@
-set nocompatible " Make Vim behave in a more useful way
+set nocompatible     " Make Vim behave in a more useful way
+scriptencoding utf-8 " Specify the character encoding used in the script
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,26 +30,6 @@ else
 endif
 
 source ~/.vim/herovim/herovim.vim
-
-" Custom filetype settings
-autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
-autocmd BufNewFile,BufRead *.json set filetype=javascript
-autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
-autocmd BufNewFile,BufRead *bash/* set filetype=sh
-autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
-autocmd BufNewFile,BufRead *.tt2 set filetype=tt2
-
-" Easy filetype switching
-nnoremap _m :set filetype=markdown<CR>
-nnoremap _l :set filetype=lua<CR>
-nnoremap _x :set filetype=xml<CR>
-nnoremap _j :set filetype=javascript<CR>
-nnoremap _t :set filetype=tt2<CR>
-nnoremap _v :set filetype=vim<CR>
-nnoremap _s :set filetype=sh<CR>
-nnoremap _h :set filetype=html<CR>
-nnoremap _p :set filetype=python<CR>
-nnoremap _r :set filetype=ruby<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,6 +119,8 @@ vnoremap Q gq
 
 " Toggle command mode by hitting Enter key
 nmap <CR> :
+autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+autocmd CmdwinLeave * nnoremap <buffer> <CR> :
 
 " Yanking/deleting till end of the line
 nnoremap Y y$
@@ -250,8 +233,6 @@ if &diff
    set nospell " If we're running in vimdiff, then disable spelling
 endif
 
-autocmd FileType markdown set spell
-
 set splitbelow " New window goes below (sp)
 set splitright " New window goes right (vs)
 
@@ -314,8 +295,11 @@ nnoremap * *<C-o> " Don't move on *
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Press space bar to turn off search highlighting and clear any message displayed
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" Turn off search highlighting and clear any message displayed
+nnoremap <silent> <leader><Space> :nohlsearch<Bar>:echo<CR>
+
+" Indent line
+nnoremap <silent> <Space> >>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -358,10 +342,6 @@ set smarttab      " Be smart about deleting tab space, etc
 set autoindent " Indent new line to the level of the previous one
 set copyindent " Copy the previous indentation on autoindenting
 
-" Apply filetype-specific indentation and so
-autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
-autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Tabs                             "
@@ -372,6 +352,38 @@ set showtabline=1 " Show tab bar only if there are more than 1 tab
 map  <C-l> :tabnext<CR>     " Ctrl+l moves to the next tab
 map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
 map  <C-n> :tabnew<CR>      " Ctrl+n creates a new tab
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                       Filetypes                          "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set up custom filetype settings
+augroup CustomFiletypes
+    autocmd!
+    autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
+    autocmd BufNewFile,BufRead *.json set filetype=javascript
+    autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
+    autocmd BufNewFile,BufRead *bash/* set filetype=sh
+    autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
+    autocmd BufNewFile,BufRead *.tt2 set filetype=tt2
+    autocmd BufNewFile,BufRead *tmux.conf* set filetype=tmux
+    autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
+    autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType markdown set spell
+augroup END
+
+" Easy filetype switching
+nnoremap _m :set filetype=markdown<CR>
+nnoremap _l :set filetype=lua<CR>
+nnoremap _x :set filetype=xml<CR>
+nnoremap _j :set filetype=javascript<CR>
+nnoremap _t :set filetype=tt2<CR>
+nnoremap _v :set filetype=vim<CR>
+nnoremap _s :set filetype=sh<CR>
+nnoremap _h :set filetype=html<CR>
+nnoremap _p :set filetype=python<CR>
+nnoremap _r :set filetype=ruby<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
