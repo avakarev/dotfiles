@@ -113,6 +113,14 @@ let mapleader = "," " Change the mapleader from \ to ,
 set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
+" Indent/unindent line
+nnoremap <silent> <Tab> >>
+nnoremap <silent> <Backspace> <<
+
+" Go to beginning/end of the line
+nnoremap <leader><Space>h ^
+nnoremap <leader><Space>l $
+
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gqap
 vnoremap Q gq
@@ -298,10 +306,6 @@ nnoremap N Nzzzv
 " Turn off search highlighting and clear any message displayed
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Indent/unindent line
-nnoremap <silent> <Tab> >>
-nnoremap <silent> <Backspace> <<
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       Completion                         "
@@ -353,6 +357,46 @@ set showtabline=1 " Show tab bar only if there are more than 1 tab
 map  <C-l> :tabnext<CR>     " Ctrl+l moves to the next tab
 map  <C-h> :tabprevious<CR> " Ctrl+h moves to the previous tab
 map  <C-n> :tabnew<CR>      " Ctrl+n creates a new tab
+
+if has('windows')
+
+    function! MyTabLabel(n)
+        let buflist = tabpagebuflist(a:n)
+        let winnr = tabpagewinnr(a:n)
+        let buflen = tabpagewinnr(a:n, '$')
+        let bufname = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+
+        let label = '#' . a:n . ' '
+        let label .= bufname == '' ? 'Empty' : bufname
+        let label .= '(' . buflen . ')'
+
+        return label
+    endfunction
+
+    function! MyTabLine()
+        let s = ''
+
+        for i in range(tabpagenr('$'))
+            if i + 1 == tabpagenr()
+                let s .= '%#TabLineSel#'
+            else
+                let s .= '%#TabLine#'
+            endif
+
+            let s .= '%' . (i + 1) . 'T'
+            let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+        endfor
+
+        let s .= '%#TabLineFill#%T'
+        if tabpagenr('$') > 1
+            let s .= '%=%#TabLine#%999Xx'
+        endif
+
+        return s
+    endfunction
+
+    set tabline=%!MyTabLine()
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
