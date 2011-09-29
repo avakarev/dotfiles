@@ -296,10 +296,11 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Turn off search highlighting and clear any message displayed
-nnoremap <silent> <leader><Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Indent line
-nnoremap <silent> <Space> >>
+" Indent/unindent line
+nnoremap <silent> <Tab> >>
+nnoremap <silent> <Backspace> <<
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
