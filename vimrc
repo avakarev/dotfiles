@@ -71,6 +71,8 @@ noremap k gk
 " Highlight current line
 if (&t_Co >= 256) || has("gui_running") || ($TERM_PROGRAM == "iTerm.app") || ($COLORTERM == "gnome-terminal")
     set cursorline
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter * set cursorline
 endif
 
 " Make cursor shape as line in insert mode and as block in other cases
@@ -448,3 +450,8 @@ map <leader>tt <Plug>TaskList
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nnoremap <leader>ty :YRShow<CR>
+let g:yankring_history_dir = '$HOME/.vim/local'
+let g:yankring_max_history = 200
+let g:yankring_max_display = 200
+let g:yankring_window_use_separate = 1
+let g:yankring_window_height = 13
