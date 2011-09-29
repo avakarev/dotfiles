@@ -468,6 +468,7 @@ map <leader>tt <Plug>TaskList
 "                       YankRing                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:yankring_replace_n_nkey = ''
 nnoremap <leader>ty :YRShow<CR>
 let g:yankring_history_dir = '$HOME/.vim/local'
 let g:yankring_max_history = 200
