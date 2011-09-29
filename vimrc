@@ -349,7 +349,7 @@ set copyindent " Copy the previous indentation on autoindenting
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                         Tabs                             "
+"                       Tabline                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set showtabline=1 " Show tab bar only if there are more than 1 tab
@@ -413,8 +413,10 @@ augroup CustomFiletypes
     autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
     autocmd BufNewFile,BufRead *.tt2 set filetype=tt2
     autocmd BufNewFile,BufRead *tmux.conf* set filetype=tmux
+    autocmd BufNewFile,BufRead {Gemfile,Capfile,Kirkfile,Rakefile,Thorfile,config.ru} set filetype=ruby
     autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
     autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.txt set spell
     autocmd FileType markdown set spell
 augroup END
 

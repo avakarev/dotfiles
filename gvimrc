@@ -25,3 +25,25 @@ endif
 if has('gui_running')
     set mousefocus " Mouse can control splits
 endif
+
+if has('gui_macvim')
+    nmap <D-CR> :set fullscreen!<Bar> set fullscreen?<CR>
+    vmap <D-CR> <ESC>:set fullscreen!<Bar> set fullscreen?<CR>
+    imap <D-CR> <ESC>:set fullscreen!<Bar> set fullscreen?<CR>
+endif
+
+" GUI Tab settings
+function! GuiTabLabel()
+    let num = v:lnum
+    let buflist = tabpagebuflist(num)
+    let winnr = tabpagewinnr(num)
+    let buflen = tabpagewinnr(num, '$')
+    let bufname = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+
+    let label = '#' . num . ' '
+    let label .= bufname == '' ? 'Empty' : bufname
+    let label .= ' (' . buflen . ')'
+
+    return label
+endfunction
+set guitablabel=%{GuiTabLabel()}
