@@ -390,12 +390,18 @@ nnoremap _r :set filetype=ruby<CR>
 "                         Utils                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Prints current file full path
-" TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
-command ShowPath echo expand("%:p")
-
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
+
+" Prints current file full path
+" TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
+command! ShowPath :echo expand("%:p")
+
+" Date/time helpers
+command! -nargs=0 AppendNow  :execute "normal a".strftime("%c")
+command! -nargs=0 AppendDate :execute "normal a".strftime("%Y-%m-%d")
+command! -nargs=0 AppendTime :execute "normal a".strftime("%H:%M")
+command! -nargs=0 AppendDateTime :execute "normal a".strftime("%Y-%m-%d %H:%M")
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
