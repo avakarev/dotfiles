@@ -1,3 +1,4 @@
 *.swp
 .DS_Store
-local
+yankring_history_v2.txt
+*.spl
