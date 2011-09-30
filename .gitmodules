@@ -64,3 +64,6 @@
 [submodule "vim/bundle/syntax-coffee"]
 	path = vim/bundle/syntax-coffee
 	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/syntax-stylus"]
+	path = vim/bundle/syntax-stylus
+	url = git://github.com/wavded/vim-stylus.git
