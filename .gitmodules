@@ -67,3 +67,6 @@
 [submodule "vim/bundle/syntax-stylus"]
 	path = vim/bundle/syntax-stylus
 	url = git://github.com/wavded/vim-stylus.git
+[submodule "vim/bundle/syntax-html5"]
+	path = vim/bundle/syntax-html5
+	url = https://github.com/othree/html5.vim
