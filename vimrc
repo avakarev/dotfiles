@@ -416,9 +416,17 @@ augroup CustomFiletypes
     autocmd BufNewFile,BufRead {Gemfile,Capfile,Kirkfile,Rakefile,Thorfile,config.ru} set filetype=ruby
     autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
     autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.txt set spell
-    autocmd FileType markdown set spell
+    autocmd BufNewFile,BufRead *.txt set spell foldcolumn=0
+    autocmd FileType markdown set spell foldcolumn=0
 augroup END
+
+function s:SetColorScheme(name)
+    highlight clear
+    if exists("syntax_on")
+        syntax reset
+    endif
+    exe "colorscheme " . a:name
+endfunction
 
 " Easy filetype switching
 nnoremap _m :set filetype=markdown<CR>
