@@ -61,3 +61,6 @@
 [submodule "vim/bundle/yankring"]
 	path = vim/bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/bundle/syntax-coffee"]
+	path = vim/bundle/syntax-coffee
+	url = git://github.com/kchmck/vim-coffee-script.git
