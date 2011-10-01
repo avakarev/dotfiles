@@ -73,3 +73,15 @@
 [submodule "vim/bundle/syntax-nginx"]
 	path = vim/bundle/syntax-nginx
 	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule "vim/bundle/colors-jellybeans"]
+	path = vim/bundle/colors-jellybeans
+	url = git://github.com/nanotech/jellybeans.vim.git
+[submodule "vim/bundle/colors-xoria256"]
+	path = vim/bundle/colors-xoria256
+	url = git://github.com/vim-scripts/xoria256.vim.git
+[submodule "vim/bundle/colors-jellyx"]
+	path = vim/bundle/colors-jellyx
+	url = git://github.com/guns/jellyx.vim.git
+[submodule "vim/bundle/colors-solarized"]
+	path = vim/bundle/colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
