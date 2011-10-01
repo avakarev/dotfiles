@@ -179,8 +179,7 @@ set clipboard=unnamed " But only 7.03+ version supported
 set history=1000    " Remember more commands and search history
 set undolevels=1000 " Use many muchos levels of undo
 
-set nobackup   " Disable to make a backup before overwriting a file
-set noswapfile " Disable to use a swapfile for the buffer
+set nobackup nowritebackup noswapfile " Disable backups and swapfile
 
 " For modern standards in :TOhtml output
 let html_use_css        = 1
