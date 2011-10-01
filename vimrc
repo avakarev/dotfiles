@@ -406,18 +406,19 @@ endif
 " Set up custom filetype settings
 augroup CustomFiletypes
     autocmd!
-    autocmd BufNewFile,BufRead *vimpagerrc* set filetype=vim
-    autocmd BufNewFile,BufRead *.json set filetype=javascript
-    autocmd BufNewFile,BufRead *bash_profile* set filetype=sh
-    autocmd BufNewFile,BufRead *bash/* set filetype=sh
-    autocmd BufNewFile,BufRead *zsh/* set filetype=zsh
-    autocmd BufNewFile,BufRead *.tt2 set filetype=tt2
-    autocmd BufNewFile,BufRead *tmux.conf* set filetype=tmux
-    autocmd BufNewFile,BufRead {Gemfile,Capfile,Kirkfile,Rakefile,Thorfile,config.ru} set filetype=ruby
-    autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} set noexpandtab
-    autocmd BufNewFile,BufReadPre *.{py,yaml} set tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.txt set spell foldcolumn=0
-    autocmd FileType markdown set spell foldcolumn=0
+    autocmd BufNewFile,BufRead *vimpagerrc* setlocal filetype=vim
+    autocmd BufNewFile,BufRead *.json setlocal filetype=javascript
+    autocmd BufNewFile,BufRead *bash_profile* setlocal filetype=sh
+    autocmd BufNewFile,BufRead *bash/* setlocal filetype=sh
+    autocmd BufNewFile,BufRead *zsh/* setlocal filetype=zsh
+    autocmd BufNewFile,BufRead *.tt2 setlocal filetype=tt2
+    autocmd BufNewFile,BufRead */nginx/* setlocal filetype=nginx
+    autocmd BufNewFile,BufRead *tmux.conf* setlocal filetype=tmux
+    autocmd BufNewFile,BufRead {Gemfile,Capfile,Kirkfile,Rakefile,Thorfile,config.ru} setlocal filetype=ruby
+    autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} setlocal noexpandtab
+    autocmd BufNewFile,BufReadPre *.{py,yaml} setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.txt setlocal spell foldcolumn=0
+    autocmd FileType markdown setlocal spell foldcolumn=0
 augroup END
 
 function s:SetColorScheme(name)
