@@ -109,6 +109,10 @@ set hidden         " When a buffer is brought to foreground, remember undo histo
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
 
 let mapleader = "," " Change the mapleader from \ to ,
+let g:mapleader = ","
+
+" Making it so ; works like : for commands
+nnoremap ; :
 
 set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
@@ -243,6 +247,9 @@ endif
 
 set splitbelow " New window goes below (sp)
 set splitright " New window goes right (vs)
+
+" Fast window switching
+map <leader>w <C-W>w
 
 " Resize splits when the window is resized
 autocmd VimResized * execute "normal! \<c-w>="
@@ -414,6 +421,7 @@ augroup CustomFiletypes
     autocmd BufNewFile,BufRead *.tt2 setlocal filetype=tt2
     autocmd BufNewFile,BufRead */nginx/* setlocal filetype=nginx
     autocmd BufNewFile,BufRead *tmux.conf* setlocal filetype=tmux
+    autocmd BufNewFile,BufRead *.plist setlocal filetype=xml
     autocmd BufNewFile,BufRead {Gemfile,Capfile,Kirkfile,Rakefile,Thorfile,config.ru} setlocal filetype=ruby
     autocmd BufNewFile,BufReadPre {GNUMakefile,Makefile,makefile}{,.am,.in} setlocal noexpandtab
     autocmd BufNewFile,BufReadPre *.{py,yaml} setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -449,9 +457,33 @@ nnoremap _r :set filetype=ruby<CR>
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
 
+" Change Working Directory to that of the current file
+cmap cwd lcd %:p:h
+cmap cd. lcd %:p:h
+
+" Pull word under cursor into the replace formula
+nmap <leader>r :%s/<C-r>=expand("<cword>")<CR>/<C-r>=expand("<cword>")<CR>/gc
+
+" Strip all trailing whitespace in the current file
+nnoremap <leader>ss :%s/\s\+$//<CR>:let @/=''<CR>
+
 " Prints current file full path
 " TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
 command! ShowPath :echo expand("%:p")
+
+" Prints current file size
+command! ShowSize :echo s:FileSize()
+function! s:FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes . " Bytes"
+    else
+        return (bytes / 1024) . " kB"
+    endif
+endfunction
 
 " Date/time helpers
 command! -nargs=0 AppendNow  :execute "normal a".strftime("%c")
