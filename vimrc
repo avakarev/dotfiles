@@ -310,8 +310,8 @@ nnoremap * *<C-o> " Don't move on *
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Turn off search highlighting and clear any message displayed
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" Turn off search matches highlighting and clear any message displayed
+nnoremap <leader><Space> :nohlsearch<Bar>:echo<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -457,7 +457,7 @@ nnoremap _r :set filetype=ruby<CR>
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
 
-" Change Working Directory to that of the current file
+" Set working directory to that of the current file
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
 
@@ -466,6 +466,9 @@ nmap <leader>r :%s/<C-r>=expand("<cword>")<CR>/<C-r>=expand("<cword>")<CR>/gc
 
 " Strip all trailing whitespace in the current file
 nnoremap <leader>ss :%s/\s\+$//<CR>:let @/=''<CR>
+
+" Retab the document (tabs to spaces)
+nnoremap <leader>st :retab!<CR>
 
 " Prints current file full path
 " TODO: use -nargs=? and some optional param to show "%:s" or "%:p"
@@ -497,8 +500,8 @@ command! -nargs=0 AppendDateTime :execute "normal a".strftime("%Y-%m-%d %H:%M")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>  " Quickly edit the vimrc file
-nmap <silent> <leader>sv :so $MYVIMRC<CR> " Quickly reload the vimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
