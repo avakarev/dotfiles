@@ -118,12 +118,16 @@ set whichwrap+=h,l  " Make possible navigate between line in curson on first/las
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
 " Indent/unindent line
-nnoremap <silent> <Tab> >>
-nnoremap <silent> <Backspace> <<
+nnoremap <silent> > >>
+nnoremap <silent> < <<
+
+" Tab for brackets
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 " Go to beginning/end of the line
-nnoremap <leader><Space>h ^
-nnoremap <leader><Space>l $
+nnoremap <leader>h ^
+nnoremap <leader>l $
 
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gqap
@@ -217,9 +221,7 @@ if has("linebreak")
     let &showbreak = nr2char(8618).' '
 endif
 
-set visualbell   " Use visual bell instead of beeping
-set noerrorbells " Ring the bell (beep or screen flash) for error messages
-set t_vb=        " Turn off error beep/flash
+set visualbell noerrorbells t_vb= " Turn off error beep/flash
 
 set lazyredraw " Screen will not be redrawn while executing macros
 set ttyfast    " Improves smoothness of redrawing
@@ -244,8 +246,7 @@ if &diff
    set nospell " If we're running in vimdiff, then disable spelling
 endif
 
-set splitbelow " New window goes below (sp)
-set splitright " New window goes right (vs)
+set splitbelow splitright " New window goes below (:sp) and right (:vs)
 
 " Fast window switching
 map <leader>w <C-W>w
