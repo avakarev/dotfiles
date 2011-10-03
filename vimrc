@@ -98,6 +98,8 @@ endif
 
 set autoread " Re-read file if it was changed outside of Vim
 
+set confirm " Y-N-C prompt if closing with unsaved changes.
+
 " Do not write contents of the file automatically
 set noautowrite
 set noautowriteall
@@ -107,6 +109,7 @@ set nostartofline " Affects: CTRL-D, CTRL-U, CTRL-B, CTRL-F, G, H, M, L, gg
 
 set hidden         " When a buffer is brought to foreground, remember undo history and marks
 set ttimeoutlen=50 " The time in ms that is waited for a key code to complete
+set timeoutlen=500 " Lower the timeout after typing the leader key
 
 let mapleader = "," " Change the mapleader from \ to ,
 let g:mapleader = ","
@@ -117,9 +120,11 @@ nnoremap ; :
 set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
-" Indent/unindent line
+" Indent/unindent lines
 nnoremap <silent> > >>
 nnoremap <silent> < <<
+vmap > >gv
+vmap < <gv
 
 " Tab for brackets
 nnoremap <Tab> %
@@ -137,6 +142,20 @@ vnoremap Q gq
 nmap <CR> :
 autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 autocmd CmdwinLeave * nnoremap <buffer> <CR> :
+
+" Easier navigation in insert mode
+noremap! <C-a> <Home>
+noremap! <C-e> <End>
+
+" Easier navigation in command mode
+cnoremap <C-h> <left>
+cnoremap <C-l> <right>
+cnoremap <C-b> <S-left>
+cnoremap <C-f> <S-right>
+
+" Make Ctrl+k delete to end of line, like in Bash
+cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos()-1)<CR>
+cnoremap jj <C-c>
 
 " Yanking/deleting till end of the line
 nnoremap Y y$
@@ -211,9 +230,11 @@ set formatoptions+=1 " Don't break lines after one-letter words, if possible
 "                      Appearance                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set number    " Enable line numbers
-set mousehide " Hide mouse pointer when characters are typed
-set showmatch " Show matching parentheses
+set number      " Enable line numbers
+set mousehide   " Hide mouse pointer when characters are typed
+set showmatch   " Show matching parentheses
+set matchtime=3 " Duration to show matching brace (1/10 sec)
+
 set wrap      " Wrap lines
 set linebreak " Do not break words
 if has("linebreak")
@@ -303,6 +324,7 @@ set ignorecase " Case-insensitive searching
 set smartcase  " If the search pattern contains upper case chars, override 'ignorecase' option
 set wrapscan   " Set the search scan to wrap around the file
 set gdefault   " By default add 'g' flag to search/replace. Add 'g' to toggle
+set magic      " Set magic on, for regular expressions
 
 nnoremap * *<C-o> " Don't move on *
 
