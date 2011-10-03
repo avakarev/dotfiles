@@ -479,6 +479,10 @@ nnoremap _r :set filetype=ruby<CR>
 " Allows use sudo command if file requires it and was open without it
 cmap w!! w !sudo tee % >/dev/null
 
+" Quickly edit/reload the vimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " Set working directory to that of the current file
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
@@ -518,17 +522,10 @@ command! -nargs=0 AppendDateTime :execute "normal a".strftime("%Y-%m-%d %H:%M")
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                         vimrc                            "
+"                        Plugins                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Quickly edit/reload the vimrc file
-nnoremap <leader>ev <C-w><C-v><C-l>:edit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       NERDTree                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      [ NERDTree ]
 
 let NERDTreeQuitOnOpen = 1  " Closes the tree window after opening a file
 let NERDTreeWinSize    = 45 " Sets the window size when the NERD tree is opened
@@ -554,34 +551,26 @@ function! s:CloseIfOnlyNerdTreeLeft()
 endfunction
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       NERDCommenter                      "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                   [ NERDCommenter ]
 
 let NERDSpaceDelims = 1 " Use a space after comment chars
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       Supertab                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                     [ Supertab ]
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabLongestHighlight = 1
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       TaskList                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                     [ Tasklist ]
 
 map <leader>tt <Plug>TaskList
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       YankRing                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                     [ YankRing ]
 
-let g:yankring_replace_n_nkey = ''
 nnoremap <leader>ty :YRShow<CR>
+let g:yankring_replace_n_nkey = ''
 let g:yankring_history_dir = '$HOME/.vim/local'
 let g:yankring_max_history = 200
 let g:yankring_max_display = 200
