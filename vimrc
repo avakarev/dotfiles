@@ -114,10 +114,14 @@ set timeoutlen=500 " Lower the timeout after typing the leader key
 let mapleader = "," " Change the mapleader from \ to ,
 let g:mapleader = ","
 
+" Map ,, to PageDown key and ,. to PageUp
+noremap <leader>, <PageDown>
+noremap <leader>. <PageUp>
+
 " Making it so ; works like : for commands
 nnoremap ; :
 
-set whichwrap+=h,l  " Make possible navigate between line in curson on first/last position
+set whichwrap+=h,l  " Make possible navigate between line in cursor on first/last position
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
 " Indent/unindent lines
@@ -125,6 +129,9 @@ nnoremap <silent> > >>
 nnoremap <silent> < <<
 vmap > >gv
 vmap < <gv
+
+" Find word under cursor recursively in current directory
+map <leader>ff :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 " Tab for brackets
 nnoremap <Tab> %
@@ -137,11 +144,6 @@ nnoremap <leader>l $
 " Don't use Ex mode, use Q for formatting
 nnoremap Q gqap
 vnoremap Q gq
-
-" Toggle command mode by hitting Enter key
-nmap <CR> :
-autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
-autocmd CmdwinLeave * nnoremap <buffer> <CR> :
 
 " Easier navigation in insert mode
 noremap! <C-a> <Home>
@@ -200,7 +202,7 @@ endfunction
 set clipboard=unnamed " But only 7.03+ version supported
 
 set history=1000    " Remember more commands and search history
-set undolevels=1000 " Use many muchos levels of undo
+set undolevels=1000 " Set huge undo steps
 
 set nobackup nowritebackup noswapfile " Disable backups and swapfile
 
@@ -368,7 +370,7 @@ set wildignore+=*.swp,*.bak,*.pyc,*.class      " Other
 
 set expandtab     " Turn tabs to spaces
 set tabstop=4     " Number of spaces that a <Tab> in the file counts for
-set softtabstop=4 " Number of spaces while editiong
+set softtabstop=4 " Number of spaces while editing
 set shiftwidth=4  " Number of spaces to use for each step of (auto)indent
 set shiftround    " Use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab      " Be smart about deleting tab space, etc
