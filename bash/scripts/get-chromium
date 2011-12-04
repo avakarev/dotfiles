@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Mostly was taken from https://gist.github.com/1093476
+
+OS="Mac"
+URLBASE="http://commondatastorage.googleapis.com/chromium-browser-snapshots/$OS"
+LATESTVER="$URLBASE/LAST_CHANGE"
+APP_MAIN="chrome-mac.zip"
+APP_TOOLS="devtools_frontend.zip"
+REV=$1
+
+DOWNLD_PATH="$HOME/Downloads"
+
+if [ ! "$REV" ]; then
+    echo -n "Checking latest Chromium version..."
+    REV=$(curl -s "$LATESTVER")
+    if [[ "$REV" =~ ^[0-9]+$ ]]; then
+        echo "OK"
+        else
+        echo "ERROR"
+        echo "Error loading revision data from $URLBASE/LAST_CHANGE, aborting update."
+        exit 1
+    fi
+fi
+
+echo "Attempting to download Chromium to revision $REV..."
+curl "$URLBASE/$REV/{$APP_MAIN,$APP_TOOLS}" --progress-bar --location --output "$DOWNLD_PATH/#1"
+
+echo "Done!"
