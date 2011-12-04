@@ -1,34 +1,45 @@
 # Bash shortcuts
-alias less='less -r'
-alias la='ls -lhGA'
-alias l='ls -lhGt' # -l long listing, most recent first
+alias less="less -r"
+alias la="ls -lhGA"
+alias l="ls -lhGt" # -l long listing, most recent first
                    # -G color
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-alias df='df -h'
-alias h='history'
-alias md='mkdir -p'
-alias up='source ~/.bash_profile'
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias df="df -h"
+alias h="history"
+alias md="mkdir -p"
+alias up="source ~/.bash_profile"
+alias tmux="TERM=screen-256color-bce tmux"
 
 function cdh() {
     cd "$HOME/$1"
 }
 
 # Processes
-alias tu='top -o cpu' # cpu
-alias tm='top -o vsize' # memory
+alias tu="top -o cpu"   # cpu
+alias tm="top -o vsize" # memory
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Finder
-alias o='open . &'
-alias ff='open -a Firefox'
+alias o="open . &"
+alias ff="open -a Firefox"
 
 # Recursively Remove .DS_Store files in OS X
-alias clean='find . -name *.DS_Store -type f -exec rm {} \;'
+alias clean="find . -name *.DS_Store -type f -exec rm {} \;"
 
+# Vim
+alias vi="vim"
 alias view="vim -u $HOME/.vimpagerrc"
 alias vmore="vim -u $HOME/.vimpagerrc -"
+
+# Node.js
+alias ndev="NODE_ENV=development node $1"
+alias nprod="NODE_ENV=production node $1"
+
+# Ruby & RoR
+alias rmigrate="rake db:migrate && rake db:test:prepare"
+alias rtest="rake cucumber:ok spec"
