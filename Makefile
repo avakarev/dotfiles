@@ -17,6 +17,8 @@ VIM_BUNDLE := "vim" \
 GIT_BUNDLE := "gitconfig" \
               "gitignore-global"
 
+RUBYGEMS_BUNDLE := "gemrc"
+
 # Function to deploy config files. Takes 1 argument: name-of-bundle.
 # It will loop through all bundle items and create symlinks according to.
 # So, existed files and dirs will be overwritten with symlinks.
@@ -41,7 +43,7 @@ all:
 			echo "Nothing was made. Bye."; \
 			exit; \
 		else \
-			$(MAKE) bash zsh vim git; \
+			$(MAKE) bash zsh vim git gem; \
 			exit; \
 		fi; \
 		break; \
@@ -78,4 +80,9 @@ git:
 	done
 	@ echo "git bundle installed!";
 
-.PHONY: all bash zsh vim git
+# Install ruby gems related config files.
+gem:
+	$(call deploy,$(RUBYGEMS_BUNDLE));
+	@ echo "ruby gems bundle installed!";
+
+.PHONY: all bash zsh vim git gem
