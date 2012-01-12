@@ -1,7 +1,7 @@
 # Bash shortcuts
 alias less="less -r"
-alias la="ls -lhGA"
-alias l="ls -lhGt" # -l long listing, most recent first
+alias la="ls -lhGAp"
+alias l="ls -lhGtp" # -l long listing, most recent first
                    # -G color
 alias cp="cp -i"
 alias mv="mv -i"
@@ -14,6 +14,10 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 function cdh() {
     cd "$HOME/$1"
+}
+
+function servethis() {
+    python -m SimpleHTTPServer ${1:-8080}
 }
 
 # Processes
