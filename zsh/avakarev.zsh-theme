@@ -7,6 +7,9 @@ local cl_red="%{$fg[red]%}"
 local cl_green="%{$fg[green]%}"
 local cl_reset="%{$reset_color%}"
 
+# dev server label
+local devlabel="${cl_red}|DEV|${cl_reset}"
+
 # current path
 local path_p="${cl_cyan}[%~% ]${cl_reset}"
 
