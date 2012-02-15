@@ -6,7 +6,8 @@ BASH_BUNDLE := "bash" \
                "bashrc" \
                "inputrc"
 
-ZSH_BUNDLE := "zsh" \
+ZSH_BUNDLE := "bash" \
+              "zsh" \
               "zshrc"
 
 VIM_BUNDLE := "vim" \
