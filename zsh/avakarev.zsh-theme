@@ -1,3 +1,6 @@
+# That's how to replace current shell with zsh
+# chsh -s $(which zsh)
+
 # colors
 local cl_blue="%{$fg[blue]%}"
 local cl_cyan="%{$fg[cyan]%}"

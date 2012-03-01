@@ -1,13 +1,17 @@
-# --date = (relative|local|default|iso|rfc|short|raw) 
+# --date = (relative|local|default|iso|rfc|short|raw)
 
 [user]
     name = USERNAME
     email = EMAIL
-[github]
-    user = LOGIN
 [core]
     editor = vim
     excludesfile = ~/.gitignore-global
+[merge]
+    tool = vimdiff
+[push]
+    default = current
+[master]
+    autosetuprebase = always
 [color]
     diff = auto
     status = auto
@@ -40,9 +44,13 @@
     dc = diff --cached
     dfs = diff --stat -r
     dfn = diff --name-status -r
-    lg  = log -p
+    g = grep -ni
+    lg  = log --stat --abbrev-commit --relative-date
+    lgp  = log -p
     lga = log --graph --decorate --pretty=oneline --abbrev-commit
-    gl  = log --color=always --all --graph --topo-order --pretty='format: %Cgreen%h%Creset %s%Cred%d%Creset%n'
+    gl  = log --color=always --all --graph --topo-order --pretty=\"format: %Cgreen%h%Creset %s%Cred%d%Creset%n\"
+    lm = log --color=always --pretty=format:\"%Cgreen%h%Creset - %Cred%an%Creset, %ar: %C(yellow)%s%Creset\" --stat
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     i = remote -v
     su = submodule update --init
     sp = submodule foreach git pull origin master
