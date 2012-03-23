@@ -39,11 +39,3 @@ fi
 if [ -e $HOME/.bash/exports ]; then
   source $HOME/.bash/exports
 fi
-
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# This enables rbenv
-# export RBENV_VERSION="1.9.3-p125"
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"

@@ -15,6 +15,3 @@ for file in aliases prompt colors exports; do
         source "$file"
     fi
 done
-
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
