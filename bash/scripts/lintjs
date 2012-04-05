@@ -7,7 +7,7 @@
         // modules
     var fs   = require("fs"),
         path = require("path"),
-        sys  = require("sys"),
+        util  = require("util"),
         vm   = require("vm"),
         // locals
         sandbox    = {},
@@ -26,7 +26,7 @@
 
     // show usage if no argument was specified
     if (!filename) {
-        sys.puts("Usage: jscheck file.js");
+        util.puts("Usage: jscheck file.js");
         process.exit(1);
     }
 
@@ -52,12 +52,12 @@
     };
 
     JSHINT.errors.forEach(function(err, index) {
-        sys.puts(
+        util.puts(
             c.yellow + '=> ' + c.blue + filename + c.reset + "(" + err.line + ":" + err.character + ") " + c.yellow + err.reason + c.reset + "\n" +
             err.evidence
         );
     });
-    sys.puts('==================\n' +
+    util.puts('==================\n' +
              'Total warnings: ' + JSHINT.errors.length
     );
 }());
