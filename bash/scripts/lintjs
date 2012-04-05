@@ -2,6 +2,8 @@
 
 // TODO: implement iterating over all js files in case directory
 // TODO? allow jslint check as well and using $JSLINT_ENGINE env var or so
+// TODO: handle exception "Error: ENOENT, no such file or directory 'file.js'"
+// TODO: handle exception "Error: EISDIR, illegal operation on a directory"
 
 (function () {
         // modules
