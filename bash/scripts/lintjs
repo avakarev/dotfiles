@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+// TODO: implement iterating over all js files in case directory
+// TODO? allow jslint check as well and using $JSLINT_ENGINE env var or so
+
+(function () {
+        // modules
+    var fs   = require("fs"),
+        path = require("path"),
+        sys  = require("sys"),
+        vm   = require("vm"),
+        // locals
+        sandbox    = {},
+        jshintFile = path.resolve(__dirname,"./deps/jshint/jshint.js"),
+        filename,
+        input,
+        errors,
+        warning;
+
+    vm.runInNewContext(fs.readFileSync(jshintFile), sandbox, jshintFile);
+
+    JSHINT = sandbox.JSHINT;
+
+    // capture the command line argument
+    filename = process.argv[2];
+
+    // show usage if no argument was specified
+    if (!filename) {
+        sys.puts("Usage: jscheck file.js");
+        process.exit(1);
+    }
+
+    // read the file specified
+    input = fs.readFileSync(filename).toString("utf-8");
+
+    // run jslint on the file
+    JSHINT(input, {
+        browser: false,
+        indent: 4,
+        maxlen: 120,
+        maxerr: 100
+    });
+
+    var c = {
+        red: "\033[31m",
+        green: "\033[32m",
+        yellow: "\033[33m",
+        blue: "\033[34m",
+        purple: "\033[35m",
+        cyan: "\033[36m",
+        reset: "\033[0m"
+    };
+
+    JSHINT.errors.forEach(function(err, index) {
+        sys.puts(
+            c.yellow + '=> ' + c.blue + filename + c.reset + "(" + err.line + ":" + err.character + ") " + c.yellow + err.reason + c.reset + "\n" +
+            err.evidence
+        );
+    });
+    sys.puts('==================\n' +
+             'Total warnings: ' + JSHINT.errors.length
+    );
+}());
