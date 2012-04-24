@@ -16,6 +16,7 @@
         jshintFile = path.resolve(__dirname,"./deps/jshint/jshint.js"),
         filename,
         input,
+        isItNodejs = false,
         errors,
         warning;
 
@@ -35,29 +36,31 @@
     // read the file specified
     input = fs.readFileSync(filename).toString("utf-8");
 
+    isItNodejs = (input.substr(0, 2) === '#!') || (input.search(/exports|require\(|module|\_\_filename|\_\_dirname/i) > 0);
+
     // run jslint on the file
     JSHINT(input, {
         // see http://www.jshint.com/options/
 
         "predef": [
-                "jasmine",
-                "spyOn",
-                "it",
-                "describe",
-                "expect",
-                "beforeEach",
-                "waits",
-                "waitsFor",
-                "runs"
-            ],
+            "jasmine",
+            "spyOn",
+            "it",
+            "describe",
+            "expect",
+            "beforeEach",
+            "waits",
+            "waitsFor",
+            "runs"
+        ],
 
         "indent": 4,
         "maxlen": 120,
         "maxerr": 100,
 
-        "node" : false,
-        "es5" : true,
-        "browser" : true,
+        "node" : isItNodejs,
+        "es5": true,
+        "browser": true,
 
         "bitwise": true,
         "boss" : false,
@@ -80,7 +83,7 @@
         "undef": true,
         "sub": true,
         "strict": false,
-        "white": true
+        "white": false
     });
 
     var c = {
