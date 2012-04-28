@@ -51,7 +51,14 @@
             "beforeEach",
             "waits",
             "waitsFor",
-            "runs"
+            "runs",
+            "BEM",
+            "BEMHTML",
+            "GLOB",
+            "Lang",
+            "Perl",
+            "MobStatLog",
+            "blocks"
         ],
 
         "indent": 4,
@@ -72,12 +79,13 @@
         "forin": true,
         "immed": true,
         "laxbreak": false,
-        "newcap": true,
+        "laxcomma": true,
+        "newcap": false,
         "noarg": true,
         "noempty": true,
         "nonew": false,
         "nomen": false,
-        "onevar": true,
+        "onevar": false,
         "plusplus": false,
         "regexp": false,
         "undef": true,
@@ -98,7 +106,7 @@
 
     JSHINT.errors.forEach(function(err, index) {
         util.puts(
-            c.yellow + '=> ' + c.blue + filename + c.reset + "(" + err.line + ":" + err.character + ") " + c.yellow + err.reason + c.reset + "\n" +
+            c.yellow + '=> ' + c.blue + filename + c.reset + "(L" + err.line + ":C" + err.character + ") " + c.yellow + err.reason + c.reset + "\n" +
             err.evidence
         );
     });
