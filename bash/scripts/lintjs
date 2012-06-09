@@ -52,6 +52,8 @@
             "waits",
             "waitsFor",
             "runs",
+            "$",
+            "jQuery",
             "BEM",
             "BEMHTML",
             "GLOB",
