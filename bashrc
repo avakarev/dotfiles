@@ -5,11 +5,11 @@ if [ -d /usr/local/Cellar ] && [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 # Load
+#   ~/.bash/exports  apply some environment vars: like EDITOR, PATH and so
 #   ~/.bash/aliases  apply command aliases
 #   ~/.bash/prompt   customize bash command prompt
 #   ~/.bash/colors   add custom coloring in terminal
-#   ~/.bash/exports  apply some environment vars: like EDITOR, PATH and so
-for file in aliases prompt colors exports; do
+for file in exports aliases prompt colors; do
     file="$HOME/.bash/$file"
     if [ -e "$file" ]; then
         source "$file"

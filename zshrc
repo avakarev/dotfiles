@@ -29,13 +29,13 @@ source $ZSH/oh-my-zsh.sh
 # My custom theme
 source "$HOME/.zsh/avakarev.zsh-theme"
 
+# Apply exports.
+if [ -e $HOME/.bash/exports ]; then
+  source $HOME/.bash/exports
+fi
+
 # Add aliases.
 if [ -e $HOME/.bash/aliases ]; then
   source $HOME/.bash/aliases
   alias up='source ~/.zshrc'
-fi
-
-# Apply exports.
-if [ -e $HOME/.bash/exports ]; then
-  source $HOME/.bash/exports
 fi
