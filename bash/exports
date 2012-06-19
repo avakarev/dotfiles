@@ -1,5 +1,8 @@
-export SVN_EDITOR='vim'
+export LC_CTYPE=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export EDITOR='vim'
+export SVN_EDITOR='vim'
 export GREP_OPTIONS='--color=auto'
 export NODE_PATH=/usr/local/lib/node_modules
 
