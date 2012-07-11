@@ -1,8 +1,11 @@
 # Bash shortcuts
 alias less="less -r"
 alias la="ls -lhGAp"
-alias l="ls -lhGtp" # -l long listing, most recent first
+alias ls="ls -pG"  # -p list directories with '/'
+alias l="ls -lhGt" # -l long listing, most recent first
                    # -G color
+
+alias c="clear"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
@@ -17,6 +20,7 @@ function cdh() {
 }
 
 function servethis() {
+    open "http://localhost:8080/"
     python -m SimpleHTTPServer ${1:-8080}
 }
 
@@ -47,3 +51,5 @@ alias nprod="NODE_ENV=production node $1"
 # Ruby & RoR
 alias rmigrate="rake db:migrate && rake db:test:prepare"
 alias rtest="rake cucumber:ok spec"
+
+alias stree="open -a SourceTree ."
