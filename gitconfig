@@ -4,7 +4,7 @@
     name = USERNAME
     email = EMAIL
 [core]
-    editor = vim
+    editor = vim -u NONE
     excludesfile = ~/.gitignore-global
 [merge]
     tool = vimdiff
@@ -34,8 +34,8 @@
     stat = status
     ci = commit
     cm = commit -m
-    ca = commit --amend
-    uc = reset HEAD^ # undo last local commit
+    ca = commit --amend -C HEAD
+    uc = reset --soft HEAD^ # retains commit as staged
     br = branch
     bl = branch -av
     tl = tag -l
