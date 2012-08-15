@@ -7,13 +7,13 @@
 
 (function () {
         // modules
-    var fs   = require("fs"),
-        path = require("path"),
-        util  = require("util"),
-        vm   = require("vm"),
+    var fs    = require('fs'),
+        path  = require('path'),
+        util  = require('util'),
+        vm    = require('vm'),
         // locals
-        sandbox    = {},
-        jshintFile = path.resolve(__dirname,"./deps/jshint/jshint.js"),
+        sandbox = {},
+        jshintFile = path.resolve(__dirname, './deps/jshint/jshint.js'),
         filename,
         input,
         isItNodejs = false,
@@ -29,12 +29,12 @@
 
     // show usage if no argument was specified
     if (!filename) {
-        util.puts("Usage: jscheck file.js");
+        util.puts('Usage: jscheck file.js');
         process.exit(1);
     }
 
     // read the file specified
-    input = fs.readFileSync(filename).toString("utf-8");
+    input = fs.readFileSync(filename).toString('utf-8');
 
     isItNodejs = (input.substr(0, 2) === '#!') || (input.search(/exports|require\(|module|\_\_filename|\_\_dirname/i) > 0);
 
@@ -42,77 +42,62 @@
     JSHINT(input, {
         // see http://www.jshint.com/options/
 
-        "predef": [
-            "jasmine",
-            "spyOn",
-            "it",
-            "describe",
-            "expect",
-            "beforeEach",
-            "waits",
-            "waitsFor",
-            "runs",
-            "$",
-            "jQuery",
-            "BEM",
-            "BEMHTML",
-            "GLOB",
-            "Lang",
-            "Perl",
-            "MobStatLog",
-            "blocks"
+        'predef': [
+            '$', 'jQuery',
+            'BEM', 'BEMHTML', 'Perl', 'Lang', 'MobStatLog', 'blocks', 'GLOB',
+            'jasmine', 'spyOn', 'it', 'describe', 'expect', 'beforeEach', 'waits', 'waitsFor', 'runs'
         ],
 
-        "indent": 4,
-        "maxlen": 120,
-        "maxerr": 100,
+        'indent': 4,
+        'maxlen': 120,
+        'maxerr': 100,
 
-        "node"   : isItNodejs,
-        "es5"    : true,
-        "browser": true,
+        'node'   : isItNodejs,
+        'es5'    : true,
+        'browser': true,
 
-        "bitwise" : true,
-        "boss"    : false,
-        "curly"   : true,
-        "debug"   : false,
-        "devel"   : false,
-        "eqeqeq"  : true,
-        "evil"    : true,
-        "forin"   : true,
-        "immed"   : true,
-        "laxbreak": false,
-        "laxcomma": true,
-        "newcap"  : false,
-        "noarg"   : true,
-        "noempty" : true,
-        "nonew"   : false,
-        "nomen"   : false,
-        "onevar"  : false,
-        "plusplus": false,
-        "regexp"  : false,
-        "undef"   : true,
-        "sub"     : true,
-        "strict"  : false,
-        "white"   : false
+        'bitwise' : true,
+        'boss'    : false,
+        'curly'   : true,
+        'debug'   : false,
+        'devel'   : false,
+        'eqeqeq'  : true,
+        'evil'    : true,
+        'forin'   : true,
+        'immed'   : true,
+        'laxbreak': false,
+        'laxcomma': true,
+        'newcap'  : false,
+        'noarg'   : true,
+        'noempty' : true,
+        'nonew'   : false,
+        'nomen'   : false,
+        'onevar'  : false,
+        'plusplus': false,
+        'regexp'  : false,
+        'undef'   : true,
+        'sub'     : true,
+        'strict'  : false,
+        'white'   : false
     });
 
     var c = {
-        red: "\033[31m",
-        green: "\033[32m",
-        yellow: "\033[33m",
-        blue: "\033[34m",
-        purple: "\033[35m",
-        cyan: "\033[36m",
-        reset: "\033[0m"
+        red:   '\033[31m',
+        green: '\033[32m',
+        yellow:'\033[33m',
+        blue:  '\033[34m',
+        purple:'\033[35m',
+        cyan:  '\033[36m',
+        reset: '\033[0m'
     };
 
     JSHINT.errors.forEach(function(err, index) {
         util.puts(
-            c.yellow + '=> ' + c.blue + filename + c.reset + "(L" + err.line + ":C" + err.character + ") " + c.yellow + err.reason + c.reset + "\n" +
+            c.yellow + '=> ' + c.blue + filename + c.reset + '(L' + err.line + ':C' + err.character + ') ' + c.yellow + err.reason + c.reset + '\n' +
             err.evidence
         );
     });
     util.puts('==================\n' +
-             'Total warnings: ' + JSHINT.errors.length
+              'Total warnings: ' + JSHINT.errors.length
     );
 }());
