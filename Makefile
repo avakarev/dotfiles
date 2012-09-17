@@ -21,6 +21,8 @@ GIT_BUNDLE := "gitconfig" \
 RUBY_BUNDLE := "gemrc" \
                "rdebugrc"
 
+JS_BUNDLE := "jshintrc"
+
 # Function to deploy config files. Takes 1 argument: name-of-bundle.
 # It will loop through all bundle items and create symlinks according to.
 # So, existed files and dirs will be overwritten with symlinks.
@@ -87,4 +89,9 @@ ruby:
 	$(call deploy,$(RUBY_BUNDLE));
 	@ echo "ruby bundle installed!";
 
-.PHONY: all bash zsh vim git ruby
+# Install javascript related config files.
+js:
+	$(call deploy,$(JS_BUNDLE));
+	@ echo "js bundle installed!";
+
+.PHONY: all bash zsh vim git ruby js
