@@ -45,7 +45,7 @@ all:
 			echo "Nothing was made. Bye."; \
 			exit; \
 		else \
-			$(MAKE) bash zsh vim git gem; \
+			$(MAKE) bash zsh vim git ruby; \
 			exit; \
 		fi; \
 		break; \
