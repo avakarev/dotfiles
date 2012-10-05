@@ -2,10 +2,23 @@
 
 # Mostly was taken from https://gist.github.com/1093476
 
-OS="Mac"
+PLATFORM=$(uname)
+
+if [ "$PLATFORM" = Darwin ]; then
+    OS="Mac"
+else
+    OS="Linux_x64"
+fi
+
 URLBASE="http://commondatastorage.googleapis.com/chromium-browser-snapshots/$OS"
 LATESTVER="$URLBASE/LAST_CHANGE"
-APP_MAIN="chrome-mac.zip"
+
+if [ "$PLATFORM" = Darwin ]; then
+    APP_MAIN="chrome-mac.zip"
+else
+    APP_MAIN="chrome-linux.zip"
+fi
+
 APP_TOOLS="devtools_frontend.zip"
 REV=$1
 
