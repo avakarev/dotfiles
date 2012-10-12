@@ -19,7 +19,8 @@ GIT_BUNDLE := "gitconfig" \
               "gitignore-global"
 
 RUBY_BUNDLE := "gemrc" \
-               "rdebugrc"
+               "rdebugrc" \
+               "irbrc"
 
 JS_BUNDLE := "jshintrc"
 
