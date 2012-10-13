@@ -20,7 +20,8 @@ GIT_BUNDLE := "gitconfig" \
 
 RUBY_BUNDLE := "gemrc" \
                "rdebugrc" \
-               "irbrc"
+               "irbrc" \
+               "rspec"
 
 JS_BUNDLE := "jshintrc"
 
