@@ -6,7 +6,7 @@ export SVN_EDITOR='vim'
 export GREP_OPTIONS='--color=auto'
 export NODE_PATH=/usr/local/lib/node_modules
 
-PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH:$HOME/.bash/scripts
 export PATH
 
 # Don’t clear the screen after quitting a manual page
