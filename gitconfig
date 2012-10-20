@@ -57,5 +57,5 @@
     sp = submodule foreach git pull origin master
     who = shortlog -s --
     what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-    me = !git log --author=avakarev
+    me = log --author=avakarev
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
