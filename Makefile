@@ -4,11 +4,13 @@
 BASH_BUNDLE := "bash" \
                "bash_profile" \
                "bashrc" \
-               "inputrc"
+               "inputrc" \
+               "taskrc"
 
 ZSH_BUNDLE := "bash" \
               "zsh" \
-              "zshrc"
+              "zshrc" \
+              "taskrc"
 
 VIM_BUNDLE := "vim" \
               "vimrc" \
