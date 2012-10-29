@@ -13,10 +13,10 @@ bundle_js="jshintrc"
 usage(){
   echo "
   Makes symlinks for specified configuration bundles ( ${PWD}.* => ${HOME}.* ).
-  Sources: https://github.com/avakarev/dotfiles/blob/master/link.sh
+  Sources: https://github.com/avakarev/dotfiles/blob/master/deploy.sh
 
   Usage:
-      sh link.sh bundle1, bundle2, ..
+      sh deploy.sh bundle1, bundle2, ..
 
   Available bundles:
       bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
@@ -29,7 +29,7 @@ usage(){
   exit 1
 }
 
-link(){
+linkify(){
   for i in $1 ; do
 
     # symlink source file/dir
@@ -48,43 +48,43 @@ link(){
             # if target file/dir is symlink and already linked to source file/dir
             if [ "$that_link_path" == "$this_file_path" ]; then
                 # do nothing
-                echo "ignoring: ./$i is already linked to $this_file_path"
+                echo "  ignoring: ./$i is already linked to $this_file_path"
             # else - ask how to handle that existing file/dir
             else
-                echo "Existing file/dir $that_file_path will be overitten by symlink to $this_file_path"
+                echo "  Existing file/dir $that_file_path will be overitten by symlink to $this_file_path"
                 echo "  Select an action:"
-                echo "  1. ignore and do nothing"
-                echo "  2. backup $that_file_path to $that_file_path.orig and create symlink to $that_file_path"
-                echo "  3. remove $that_file_path and create symlink to $that_file_path"
-                read -p "[1]: " user_input
+                echo "    1. ignore and do nothing"
+                echo "    2. backup $that_file_path to $that_file_path.orig and create symlink to $that_file_path"
+                echo "    3. remove $that_file_path and create symlink to $that_file_path"
+                read -p "  [1]: " user_input
 
                 # if user has chosen backup or remove
                 if [ "$user_input" == '2' ] || [ "$user_input" == '3' ]; then
                     # backup
                     if [ "$user_input" == '2' ]; then
-                        echo "backing up: $that_file_path to $that_file_path.orig"
+                        echo "  backing up: $that_file_path to $that_file_path.orig"
                         mv "$that_file_path" "$that_file_path.orig"
                     # remove
                     else
-                        echo "removing: $that_file_path"
+                        echo "  removing: $that_file_path"
                         rm -rf "$that_file_path"
                     fi
 
-                    echo "linking: $that_file_path to $this_file_path"
+                    echo "  linking: $that_file_path to $this_file_path"
                     ln -Ffs "$this_file_path" "$that_file_path"
                 # user has chosen ignore and to nothing
                 else
-                    echo "ignoring: do nothing with $that_file_path"
+                    echo "  ignoring: do nothing with $that_file_path"
                 fi
             fi
         # target file/dir does not exsits, create an symlink
         else
-            echo "linking: $that_file_path to $this_file_path"
+            echo "  linking: $that_file_path to $this_file_path"
             ln -Ffs "$this_file_path" "$that_file_path"
         fi
     # source file/dir does not exist, do nothing
     else
-        echo "ignoring: $that_file_path does'nt exists"
+        echo "  ignoring: $that_file_path does'nt exists"
     fi
   done
 }
@@ -99,10 +99,10 @@ case "$1" in
         bundle=${!bundle_name}
 
         if [ -z "$bundle" ]; then
-            echo "it is not clear how to link [$bundle_name]"
+            echo "*** [$bundle_name] is not defined: skipping ***"
         else
             echo "*** [$bundle_name] consists of: $bundle ***"
-            link "$bundle"
+            linkify "$bundle"
         fi
     done
     ;;
