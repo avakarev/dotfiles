@@ -88,7 +88,7 @@ linkify(){
             fi
         # target file/dir does not exsits, create an symlink
         else
-            echo "  ${color_yellow}linking${color_reset}: ${that_file_path} to ${this_file_path}"
+            echo "  ${color_green}linking${color_reset}: ${that_file_path} to ${this_file_path}"
             ln -Ffs "${this_file_path}" "${that_file_path}"
         fi
     # source file/dir does not exist, do nothing
