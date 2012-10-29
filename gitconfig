@@ -1,8 +1,8 @@
 # --date = (relative|local|default|iso|rfc|short|raw)
 
 [user]
-    name = USERNAME
-    email = EMAIL
+    name = Andrey Vakarev
+    email = avakarev@gmail.com
 [core]
     editor = vim -u NONE
     excludesfile = ~/.gitignore-global
