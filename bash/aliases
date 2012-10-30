@@ -4,6 +4,8 @@ alias la="ls -lhGAp"
 alias ls="ls -pG"  # -p list directories with '/'
 alias l="ls -lhGt" # -l long listing, most recent first
                    # -G color
+# list dotfiles: usage lh [path/to/dir]
+alias lh='fn_lh(){ ls -lAp $1 | awk '\''{print $9" "$10" "$11}'\'' | egrep "^\."; }; fn_lh'
 
 alias c="clear"
 alias cp="cp -i"
