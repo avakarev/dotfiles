@@ -1,11 +1,9 @@
 #!/usr/bin/env sh
 
-# @TODO: add colors
 # http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/
 
 bundle_bash="bash bash_profile bashrc inputrc taskrc"
 bundle_zsh="bash zsh zshrc taskrc"
-bundle_vim="vim vimrc gvimrc vimpagerrc"
 bundle_git="gitconfig gitignore-global"
 bundle_ruby="gemrc rdebugrc irbrc rspec"
 bundle_js="jshintrc"
@@ -30,7 +28,6 @@ usage(){
   Available bundles:
       bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
       zsh           :: zsh-related environment ~/.{ bash/ zsh/ zshrc taskrc }
-      vim           :: vim custom configuration files ~/.{ vim/ vimrc gvimrc vimpagerrc }
       git           :: git custom configuration files ~/.{ gitconfig gitignore-global }
       ruby          :: ruby dev environment ~/.{ gemrc rdebugrc irbrc rspec }
       js            :: javascript dev evironment ~/.jshintrc
