@@ -54,7 +54,7 @@ linkify(){
             # if target file/dir is symlink and already linked to source file/dir
             if [ "${that_link_path}" == "$this_file_path" ]; then
                 # do nothing
-                echo "  ${color_yellow}ignoring${color_reset}: ${that_file_path} is already linked to ${this_file_path}"
+                echo "  ${color_yellow}ignoring${color_reset} (already linked): ${that_file_path} -> ${this_file_path}"
             # else - ask how to handle that existing file/dir
             else
                 echo "  Existing ${that_file_path} will be overitten by symlink to ${this_file_path}"
@@ -76,21 +76,21 @@ linkify(){
                         rm -rf "${that_file_path}"
                     fi
 
-                    echo "  ${color_green}linking${color_reset}: ${that_file_path} to ${this_file_path}"
+                    echo "  ${color_green}linking${color_reset}: ${that_file_path} -> ${this_file_path}"
                     ln -Ffs "${this_file_path}" "${that_file_path}"
                 # user has chosen ignore and to nothing
                 else
-                    echo "  ${color_yellow}ignoring${color_reset}: do nothing with ${that_file_path}"
+                    echo "  ${color_yellow}ignoring${color_reset} (your choice): ${that_file_path}"
                 fi
             fi
         # target file/dir does not exsits, create an symlink
         else
-            echo "  ${color_green}linking${color_reset}: ${that_file_path} to ${this_file_path}"
+            echo "  ${color_green}linking${color_reset}: ${that_file_path} -> ${this_file_path}"
             ln -Ffs "${this_file_path}" "${that_file_path}"
         fi
     # source file/dir does not exist, do nothing
     else
-        echo "  ${color_yellow}ignoring${color_reset}: ${that_file_path} does'nt exists"
+        echo "  ${color_yellow}ignoring${color_reset} (does not exist): ${that_file_path}"
     fi
   done
 }
