@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO: deploy.sh status
 # http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/
 
 bundle_bash="bash bash_profile bashrc inputrc taskrc"
@@ -145,7 +146,7 @@ for name in "$@" ; do
     if [ -z "${bundle}" ]; then
         echo "${color_red}***${color_reset} [${color_red}${bundle_name}${color_reset}] is not defined: skipping ***"
     else
-        echo "${color_green}***${color_reset} [${color_green}${bundle_name}${color_reset}] consists of: ${bundle} ***"
+        echo "${color_green}***${color_reset} [${color_green}${bundle_name}${color_reset}]: ${bundle} ***"
         [ "${UNDO}" == "1" ] && unlinkify "${bundle}" || linkify "${bundle}"
     fi
 done
