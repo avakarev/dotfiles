@@ -35,14 +35,20 @@ usage(){
   exit 1
 }
 
+tildafy(){
+    echo $1 | sed 's|'${HOME}'|~|g'
+}
+
 linkify(){
   for i in $1 ; do
 
-    # symlink source file/dir
+    # symlink source
     this_file_path="${PWD}/$i"
+    this_file_path_tildafied="$(tildafy ${this_file_path})"
 
-    # symlink target file/dir
+    # symlink target
     that_file_path="${HOME}/.$i"
+    that_file_path_tildafied="$(tildafy ${that_file_path})"
 
     # is it already linked?
     that_link_path=$(readlink "${that_file_path}")
@@ -54,43 +60,43 @@ linkify(){
             # if target file/dir is symlink and already linked to source file/dir
             if [ "${that_link_path}" == "$this_file_path" ]; then
                 # do nothing
-                echo "  ${color_yellow}ignoring${color_reset} (already linked): ${that_file_path} -> ${this_file_path}"
+                echo "  ${color_yellow}ignoring${color_reset} (already linked): ${that_file_path_tildafied} => ${this_file_path_tildafied}"
             # else - ask how to handle that existing file/dir
             else
-                echo "  Existing ${that_file_path} will be overitten by symlink to ${this_file_path}"
+                echo "  Existing ${that_file_path_tildafied} will be overitten by symlink to ${this_file_path_tildafied}"
                 echo "  Select an action:"
                 echo "    1. ignore and do nothing"
-                echo "    2. backup ${that_file_path} to ${that_file_path}.orig and create symlink to ${this_file_path}"
-                echo "    3. remove ${that_file_path} and create symlink to ${this_file_path}"
+                echo "    2. backup ${that_file_path_tildafied} to ${that_file_path_tildafied}.orig and create symlink to ${this_file_path_tildafied}"
+                echo "    3. remove ${that_file_path_tildafied} and create symlink to ${this_file_path_tildafied}"
                 read -p "  [1]: " user_input
 
                 # if user has chosen backup or remove
                 if [ "${user_input}" == '2' ] || [ "${user_input}" == '3' ]; then
                     # backup
                     if [ "${user_input}" == '2' ]; then
-                        echo "  ${color_yellow}backing up${color_reset}: ${that_file_path} to ${that_file_path}.orig"
+                        echo "  ${color_yellow}backing up${color_reset}: ${that_file_path_tildafied} to ${that_file_path_tildafied}.orig"
                         mv "${that_file_path}" "${that_file_path}.orig"
                     # remove
                     else
-                        echo "  ${color_red}removing${color_reset}: ${that_file_path}"
+                        echo "  ${color_red}removing${color_reset}: ${that_file_path_tildafied}"
                         rm -rf "${that_file_path}"
                     fi
 
-                    echo "  ${color_green}linking${color_reset}: ${that_file_path} -> ${this_file_path}"
+                    echo "  ${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
                     ln -Ffs "${this_file_path}" "${that_file_path}"
                 # user has chosen ignore and to nothing
                 else
-                    echo "  ${color_yellow}ignoring${color_reset} (your choice): ${that_file_path}"
+                    echo "  ${color_yellow}ignoring${color_reset} (your choice): ${that_file_path_tildafied}"
                 fi
             fi
         # target file/dir does not exsits, create an symlink
         else
-            echo "  ${color_green}linking${color_reset}: ${that_file_path} -> ${this_file_path}"
+            echo "  ${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
             ln -Ffs "${this_file_path}" "${that_file_path}"
         fi
     # source file/dir does not exist, do nothing
     else
-        echo "  ${color_yellow}ignoring${color_reset} (does not exist): ${that_file_path}"
+        echo "  ${color_yellow}ignoring${color_reset} (does not exist): ${that_file_path_tildafied}"
     fi
   done
 }
