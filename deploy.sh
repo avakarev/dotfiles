@@ -60,10 +60,10 @@ linkify(){
             # if target file/dir is symlink and already linked to source file/dir
             if [ "${that_link_path}" == "$this_file_path" ]; then
                 # do nothing
-                echo "  ${color_yellow}ignoring${color_reset} (already linked): ${that_file_path_tildafied} => ${this_file_path_tildafied}"
+                echo " *${color_yellow}ignoring${color_reset} (already linked): ${that_file_path_tildafied} => ${this_file_path_tildafied}"
             # else - ask how to handle that existing file/dir
             else
-                echo "  Existing ${that_file_path_tildafied} will be overitten by symlink to ${this_file_path_tildafied}"
+                echo "  Existing ${that_file_path_tildafied} going to be overitten by symlink to ${this_file_path_tildafied}"
                 echo "  Select an action:"
                 echo "    1. ignore and do nothing"
                 echo "    2. backup ${that_file_path_tildafied} to ${that_file_path_tildafied}.orig and create symlink to ${this_file_path_tildafied}"
@@ -74,29 +74,29 @@ linkify(){
                 if [ "${user_input}" == '2' ] || [ "${user_input}" == '3' ]; then
                     # backup
                     if [ "${user_input}" == '2' ]; then
-                        echo "  ${color_yellow}backing up${color_reset}: ${that_file_path_tildafied} to ${that_file_path_tildafied}.orig"
+                        echo "  backing up: ${that_file_path_tildafied} to ${that_file_path_tildafied}.orig"
                         mv "${that_file_path}" "${that_file_path}.orig"
                     # remove
                     else
-                        echo "  ${color_red}removing${color_reset}: ${that_file_path_tildafied}"
+                        echo "  removing: ${that_file_path_tildafied}"
                         rm -rf "${that_file_path}"
                     fi
 
-                    echo "  ${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
+                    echo " *${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
                     ln -Ffs "${this_file_path}" "${that_file_path}"
                 # user has chosen ignore and to nothing
                 else
-                    echo "  ${color_yellow}ignoring${color_reset} (your choice): ${that_file_path_tildafied}"
+                    echo " *${color_yellow}ignoring${color_reset} (your choice): ${that_file_path_tildafied}"
                 fi
             fi
         # target file/dir does not exsits, create an symlink
         else
-            echo "  ${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
+            echo " *${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
             ln -Ffs "${this_file_path}" "${that_file_path}"
         fi
     # source file/dir does not exist, do nothing
     else
-        echo "  ${color_yellow}ignoring${color_reset} (does not exist): ${that_file_path_tildafied}"
+        echo " *${color_yellow}ignoring${color_reset} (does not exist): ${that_file_path_tildafied}"
     fi
   done
 }
