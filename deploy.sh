@@ -23,7 +23,7 @@ usage(){
   Sources: https://github.com/avakarev/dotfiles/blob/master/deploy.sh
 
   Usage:
-      bash deploy.sh bundle1, bundle2, ..
+      bash deploy.sh [--undo] bundle1, bundle2, ..
 
   Available bundles:
       bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
@@ -58,7 +58,7 @@ linkify(){
         # if target file/dir exists
         if [ -e "${that_file_path}" ]; then
             # if target file/dir is symlink and already linked to source file/dir
-            if [ "${that_link_path}" == "$this_file_path" ]; then
+            if [ "${that_link_path}" == "${this_file_path}" ]; then
                 # do nothing
                 echo " *${color_yellow}ignoring${color_reset} (already linked): ${that_file_path_tildafied} => ${this_file_path_tildafied}"
             # else - ask how to handle that existing file/dir
@@ -101,23 +101,53 @@ linkify(){
   done
 }
 
+unlinkify(){
+  for i in $1 ; do
+
+    # symlink source
+    this_file_path="${PWD}/$i"
+    this_file_path_tildafied="$(tildafy ${this_file_path})"
+
+    # symlink target
+    that_file_path="${HOME}/.$i"
+    that_file_path_tildafied="$(tildafy ${that_file_path})"
+
+    # is it already linked?
+    that_link_path=$(readlink "${that_file_path}")
+
+    if [ -e "${this_file_path}" ] && [ -e "${that_file_path}" ]; then
+        if [ "${that_link_path}" == "${this_file_path}" ]; then
+            echo " *${color_green}unlinking${color_reset}: ${that_file_path_tildafied}"
+            rm -rf "${that_file_path}"
+        else
+            echo " *${color_yellow}ignoring${color_reset}: ${that_file_path_tildafied} is not linked to ${this_file_path_tildafied}"
+        fi
+    else
+        echo " *${color_yellow}ignoring${color_reset} (does not exist): ${this_file_path_tildafied} or ${that_file_path_tildafied}"
+    fi
+  done
+}
+
 case "$1" in
   "" | "help" | "-h" | "-help" | "--help" | "list" )
     usage
     ;;
-* )
-    for name in "$@" ; do
-        bundle_name="bundle_${name}"
-        bundle=${!bundle_name}
-
-        if [ -z "${bundle}" ]; then
-            echo "${color_red}***${color_reset} [${color_red}${bundle_name}${color_reset}] is not defined: skipping ***"
-        else
-            echo "${color_green}***${color_reset} [${color_green}${bundle_name}${color_reset}] consists of: ${bundle} ***"
-            linkify "${bundle}"
-        fi
-    done
+  "--undo" )
+    UNDO=1
+    shift
     ;;
 esac
+
+for name in "$@" ; do
+    bundle_name="bundle_${name}"
+    bundle=${!bundle_name}
+
+    if [ -z "${bundle}" ]; then
+        echo "${color_red}***${color_reset} [${color_red}${bundle_name}${color_reset}] is not defined: skipping ***"
+    else
+        echo "${color_green}***${color_reset} [${color_green}${bundle_name}${color_reset}] consists of: ${bundle} ***"
+        [ "${UNDO}" == "1" ] && unlinkify "${bundle}" || linkify "${bundle}"
+    fi
+done
 
 exit 0
