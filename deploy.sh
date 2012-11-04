@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/
 
@@ -23,7 +23,7 @@ usage(){
   Sources: https://github.com/avakarev/dotfiles/blob/master/deploy.sh
 
   Usage:
-      sh deploy.sh bundle1, bundle2, ..
+      bash deploy.sh bundle1, bundle2, ..
 
   Available bundles:
       bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
