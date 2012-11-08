@@ -37,7 +37,9 @@ usage(){
 }
 
 tildafy(){
-    echo $1 | sed 's|'${HOME}'|~|g'
+    path=$(echo $1 | sed 's|'${HOME}'|~|g')
+    [ -d "$1" ] && path="${path}/"
+    echo "${path}"
 }
 
 linkify(){
