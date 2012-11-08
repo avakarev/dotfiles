@@ -46,19 +46,25 @@ tildafy(){
     echo "${path}"
 }
 
-linkify(){
-  for i in $1 ; do
+setup_path(){
 
     # symlink source
-    this_file_path="${PWD}/$i"
+    this_file_path="${PWD}/$1"
     this_file_path_tildafied="$(tildafy ${this_file_path})"
 
     # symlink target
-    that_file_path="${HOME}/.$i"
+    that_file_path="${HOME}/.$1"
     that_file_path_tildafied="$(tildafy ${that_file_path})"
 
     # is it already linked?
     that_link_path=$(readlink "${that_file_path}")
+
+}
+
+linkify(){
+  for i in $1 ; do
+
+    setup_path "$i"
 
     # if source file/dir is exists
     if [ -e "${this_file_path}" ]; then
@@ -111,16 +117,7 @@ linkify(){
 unlinkify(){
   for i in $1 ; do
 
-    # symlink source
-    this_file_path="${PWD}/$i"
-    this_file_path_tildafied="$(tildafy ${this_file_path})"
-
-    # symlink target
-    that_file_path="${HOME}/.$i"
-    that_file_path_tildafied="$(tildafy ${that_file_path})"
-
-    # is it already linked?
-    that_link_path=$(readlink "${that_file_path}")
+    setup_path "$i"
 
     if [ -e "${this_file_path}" ] && [ -e "${that_file_path}" ]; then
         if [ "${that_link_path}" == "${this_file_path}" ]; then
@@ -138,16 +135,7 @@ unlinkify(){
 show_status(){
   for i in $1 ; do
 
-    # symlink source
-    this_file_path="${PWD}/$i"
-    this_file_path_tildafied="$(tildafy ${this_file_path})"
-
-    # symlink target
-    that_file_path="${HOME}/.$i"
-    that_file_path_tildafied="$(tildafy ${that_file_path})"
-
-    # is it already linked?
-    that_link_path=$(readlink "${that_file_path}")
+    setup_path "$i"
 
     if [ -e "${this_file_path}" ] && [ -e "${that_file_path}" ] && [ "${that_link_path}" == "${this_file_path}" ]; then
         echo " *${color_green}linked${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
