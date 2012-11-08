@@ -8,6 +8,8 @@ bundle_zsh="bash zsh zshrc taskrc"
 bundle_git="gitconfig gitignore-global"
 bundle_ruby="gemrc rdebugrc irbrc rspec"
 bundle_js="jshintrc"
+bundle_dev="bash zsh zshrc taskrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
+bundle_all="bash bash_profile bashrc inputrc taskrc bash zsh zshrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
 
 color_red="$(tput setaf 1)"
 color_green="$(tput setaf 2)"
@@ -32,6 +34,8 @@ usage(){
       git           :: git custom configuration files ~/.{ gitconfig gitignore-global }
       ruby          :: ruby dev environment ~/.{ gemrc rdebugrc irbrc rspec }
       js            :: javascript dev evironment ~/.jshintrc
+      dev           :: zsh + git + ruby + js
+      all           :: bash + zsh + git + ruby + js
   "
   exit 1
 }
