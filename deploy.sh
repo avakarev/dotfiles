@@ -26,7 +26,7 @@ usage(){
   Sources: https://github.com/avakarev/dotfiles/blob/master/deploy.sh
 
   Usage:
-      bash deploy.sh [--undo] bundle1, bundle2, ..
+      bash deploy.sh [--undo | --status] bundle1, bundle2, ..
 
   Available bundles:
       bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
@@ -135,12 +135,38 @@ unlinkify(){
   done
 }
 
+show_status(){
+  for i in $1 ; do
+
+    # symlink source
+    this_file_path="${PWD}/$i"
+    this_file_path_tildafied="$(tildafy ${this_file_path})"
+
+    # symlink target
+    that_file_path="${HOME}/.$i"
+    that_file_path_tildafied="$(tildafy ${that_file_path})"
+
+    # is it already linked?
+    that_link_path=$(readlink "${that_file_path}")
+
+    if [ -e "${this_file_path}" ] && [ -e "${that_file_path}" ] && [ "${that_link_path}" == "${this_file_path}" ]; then
+        echo " *${color_green}linked${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
+    else
+        echo " *${color_yellow}not linked${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
+    fi
+  done
+}
+
 case "$1" in
   "" | "help" | "-h" | "-help" | "--help" | "list" )
     usage
     ;;
   "--undo" )
     UNDO=1
+    shift
+    ;;
+  "--status" )
+    STATUS=1
     shift
     ;;
 esac
@@ -153,7 +179,13 @@ for name in "$@" ; do
         echo "${color_red}***${color_reset} [${color_red}${bundle_name}${color_reset}] is not defined: skipping ***"
     else
         echo "${color_green}***${color_reset} [${color_green}${bundle_name}${color_reset}]: ${bundle} ***"
-        [ "${UNDO}" == "1" ] && unlinkify "${bundle}" || linkify "${bundle}"
+        if [ "${STATUS}" == "1" ]; then
+            show_status "${bundle}"
+        elif [ "${UNDO}" == "1" ]; then
+            unlinkify "${bundle}"
+        else
+            linkify "${bundle}"
+        fi
     fi
 done
 
