@@ -39,14 +39,14 @@
     br = branch
     bl = branch -av
     tl = tag -l
-    ls = ls-files
     co = checkout
     df = diff
     dc = diff --cached
     dfs = diff --stat -r
     dfn = diff --name-status -r
     g = grep -ni
-    lg  = log --stat --abbrev-commit --relative-date
+    lp = log -p
+    ls = log --stat --relative-date
     lgp = log -p
     lga = log --graph --decorate --pretty=oneline --abbrev-commit
     gl  = log --color=always --all --graph --topo-order --pretty=\"format: %Cgreen%h%Creset %s%Cred%d%Creset%n\"
