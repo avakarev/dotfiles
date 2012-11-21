@@ -39,3 +39,10 @@ if [ -e $HOME/.bash/aliases ]; then
   source $HOME/.bash/aliases
   alias up='source ~/.zshrc'
 fi
+
+# Disable autocorrect where zsh does suggest bullshit
+if [ -f $HOME/.zsh/zsh_nocorrect ]; then
+  while read -r COMMAND; do
+    alias $COMMAND="nocorrect $COMMAND"
+  done < $HOME/.zsh/zsh_nocorrect
+fi
