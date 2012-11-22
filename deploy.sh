@@ -6,7 +6,7 @@
 bundle_bash="bash bash_profile bashrc inputrc taskrc"
 bundle_zsh="bash zsh zshrc taskrc"
 bundle_git="gitconfig gitignore-global"
-bundle_ruby="gemrc rdebugrc irbrc rspec"
+bundle_ruby="gemrc rdebugrc irbrc rspec siegerc"
 bundle_js="jshintrc"
 bundle_dev="bash zsh zshrc taskrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
 bundle_all="bash bash_profile bashrc inputrc taskrc bash zsh zshrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
