@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'ruby-progressbar' # https://github.com/jfelchner/ruby-progressbar
+
+def format_seconds seconds
+  mm, ss = seconds.divmod(60) #=> [4515, 21]
+  hh, mm = mm.divmod(60)      #=> [75, 15]
+  return "%02d:%02d:%02d" % [hh, mm, ss]
+end
+
+total = ((ARGV[0] || 1).to_f * 60).to_i
+total_str = format_seconds total
+
+pb = ProgressBar.create(:format => '  %p%% [%b>%i] %e', :total => total)
+
+begin
+  total.times do
+    sleep 1
+    pb.increment
+  end
+rescue
+ensure
+  puts "The time is up. Bye."
+end

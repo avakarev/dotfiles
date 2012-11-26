@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ruby-progressbar (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ruby-progressbar
