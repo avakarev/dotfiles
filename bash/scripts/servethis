@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'webrick'
+
+log_file = File.open( "#{File.expand_path('~')}/.servethis.log", 'a+' )
+
+server_cfg = {
+  :Port         => 1234,
+  :DocumentRoot => Dir.pwd,
+  # server operations logging
+  :Logger       => WEBrick::Log.new(log_file),
+  # user access logging
+  :AccessLog    => [ [log_file, WEBrick::AccessLog::COMBINED_LOG_FORMAT], ]
+}
+
+puts "Starting server at http://localhost:#{server_cfg[:Port]}"
+server = WEBrick::HTTPServer.new server_cfg
+
+# server.mount_proc '/favicon.ico' do |req, res|
+    # res.status = 404
+# end
+
+['INT', 'TERM'].each do |signal|
+  trap(signal) { server.shutdown }
+end
+
+system "open http://localhost:#{server_cfg[:Port]}"
+server.start
