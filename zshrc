@@ -1,3 +1,5 @@
+# zmodload zsh/zprof # uncoment to profile loading time
+
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.zsh/oh-my-zsh
 
@@ -22,9 +24,13 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.zsh/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git git-flow heroku npm osx redis-cli rvm sublime taskwarrior thor vagrant)
+plugins=(brew gem git git-flow heroku osx redis-cli rvm sublime taskwarrior thor vagrant)
 
 source $ZSH/oh-my-zsh.sh
+
+# Additional completion definitions for zsh
+# fpath=(/usr/local/share/zsh-completions $fpath)
+# fpath=(~/zsh/completions $fpath)
 
 # My custom theme
 source "$HOME/.zsh/avakarev.zsh-theme"
@@ -46,3 +52,5 @@ if [ -f $HOME/.zsh/zsh_nocorrect ]; then
     alias $COMMAND="nocorrect $COMMAND"
   done < $HOME/.zsh/zsh_nocorrect
 fi
+
+# zprof # uncoment to profile loading time
