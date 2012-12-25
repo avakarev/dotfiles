@@ -49,6 +49,8 @@ alias vmore="vim -u $HOME/.vimpagerrc -"
 # Node.js
 alias ndev="NODE_ENV=development node $1"
 alias nprod="NODE_ENV=production node $1"
+alias npmls="npm ls --depth 0 --silent"
+alias npmout="npm outdated --depth 0 --silent"
 
 # Ruby & RoR
 alias rmigrate="rake db:migrate && rake db:test:prepare"
