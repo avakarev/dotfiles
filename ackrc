@@ -1,0 +1,50 @@
+--ignore-dir=rails
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=vendor
+--no-css
+
+# groups the results by file
+--group
+
+# only show one line of output context around the results
+# --context=1
+
+# follow symlinks
+--follow
+
+--color
+
+# sort the files lexically. why?
+# --sort-files
+
+--type-set
+--type-set=haml=.haml
+--type-set=cucumber=.feature
+--type-set=sass=.sass
+--type-add=ruby=.rake,.builder
+
+
+
+--smart-case
+--type-set
+log=.log
+--type-set
+django=.py,.html
+--type-set
+less=.less
+--type-set
+vim=.vim
+--type-set
+fe=.html,.js,.less
+--type-set
+fea=.html,.js,.less,.css
+--ignore-dir=public/media/cache
+--ignore-dir=public/static/cache
+
+--sort-files
+--color
+--context=1
+--follow
+--group
+--all
