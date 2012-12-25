@@ -40,6 +40,7 @@
     bl = branch -av
     tl = tag -l
     co = checkout
+    dw = diff --word-diff --color-words
     df = diff
     dc = diff --cached
     ds = diff --staged
