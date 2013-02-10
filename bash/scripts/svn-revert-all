@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# get list of modified files
+MODIFIED_FILES=`svn status --quiet --ignore-externals | awk '{print $2}'`
+
+# loop through the modified files list and revert each of them
+for FILE in $MODIFIED_FILES; do
+    svn revert $FILE
+done
