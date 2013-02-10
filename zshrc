@@ -29,8 +29,7 @@ plugins=(brew gem git git-flow heroku osx redis-cli rvm sublime taskwarrior thor
 source $ZSH/oh-my-zsh.sh
 
 # Additional completion definitions for zsh
-# fpath=(/usr/local/share/zsh-completions $fpath)
-# fpath=(~/zsh/completions $fpath)
+fpath=(~/zsh/completions/src $fpath)
 
 # My custom theme
 source "$HOME/.zsh/avakarev.zsh-theme"
