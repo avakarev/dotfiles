@@ -4,3 +4,6 @@
 [submodule "bash/scripts/deps/jshint"]
 	path = bash/scripts/deps/jshint
 	url = git://github.com/jshint/jshint.git
+[submodule "zsh/completions"]
+	path = zsh/completions
+	url = git://github.com/zsh-users/zsh-completions.git
