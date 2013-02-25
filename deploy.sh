@@ -158,6 +158,11 @@ case "$1" in
     ;;
 esac
 
+# if there are no bundle names was passed
+if [ -z "$1" ]; then
+    usage
+fi
+
 for name in "$@" ; do
     bundle_name="bundle_${name}"
     bundle=${!bundle_name}
