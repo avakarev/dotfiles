@@ -2,10 +2,11 @@
 
 # http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/
 
-bundle_bash="bash bash_profile bashrc inputrc taskrc"
-bundle_zsh="bash zsh zshrc taskrc"
+bundle_bash="bash bash_profile bashrc inputrc"
+bundle_zsh="bash zsh zshrc"
 bundle_git="gitconfig gitignore-global"
-bundle_ruby="gemrc rdebugrc irbrc rspec siegerc"
+bundle_tools="siegerc taskrc"
+bundle_ruby="gemrc rdebugrc irbrc rspec"
 bundle_js="jshintrc"
 bundle_dev="bash zsh zshrc taskrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
 bundle_all="bash bash_profile bashrc inputrc taskrc bash zsh zshrc gitconfig gitignore-global gemrc rdebugrc irbrc rspec jshintrc"
