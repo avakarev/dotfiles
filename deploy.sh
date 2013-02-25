@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: deploy.sh status
 # http://linuxtidbits.wordpress.com/2008/08/11/output-color-on-bash-scripts/
 
 bundle_bash="bash bash_profile bashrc inputrc taskrc"
