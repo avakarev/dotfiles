@@ -29,10 +29,11 @@ usage(){
       bash deploy.sh [--undo | --status] bundle1, bundle2, ..
 
   Available bundles:
-      bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc taskrc }
-      zsh           :: zsh-related environment ~/.{ bash/ zsh/ zshrc taskrc }
+      bash          :: bash-related environment ~/.{ bash/ bash_profile bashrc inputrc }
+      zsh           :: zsh-related environment ~/.{ bash/ zsh/ zshrc }
       git           :: git custom configuration files ~/.{ gitconfig gitignore-global }
-      ruby          :: ruby dev environment ~/.{ gemrc rdebugrc irbrc rspec }
+      tools         :: configuration files for some tools I use  ~/.{ siegerc taskrc }
+      ruby          :: ruby dev environment ~/.{ gemrc rdebugrc irbrc pryrc rspec }
       js            :: javascript dev evironment ~/.jshintrc
       dev           :: zsh + git + ruby + js
       all           :: bash + zsh + git + ruby + js
