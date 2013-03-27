@@ -57,3 +57,6 @@ alias rmigrate="rake db:migrate && rake db:test:prepare"
 alias rtest="rake cucumber:ok spec"
 
 alias stree="open -a SourceTree ."
+alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias mou="open -a Mou"
+alias vlc="open -a VLC"
