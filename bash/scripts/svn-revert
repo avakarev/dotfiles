@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# revert all changed files
+svn revert -R .
+
+# remove untracked files if "--all" options was passed
+if [[ $1 == "--all" ]]; then
+
+    NOT_TRACKED_FILES=`svn status | grep "^ *?" | sed -e 's/^ *? *//'`
+
+    for file in $NOT_TRACKED_FILES; do
+        rm -rfi $file
+    done
+fi
