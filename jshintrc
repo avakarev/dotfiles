@@ -19,7 +19,7 @@
     "wsh"           : false, // Windows Scripting Host. LOL.
 
     /* Extra globals */
-    "predef"        : [ "$", "jQuery",
+    "predef"        : [ "$", "jQuery", "YUI",
                         "BEM", "BEMHTML", "Perl", "Lang", "MobStatLog", "blocks", "GLOB",
                         "jasmine", "spyOn", "it", "describe", "expect", "beforeEach", "waits", "waitsFor", "runs"
     ],
