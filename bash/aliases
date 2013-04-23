@@ -1,11 +1,17 @@
 # Bash shortcuts
+
 alias less="less -r"
 alias la="ls -lhGAp"
+alias l1="find . -maxdepth 1 -name '[^.]*'"
+# alias l1="la [^.]*"
 alias ls="ls -pG"  # -p list directories with '/'
 alias l="ls -lhGt" # -l long listing, most recent first
                    # -G color
+alias lt='ls -Alhtr'
 # list dotfiles: usage lh [path/to/dir]
 alias lh='fn_lh(){ ls -lAp $1 | awk '\''{print $9" "$10" "$11}'\'' | egrep "^\."; }; fn_lh'
+# Lists the size of all the folders
+alias ldu='du -cks * | sort -rn | head -15'
 
 alias c="clear"
 alias cp="cp -i"
@@ -31,7 +37,8 @@ alias tu="top -o cpu"   # cpu
 alias tm="top -o vsize" # memory
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias sniff="sudo ngrep -d 'en1' -q -t -W 'byline' '^(GET|POST) ' 'tcp and port 80'"
+alias sniffws="sudo ngrep -d 'en1' -q -t -W 'byline' '^(GET|POST) ' 'tcp and port 8091'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Finder
@@ -55,8 +62,21 @@ alias npmout="npm outdated --depth 0 --silent"
 # Ruby & RoR
 alias rmigrate="rake db:migrate && rake db:test:prepare"
 alias rtest="rake cucumber:ok spec"
+alias be="bundle exec"
+alias bi="bundle install"
+# alias rakeb="bundle exec rake"
+# alias rspecb="bundle exec rspec"
+# alias cucumberb="bundle exec cucumber"
 
+alias tree="tree -F -I '.git|.svn|.hg'"
+# tree -I 'test*|docs|bin|lib'
 alias stree="open -a SourceTree ."
+
 alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias mou="open -a Mou"
 alias vlc="open -a VLC"
+# alias vlc-radio="open -a VLC ~/Downloads/MyRadio-ua-61/MyRadio-ua-61.m3u"
+
+# gface grep: usage "gg searchterm"
+alias grep="grep --exclude-dir='.svn' --exclude-dir='.git'"
+alias gg='fn_gg(){ grep -rin $1 webroot/www/gf --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="doc" }; fn_gg'
