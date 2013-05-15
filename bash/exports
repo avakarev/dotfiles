@@ -30,7 +30,7 @@ if [ -d $HOME/.rvm ]; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 elif [ -d $HOME/.rbenv ]; then
   # This enables rbenv
-  export RBENV_VERSION="1.9.3-p392"
+  export RBENV_VERSION="1.9.3-p429"
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
