@@ -8,3 +8,5 @@ export rvm_gem_options="--no-rdoc --no-ri"
 export rvm_ignore_gemsets_flag=1
 # Do not create a gemset when the gemset is used if it does not exist
 export rvm_gemset_create_on_use_flag=0
+# Tell RVM not to attempt to setup my shell to load RVM while installing/updating
+export rvm_ignore_dotfiles=yes
