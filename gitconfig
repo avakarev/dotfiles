@@ -64,6 +64,6 @@
     sp = submodule foreach git pull origin master
     who = shortlog -s --
     what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-    me = log --author=avakarev
+    me = log --stat --author="vakarev"
     rank = !git log --pretty=format:'%aN <%aE>' | sort | uniq -c | sort -rn
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
