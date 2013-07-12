@@ -28,7 +28,7 @@ if [[ ${mode} == "m" || ${mode} == "mu" || ${mode} == "um" ]]; then
     # loop through the changed files list and upload each file
     for FILE in ${CHANGED}; do
         echo "Uploading M ${FILE}"
-        scp "${FILE}" "${GTUP_HOST}:${GTUP_PATH}/${FILE}"
+        scp "${FILE}" "${GTUP_HOST}:${GTUP_PATH}/${FILE}" > /dev/null 2>&1
     done
 fi
 
@@ -39,7 +39,7 @@ if [[ ${mode} == "u" || ${mode} == "mu" || ${mode} == "um" ]]; then
     # loop through the untracked files and upload each of them too
     for FILE in ${UNTRACKED}; do
         echo "Uploading ? "${FILE}
-        scp "${FILE}" "${GTUP_HOST}:${GTUP_PATH}/${FILE}"
+        scp "${FILE}" "${GTUP_HOST}:${GTUP_PATH}/${FILE}" > /dev/null 2>&1
     done
 fi
 
