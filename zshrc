@@ -29,7 +29,7 @@ plugins=(brew gem git git-flow heroku osx redis-cli rvm taskwarrior thor vagrant
 source $ZSH/oh-my-zsh.sh
 
 # Additional completion definitions for zsh
-fpath=(~/zsh/completions/src $fpath)
+# fpath=($HOME/.zsh/completions/src $fpath)
 
 # My custom theme
 source "$HOME/.zsh/avakarev.zsh-theme"
