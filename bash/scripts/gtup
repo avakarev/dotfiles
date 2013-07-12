@@ -11,10 +11,7 @@ fi
 
 conf=${HOME}/.bash/local/$1".cfg"
 
-mode=$2
-if [[ ${mode} == "" ]]; then
-    mode="mu"
-fi
+mode=${2:-m}
 
 # trying read config
 if [ -f ${conf} ]; then
