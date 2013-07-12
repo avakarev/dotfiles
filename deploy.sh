@@ -35,7 +35,7 @@ usage(){
       git           :: git custom configuration files ~/.{ ${bundle_git} }
       tools         :: configuration files for some tools I use ~/.{ ${bundle_tools} }
       ruby          :: ruby dev environment ~/.{ ${bundle_ruby} }
-      js            :: javascript dev evironment ~/.${bundle_js}
+      js            :: javascript dev environment ~/.${bundle_js}
       osx           :: osx environment ~/.${bundle_osx}
       dev           :: zsh + git + ruby + js
       all           :: bash + zsh + git + ruby + js
