@@ -72,7 +72,7 @@ alias tree="tree -F -I '.git|.svn|.hg'"
 # tree -I 'test*|docs|bin|lib'
 alias stree="open -a SourceTree ."
 
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias mou="open -a Mou"
 alias vlc="open -a VLC"
 # alias vlc-radio="open -a VLC ~/Downloads/MyRadio-ua-61/MyRadio-ua-61.m3u"
