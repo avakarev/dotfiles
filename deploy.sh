@@ -8,6 +8,7 @@ bundle_git="gitconfig gitignore-global"
 bundle_tools="siegerc taskrc"
 bundle_ruby="gemrc rvmrc rdebugrc irbrc pryrc rspec"
 bundle_js="jshintrc"
+bundle_osx="iterm2"
 bundle_dev="${bundle_zsh} ${bundle_git} ${bundle_tools} ${bundle_ruby} ${bundle_js}"
 bundle_all="${bundle_bash} ${bundle_dev}"
 
@@ -35,6 +36,7 @@ usage(){
       tools         :: configuration files for some tools I use ~/.{ ${bundle_tools} }
       ruby          :: ruby dev environment ~/.{ ${bundle_ruby} }
       js            :: javascript dev evironment ~/.${bundle_js}
+      osx           :: osx environment ~/.${bundle_osx}
       dev           :: zsh + git + ruby + js
       all           :: bash + zsh + git + ruby + js
   "

@@ -27,6 +27,8 @@ RUBY_BUNDLE := "gemrc" \
 
 JS_BUNDLE := "jshintrc"
 
+OSX_BUNDLE := "iterm2"
+
 # Function to deploy config files. Takes 1 argument: name-of-bundle.
 # It will loop through all bundle items and create symlinks according to.
 # So, existed files and dirs will be overwritten with symlinks.
@@ -97,5 +99,10 @@ ruby:
 js:
 	$(call deploy,$(JS_BUNDLE));
 	@ echo "js bundle installed!";
+
+# Install osx related config files.
+osx:
+	$(call deploy,$(OSX_BUNDLE));
+	@ echo "osx bundle installed!";
 
 .PHONY: all bash zsh vim git ruby js
