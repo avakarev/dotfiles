@@ -5,7 +5,7 @@
 bundle_bash="bash bash_profile bashrc inputrc"
 bundle_zsh="bash zsh zshrc"
 bundle_git="gitconfig gitignore-global"
-bundle_tools="siegerc taskrc"
+bundle_tools="agignore siegerc taskrc"
 bundle_ruby="gemrc rvmrc rdebugrc irbrc pryrc rspec"
 bundle_js="jshintrc"
 bundle_osx="iterm2"
@@ -37,8 +37,8 @@ usage(){
       ruby          :: ruby dev environment ~/.{ ${bundle_ruby} }
       js            :: javascript dev environment ~/.${bundle_js}
       osx           :: osx environment ~/.${bundle_osx}
-      dev           :: zsh + git + ruby + js
-      all           :: bash + zsh + git + ruby + js
+      dev           :: zsh + git + tools + ruby + js
+      all           :: bash + zsh + git + tools + ruby + js
   "
   exit 1
 }
