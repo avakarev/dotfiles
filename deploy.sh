@@ -99,7 +99,7 @@ linkify(){
                     fi
 
                     echo " *${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
-                    ln -Ffs "${this_file_path}" "${that_file_path}"
+                    ln -sfT "${this_file_path}" "${that_file_path}"
                 # user has chosen ignore and to nothing
                 else
                     echo " *${color_yellow}ignoring${color_reset} (your choice): ${that_file_path_tildafied}"
@@ -108,7 +108,7 @@ linkify(){
         # target file/dir does not exsits, create an symlink
         else
             echo " *${color_green}linking${color_reset}: ${that_file_path_tildafied} => ${this_file_path_tildafied}"
-            ln -Ffs "${this_file_path}" "${that_file_path}"
+            ln -sfT "${this_file_path}" "${that_file_path}"
         fi
     # source file/dir does not exist, do nothing
     else
