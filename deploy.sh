@@ -5,7 +5,7 @@
 bundle_bash="bash bash_profile bashrc inputrc"
 bundle_zsh="bash zsh zshrc"
 bundle_git="gitconfig gitignore-global"
-bundle_tools="agignore siegerc taskrc"
+bundle_tools="agignore siegerc taskrc wgetrc"
 bundle_ruby="gemrc rvmrc rdebugrc irbrc pryrc rspec"
 bundle_js="jshintrc"
 bundle_osx="iterm2"
