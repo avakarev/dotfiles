@@ -49,15 +49,15 @@
     dm = diff master
     dmf = diff master --name-status -r
     dms = diff master --stat -r
-    g = grep -ni
-    lp = log -p
+    g = grep --line-number --ignore-case
+    lp = log --patch
     ln = log --name-status
     ls = log --stat --relative-date
     lga = log --graph --decorate --pretty=oneline --abbrev-commit
     gl  = log --color=always --all --graph --topo-order --pretty=\"format: %Cgreen%h%Creset %s%Cred%d%Creset%n\"
     lm = log --color=always --pretty=format:\"%Cgreen%h%Creset - %Cred%an%Creset, %ar: %C(yellow)%s%Creset\" --stat
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    i = remote -v
+    i = remote --verbose
     sl = stash list
     sr = svn rebase
     su = submodule update --init
