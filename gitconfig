@@ -37,7 +37,7 @@
     ca = commit --amend -C HEAD
     uc = reset --soft HEAD^ # retains commit as staged
     br = branch
-    bl = branch -av
+    bl = branch --all --verbose --verbose
     tl = tag -l
     co = checkout
     dw = diff --word-diff --color-words
