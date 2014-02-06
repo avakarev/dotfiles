@@ -1,0 +1,29 @@
+#!/bin/bash
+
+platform=$(uname)
+
+if [[ "$platform" == 'Darwin' ]]; then
+    echo "===> brew outdated"
+    brew up >/dev/null 2>&1
+    brew outdated
+elif [[ "$platform" == 'Linux' ]]; then
+    distro=$(lsb_release -si)
+    case "$distro" in
+    "Ubuntu" | "LinuxMint" | "Debian")
+        echo "===> apt-show-versions"
+        sudo apt-get update && apt-show-versions -u
+        ;;
+    "Fedora")
+        # TODO: yum
+        ;;
+    *)
+        # TODO: echo "Unkown package manager"
+        ;;
+    esac
+fi
+
+echo "===> gem outdated"
+gem outdated
+
+# echo "===> npm outdated"
+# npmout -g
