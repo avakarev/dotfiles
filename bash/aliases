@@ -72,6 +72,7 @@ alias tree="tree -F -I '.git|.svn|.hg'"
 # tree -I 'test*|docs|bin|lib'
 alias stree="open -a SourceTree ."
 
+alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias mou="open -a Mou"
 alias vlc="open -a VLC"
