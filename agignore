@@ -1,4 +1,6 @@
 map-versions.js
 map-versions.json
 doc
+log
 tools/YUI_Doc
+public/vendor
