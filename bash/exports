@@ -18,7 +18,7 @@ export LESS_TERMCAP_md="$ORANGE"
 # Get rid of Vagrant complains about "running outside of the official installers"
 export VAGRANT_INSTALLER_ENV=1
 export RBXOPT=-X19                    # Run Rubinius in 1.9 mode
-export JRUBY_OPTS=--1.9               # Run jRuby in 1.9 mode
+export JRUBY_OPTS=--2.0               # Run jRuby in 2.0 mode
 export JRUBY_OPTS=-Xcext.enabled=true # Enable C extension support
 
 if [ -d $HOME/.nvm ]; then
