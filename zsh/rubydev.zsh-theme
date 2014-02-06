@@ -27,7 +27,7 @@ function ruby_version() {
     fi
 }
 
-local rvm_ruby='‹$(rvm-prompt i v p)›%{$reset_color%}'
+local rvm_ruby='‹$(ruby_version)›%{$reset_color%}'
 local current_dir='${PWD/#$HOME/~}'
 local git_info='$(git_prompt_info)'
 local datetime='$(current_datetime)'
