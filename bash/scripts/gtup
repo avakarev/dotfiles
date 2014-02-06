@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # script for uploading changed files to remote host via scp
+# todo: log all updates and on next update upload only files that changed from last upload
+# todo: try to figure out project folder name (where .git is) and find config name with that name
 
 # passing config is nessesary for proper gtup work
 if [[ $1 == "" ]]; then
