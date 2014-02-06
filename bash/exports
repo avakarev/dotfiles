@@ -7,6 +7,7 @@ export GREP_OPTIONS='--color=auto'
 export NODE_PATH=/usr/local/lib/node_modules
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
+PATH=$PATH:$HOME/Development/android/android-sdk_r22.3-macosx/platform-tools
 export PATH
 
 # Don’t clear the screen after quitting a manual page
