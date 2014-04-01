@@ -9,7 +9,7 @@
 [merge]
     tool = vimdiff
 [push]
-    default = current
+    default = simple
 [master]
     autosetuprebase = always
 [color]
