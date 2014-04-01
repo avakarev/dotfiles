@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'net/http'
+require 'open3'
+
+def version_list(tags)
+  tags.split("\n").map do |tag|
+    ver = tag.split("\t").last
+    ver.gsub!(/^refs\/tags\//, '')
+    ver.gsub!(/\^\{\}$/, '')
+    ver.gsub!(/^v/, '')
+    ver
+  end.compact.select { |v| !/[[:digit:]]/.match(v[1]) }
+end
+
+def latest_ver(tags, allow_prerelease)
+  versions = version_list(tags).sort_by do |v|
+    v.split('.').map { |s| s.to_i }
+  end
+  versions.reverse.each do |ver|
+    next if !allow_prerelease && ver =~ /alpha|beta/
+    return ver unless !allow_prerelease && Gem::Version.new(ver).prerelease?
+  end
+end
+
+unless File.exists?('package.json')
+  puts 'package.json not found'
+  exit 1
+end
+
+pkg = JSON.parse( File.read('package.json') )
+
+node_deps = (pkg['dependencies'] || {}).merge( pkg['devDependencies'] || {} )
+puts "==> nodejs modules status"
+threads = node_deps.map do |dep, version|
+  Thread.new(dep, version) do |_dep, _version|
+    latest = JSON.parse( Net::HTTP.get('registry.npmjs.org', "/#{_dep}/latest") )
+    outdated = Gem::Version.new(latest['version']) > Gem::Version.new(_version)
+    state = outdated ? "\033[31moutdated\033[0m" : "\033[32mup-to-date\033[0m"
+    puts "#{_dep}: #{state}. current => #{_version}, latest => #{latest['version']}"
+  end
+end
+threads.each {|thr|  thr.join }
+
+client_deps = (pkg['clientDependencies'] || {})
+puts "==> client deps status"
+threads = client_deps.map do |dep, version|
+  Thread.new(dep, version) do |_dep, _version|
+    cmd = "git ls-remote --tags git://github.com/#{_dep}.git"
+    response = `#{cmd}`
+    allow_prerelease = _version =~ /alpha|beta/
+    latest = latest_ver(response, allow_prerelease)
+    outdated = Gem::Version.new(latest) > Gem::Version.new(_version)
+    state = outdated ? "\033[31moutdated\033[0m" : "\033[32mup-to-date\033[0m"
+    puts "#{_dep}: #{state}. current => #{_version}, latest => #{latest}"
+  end
+end
+threads.each {|thr|  thr.join }
