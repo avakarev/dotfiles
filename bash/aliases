@@ -22,6 +22,7 @@ alias h="history"
 alias md="mkdir -p"
 alias up="source ~/.bash_profile"
 alias tmux="TERM=screen-256color-bce tmux"
+alias ag="ag --ignore-case"
 
 function cdh() {
     cd "$HOME/$1"
