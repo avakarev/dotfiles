@@ -1,7 +1,7 @@
 # --date = (relative|local|default|iso|rfc|short|raw)
 
 [user]
-    name = Andrey Vakarev
+    name = Andrii Vakarev
     email = avakarev@gmail.com
 [core]
     editor = vim -u NONE
