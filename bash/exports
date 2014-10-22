@@ -37,6 +37,7 @@ elif [ -d $HOME/.rbenv ]; then
   export RBENV_VERSION="2.0.0-p247"
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
-elif [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
+elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
 fi
