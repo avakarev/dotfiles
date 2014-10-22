@@ -20,10 +20,10 @@ function host_name {
 function ruby_version() {
     if which rvm-prompt &> /dev/null; then
       rvm-prompt i v p
-    else
-      if which rbenv &> /dev/null; then
-        rbenv version | sed -e "s/ (set.*$//"
-      fi
+    elif which rbenv &> /dev/null; then
+      rbenv version | sed -e "s/ (set.*$//"
+    elif [[ $(chruby | grep -c \*) -eq 1 ]]; then
+      chruby | grep \* | tr -d '* '
     fi
 }
 
