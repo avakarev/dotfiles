@@ -32,12 +32,8 @@ fi
 if [ -d $HOME/.rvm ]; then
   # Load RVM into a shell session *as a function*
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-elif [ -d $HOME/.rbenv ]; then
-  # This enables rbenv
-  export RBENV_VERSION="2.0.0-p247"
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
 elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
+  # source /usr/local/share/chruby/auto.sh
+  [[ -s "$HOME/.ruby-version" ]] && chruby $(cat ~/.ruby-version)
 fi
