@@ -9,10 +9,8 @@ class AppleScript
 
   APP_ID = 'com.qvacua.VimR'
 
-  OSA_START = "tell application id \"#{ APP_ID }\""
-  OSA_END = 'end tell'
-
-  INDENTAION = /^\s+\|/
+  SCRIPT_START = %(tell application id "#{ APP_ID }")
+  SCRIPT_END = 'end tell'
 
   SCRIPT_TEMPLATES = {
     :new_window => %(
@@ -38,7 +36,7 @@ class AppleScript
   }
 
   def self.cmd(name, options = {})
-    script = strip(OSA_START + SCRIPT_TEMPLATES[name] + OSA_END)
+    script = strip(SCRIPT_START + SCRIPT_TEMPLATES[name] + SCRIPT_END)
     options.each { |opt_name, opt| script.gsub!(/##{opt_name.upcase}/, opt) }
     script
   end
