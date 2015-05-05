@@ -29,8 +29,8 @@ function cdh() {
 }
 
 function servethis() {
-    open "http://localhost:8080/"
-    python -m SimpleHTTPServer ${1:-8080}
+    open "http://localhost:${1:-8080}/"
+    ruby -run -ehttpd . -p ${1:-8080}
 }
 
 # Processes
