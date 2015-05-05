@@ -4,14 +4,9 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 export SVN_EDITOR='vim'
 export GREP_OPTIONS='--color=auto'
-export NODE_PATH=/usr/local/lib/node_modules
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
 export PATH
-
-# ANDROID_BASE_DIR=$HOME/Development/android/android-sdk_r22.3-macosx
-# PATH=$PATH:$ANDROID_BASE_DIR/platform-tools:$ANDROID_BASE_DIR/tools
-# export PATH
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -21,19 +16,20 @@ export LESS_TERMCAP_md="$ORANGE"
 
 # Get rid of Vagrant complains about "running outside of the official installers"
 export VAGRANT_INSTALLER_ENV=1
-export RBXOPT=-X19                    # Run Rubinius in 1.9 mode
-export JRUBY_OPTS=--2.0               # Run jRuby in 2.0 mode
-export JRUBY_OPTS=-Xcext.enabled=true # Enable C extension support
 
+export NODE_PATH=/usr/local/lib/node_modules
 if [ -d $HOME/.nvm ]; then
     source ~/.nvm/nvm.sh
 fi
 
-if [ -d $HOME/.rvm ]; then
-  # Load RVM into a shell session *as a function*
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
   # source /usr/local/share/chruby/auto.sh
   [[ -s "$HOME/.ruby-version" ]] && chruby $(cat ~/.ruby-version)
+elif [ -d $HOME/.rvm ]; then
+  # Load RVM into a shell session *as a function*
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fi
