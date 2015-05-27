@@ -8459,7 +8459,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Development/my/railstut/tmp/iTerm2-Color-Schemes/schemes</string>
+	<string>~/Development/env/dotfiles/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -8479,42 +8479,31 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>319</string>
+		<string>302</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSToolbar Configuration Terminal Toolbar</key>
+	<dict>
+		<key>TB Display Mode</key>
+		<integer>2</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<integer>0</integer>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
+	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>197 215 924 485 0 0 1280 778 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>448 487 384 129 0 0 1280 778 </string>
+	<string>121 223 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>98 980 1276 758 -332 800 1920 1058 </string>
+	<string>96 95 972 525 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 10</key>
-	<string>308 241 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 11</key>
-	<string>308 218 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 12</key>
-	<string>308 195 972 503 0 0 1280 778 </string>
+	<string>27 150 1180 525 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>194 57 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
-	<string>194 4 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 4</key>
-	<string>215 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 5</key>
-	<string>236 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 6</key>
-	<string>257 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 7</key>
-	<string>278 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 8</key>
-	<string>299 275 972 503 0 0 1280 778 </string>
-	<key>NSWindow Frame iTerm Window 9</key>
-	<string>308 264 972 503 0 0 1280 778 </string>
+	<string>0 237 972 525 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -9303,7 +9292,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>~/.iterm2/</string>
+	<string>~/Development/env/dotfiles/iterm2</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -9319,7 +9308,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-01-18T01:47:06Z</date>
+	<date>2015-05-27T13:24:12Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -9357,6 +9346,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140112</string>
+	<string>2.0.0.20141103</string>
 </dict>
 </plist>
