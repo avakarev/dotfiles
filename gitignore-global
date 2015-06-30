@@ -3,3 +3,4 @@
 .svn
 .idea
 .sass-cache
+bower_components/**
