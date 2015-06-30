@@ -53,6 +53,7 @@ alias clean="find . -name *.DS_Store -type f -exec rm {} \;"
 alias vi="vim"
 alias view="vim -u $HOME/.vimpagerrc"
 alias vmore="vim -u $HOME/.vimpagerrc -"
+alias vimr="open -a vimr"
 
 # Node.js
 alias ndev="NODE_ENV=development node $1"
