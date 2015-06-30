@@ -4,3 +4,5 @@ doc
 log
 tools/YUI_Doc
 public/vendor
+bower_components
+node_modules
