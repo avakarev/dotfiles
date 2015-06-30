@@ -38,7 +38,7 @@
     uc = reset --soft HEAD^ # retains commit as staged
     br = branch
     bl = branch --all --verbose --verbose
-    tl = tag -l
+    tl = tag --list --sort version:refname
     co = checkout
     mm = merge master
     dw = diff --word-diff --color-words
