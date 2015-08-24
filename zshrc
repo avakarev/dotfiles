@@ -33,7 +33,9 @@ source $ZSH/oh-my-zsh.sh
 
 # My custom theme
 # source "$HOME/.zsh/avakarev.zsh-theme"
-source "$HOME/.zsh/rubydev.zsh-theme"
+if [ "$TERM" != "dumb" ]; then # not a MacVim
+    source "$HOME/.zsh/rubydev.zsh-theme"
+fi
 
 # Apply exports.
 if [ -e $HOME/.bash/exports ]; then
