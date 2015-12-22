@@ -74,6 +74,9 @@ alias rt="rake -T"
 # alias rspecb="bundle exec rspec"
 # alias cucumberb="bundle exec cucumber"
 
+# Elixir & Erlang
+alias iex="rlwrap -a -A iex"
+
 alias tree="tree -F -I '.git|.svn|.hg'"
 # tree -I 'test*|docs|bin|lib'
 alias stree="open -a SourceTree ."
