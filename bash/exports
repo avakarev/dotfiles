@@ -19,7 +19,8 @@ export VAGRANT_INSTALLER_ENV=1
 
 export NODE_PATH=/usr/local/lib/node_modules
 if [ -d $HOME/.nvm ]; then
-    source ~/.nvm/nvm.sh
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 fi
 
 export GOPATH=$HOME/.go
