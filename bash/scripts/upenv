@@ -6,6 +6,8 @@ if [[ "$platform" == 'Darwin' ]]; then
     echo "===> brew outdated"
     brew up >/dev/null 2>&1
     brew outdated
+    echo "===> brew-cask-outdated"
+    brew-cask-outdated
 elif [[ "$platform" == 'Linux' ]]; then
     distro=$(lsb_release -si)
     case "$distro" in
