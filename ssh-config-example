@@ -1,0 +1,9 @@
+Host raspi
+    HostName 192.168.1.168
+    User raspi
+    IdentityFile ~/.ssh/raspberry-pi
+    ForwardAgent yes
+
+Host github
+    HostName github.com
+    IdentityFile ~/.ssh/github
