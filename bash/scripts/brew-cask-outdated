@@ -17,6 +17,8 @@ ENV['HOMEBREW_REPOSITORY'] = '/usr/local'
 ENV['HOMEBREW_LIBRARY'] = '/usr/local/Library'
 ENV['HOMEBREW_CELLAR'] = '/usr/local/Cellar'
 ENV['HOMEBREW_BREW_FILE'] = '/usr/local/bin/brew'
+ENV['HOMEBREW_OSX_VERSION'] = `/usr/bin/sw_vers -productVersion`.chomp
+ENV['HOMEBREW_OS_VERSION'] = "Mac OS X #{ENV['HOMEBREW_OSX_VERSION']}"
 
 $LOAD_PATH.unshift File.join(prefix, 'Library', 'Homebrew')
 require 'global'
