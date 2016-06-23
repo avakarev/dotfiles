@@ -17,12 +17,6 @@ export LESS_TERMCAP_md="$ORANGE"
 # Get rid of Vagrant complains about "running outside of the official installers"
 export VAGRANT_INSTALLER_ENV=1
 
-export NODE_PATH=/usr/local/lib/node_modules
-if [ -d $HOME/.nvm ]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-fi
-
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
@@ -37,4 +31,13 @@ elif [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
 elif [ -d $HOME/.rvm ]; then
   # Load RVM into a shell session *as a function*
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
+
+if [ -d $HOME/.nvm ]; then
+    export NVM_DIR="$HOME/.nvm"
+    if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+        source "$NVM_DIR/nvm.sh"
+    else
+        source "$(brew --prefix nvm)/nvm.sh"
+    fi
 fi
