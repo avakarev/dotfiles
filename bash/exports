@@ -17,6 +17,9 @@ export LESS_TERMCAP_md="$ORANGE"
 # Get rid of Vagrant complains about "running outside of the official installers"
 export VAGRANT_INSTALLER_ENV=1
 
+# Disable Rails' Spring
+export DISABLE_SPRING=1
+
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
