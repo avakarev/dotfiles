@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+CASK_DIR = '/usr/local/Caskroom'
+
+folders = Dir.glob(File.join(CASK_DIR, '*')).
+  map { |app| Dir.glob(File.join(app, '*')) }.
+  select { |dirs| dirs.count > 1 }
+
+puts folders
