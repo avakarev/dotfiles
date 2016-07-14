@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'pathname'
 require 'osx/plist'
 require 'semver'
 
@@ -12,6 +13,7 @@ unless $?.success?
   exit $?.exitstatus
 end
 
+ENV['HOMEBREW_CACHE'] = Pathname.new('~/Library/Caches/Homebrew').expand_path.to_s
 ENV['HOMEBREW_PREFIX'] = '/usr/local'
 ENV['HOMEBREW_REPOSITORY'] = '/usr/local'
 ENV['HOMEBREW_LIBRARY'] = '/usr/local/Library'
