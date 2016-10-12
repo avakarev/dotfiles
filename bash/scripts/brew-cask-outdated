@@ -6,54 +6,58 @@ require 'semver'
 
 $VERBOSE = nil
 
-prefix = `brew --prefix 2>&1`.chomp
-unless $?.success?
-  msg = prefix.tr('sh:', '').strip if prefix.start_with?('sh:')
-  puts msg || 'Homebrew not found or does not operate as expected. See http://brew.sh/'
-  exit $?.exitstatus
-end
-
-ENV['HOMEBREW_CACHE'] = Pathname.new('~/Library/Caches/Homebrew').expand_path.to_s
-ENV['HOMEBREW_PREFIX'] = '/usr/local'
-ENV['HOMEBREW_REPOSITORY'] = '/usr/local'
-ENV['HOMEBREW_LIBRARY'] = '/usr/local/Library'
-ENV['HOMEBREW_CELLAR'] = '/usr/local/Cellar'
-ENV['HOMEBREW_BREW_FILE'] = '/usr/local/bin/brew'
+ENV['HOMEBREW_CACHE'] = `brew --cache 2>&1`.chomp
+ENV['HOMEBREW_PREFIX'] = `brew --prefix 2>&1`.chomp
+ENV['HOMEBREW_REPOSITORY'] = `brew --repository 2>&1`.chomp
+ENV['HOMEBREW_LIBRARY'] = File.join(ENV['HOMEBREW_REPOSITORY'], 'Library')
+ENV['HOMEBREW_CELLAR'] = `brew --cellar 2>&1`.chomp
+ENV['HOMEBREW_BREW_FILE'] = File.join(ENV['HOMEBREW_REPOSITORY'], 'Library', 'Homebrew', 'brew.sh')
 ENV['HOMEBREW_OSX_VERSION'] = `/usr/bin/sw_vers -productVersion`.chomp
 ENV['HOMEBREW_OS_VERSION'] = "Mac OS X #{ENV['HOMEBREW_OSX_VERSION']}"
 
-$LOAD_PATH.unshift File.join(prefix, 'Library', 'Homebrew')
+$LOAD_PATH.unshift File.join(ENV['HOMEBREW_REPOSITORY'], 'Library', 'Homebrew')
 require 'global'
-require 'cmd/tap'
+require 'tap'
 
 cask_tap = Tap.names.find { |tap| tap =~ /cask/ }
 unless cask_tap
   abort('It seems cask is not isntalled yet. Please, see http://caskroom.io')
 end
-github_user, github_repo = cask_tap.split('/')
 
-$LOAD_PATH.unshift File.join(prefix, 'Library', 'Taps', github_user, "homebrew-#{github_repo}", 'lib')
+$LOAD_PATH.unshift File.join($LOAD_PATH.first, 'cask', 'lib')
 require 'hbc'
 
 def plist_path(cask)
-  app_dirs = Dir.glob(File.join(cask.caskroom_path, '*'))
+  cask_app_dir = Dir.glob(File.join(cask.caskroom_path, '*'))
     .reject { |dir| dir == cask.metadata_master_container_path }
-  file = File.join(app_dirs.sort.last, app_name(cask).to_s, 'Contents', 'Info.plist')
-  file if File.exist?(file)
+    .first
+
+  [cask_app_dir, '/Applications', '~/Applications']
+    .map { |dir| File.join(dir, app_name(cask), 'Contents', 'Info.plist') }
+    .detect { |file| File.exist?(file) }
 end
 
 def app_name(cask)
-  cask.artifacts[:app].first.first unless cask.artifacts[:app].empty?
+  cask.artifacts[:app].to_a&.[](0)&.[](0).to_s
 end
 
 def current_version(file)
   return '?' unless File.exist?(file.to_s)
   plist_hash = OSX::PropertyList.load_file(file)
-  plist_hash['CFBundleShortVersionString']
+  [
+    plist_hash['CFBundleShortVersionString'],
+    [
+      plist_hash['CFBundleShortVersionString'],
+      plist_hash['CFBundleVersion']
+    ].compact.join('.')
+  ]
 end
 
 def latest_version(cask)
-  cask.version.to_s
+  version = cask.version
+  return version if version == 'latest'
+  return '?' if version.nil?
+  version
     .split('.')
     .map { |num| num[/\d+/] }
     .compact
@@ -61,6 +65,9 @@ def latest_version(cask)
 end
 
 Hbc.installed.each do |cask|
-  next if cask.installed?
-  puts "#{cask} (#{current_version(plist_path(cask))} < #{latest_version(cask)})"
+  next unless cask.installed?
+  current_short, current_full = current_version(plist_path(cask))
+  latest = latest_version(cask)
+  next if current_short == latest || current_full == latest
+  puts "#{cask} (#{current_short} < #{latest})"
 end
