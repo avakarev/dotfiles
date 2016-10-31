@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.zsh/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew brew-cask gem git git-flow heroku osx redis-cli rvm taskwarrior thor vagrant)
+plugins=(gem git git-flow heroku osx redis-cli rvm taskwarrior thor vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
