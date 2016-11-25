@@ -49,3 +49,6 @@ export SDKMAN_DIR=$HOME/.sdkman
 if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
     source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
+
+# Disable Homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
