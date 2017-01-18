@@ -33,8 +33,12 @@ def plist_path(cask)
     .first
 
   [cask_app_dir, '/Applications', '~/Applications']
-    .map { |dir| File.join(dir, app_name(cask), 'Contents', 'Info.plist') }
+    .map { |dir| plist(dir, cask) }
     .detect { |file| File.exist?(file) }
+end
+
+def plist(dir, cask)
+  File.join(dir, app_name(cask), 'Contents', 'Info.plist')
 end
 
 def app_name(cask)
