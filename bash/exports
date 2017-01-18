@@ -20,8 +20,7 @@ export VAGRANT_INSTALLER_ENV=1
 # Disable Rails' Spring
 export DISABLE_SPRING=1
 
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/Development/gowrkspace
 
 if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
