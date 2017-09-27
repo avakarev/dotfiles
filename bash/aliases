@@ -42,13 +42,6 @@ alias sniff="sudo ngrep -d 'en1' -q -t -W 'byline' '^(GET|POST) ' 'tcp and port 
 alias sniffws="sudo ngrep -d 'en1' -q -t -W 'byline' '^(GET|POST) ' 'tcp and port 8091'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-# Finder
-alias o="open . &"
-alias ff="open -a Firefox"
-
-# Recursively Remove .DS_Store files in OS X
-alias clean="find . -name *.DS_Store -type f -exec rm {} \;"
-
 # Vim
 alias vi="vim"
 alias view="vim -u $HOME/.vimpagerrc"
