@@ -1,9 +1,16 @@
 #!/usr/bin/env ruby
 
 CASK_DIR = '/usr/local/Caskroom'
+BREW_DIR = '/usr/local/Cellar'
 
-folders = Dir.glob(File.join(CASK_DIR, '*')).
-  map { |app| Dir.glob(File.join(app, '*')) }.
-  select { |dirs| dirs.count > 1 }
+def find_versions(root_dir)
+  Dir.glob(File.join(root_dir, '*'))
+    .map { |app| Dir.glob(File.join(app, '*')).sort }
+    .select { |dirs| dirs.count > 1 }
+end
 
-puts folders
+
+puts '==== BREW ==========='
+puts find_versions(BREW_DIR)
+puts '==== CASK ==========='
+puts find_versions(CASK_DIR)
