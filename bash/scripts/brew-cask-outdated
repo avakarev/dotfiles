@@ -42,7 +42,7 @@ def plist(dir, cask)
 end
 
 def app_name(cask)
-  cask.artifacts[:app].to_a&.[](0)&.[](0).to_s
+  cask.artifacts[:app]&.first&.target&.basename.to_s
 end
 
 def current_version(file)
