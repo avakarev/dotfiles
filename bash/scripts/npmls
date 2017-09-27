@@ -3,7 +3,9 @@
 require 'json'
 
 pkg = JSON.parse( File.read('package.json') )
-deps = pkg['dependencies'].merge( pkg['devDependencies'] )
+deps = pkg
+  .fetch('dependencies', {})
+  .merge(pkg.fetch('devDependencies', {}))
 
 deps.each do |dep, version|
   puts "#{dep}: #{version}"
