@@ -33,7 +33,11 @@ pkg = JSON.parse( File.read('package.json') )
 
 node_deps = (pkg['dependencies'] || {}).merge( pkg['devDependencies'] || {} )
 puts "==> nodejs modules status"
-threads = node_deps.map do |dep, version|
+threads = node_deps
+  .reject do |dep, version|
+    version.start_with?('file:')
+  end
+  .map do |dep, version|
   Thread.new(dep, version) do |_dep, _version|
     latest = JSON.parse( Net::HTTP.get('registry.npmjs.org', "/#{_dep}/latest") )
     outdated = Gem::Version.new(latest['version']) > Gem::Version.new(_version)
