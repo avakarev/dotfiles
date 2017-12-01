@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.zsh/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gem git git-flow heroku mix osx redis-cli rvm taskwarrior thor vagrant)
+plugins=(aws docker git git-flow mix node nvm osx pip python redis-cli yarn)
 
 source $ZSH/oh-my-zsh.sh
 
