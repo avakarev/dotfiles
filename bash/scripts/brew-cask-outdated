@@ -42,7 +42,8 @@ def plist(dir, cask)
 end
 
 def app_name(cask)
-  cask.artifacts[:app]&.first&.target&.basename.to_s
+  app_artefact = cask.artifacts.find { |af| af.class.name.end_with?('::App') }
+  app_artefact&.target&.basename.to_s
 end
 
 def current_version(file)
