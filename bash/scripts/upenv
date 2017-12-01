@@ -1,18 +1,24 @@
 #!/bin/bash
 
+NC='\033[0m' # No Color
+BLUE='\033[0;34m'
+LIGHT_BLUE='\033[1;34m'
+
 platform=$(uname)
 
 if [[ "$platform" == 'Darwin' ]]; then
-    echo "===> brew outdated"
+    printf "===> ${BLUE}brew${NC} outdated\n"
     brew up >/dev/null 2>&1
     brew outdated
-    echo "===> brew-cask-outdated"
+    printf "===> brew ${BLUE}cask${NC} outdated\n"
+    brew cask outdated
+    printf "===> ${BLUE}brew-cask-outdated${NC}\n"
     brew-cask-outdated
 elif [[ "$platform" == 'Linux' ]]; then
     distro=$(lsb_release -si)
     case "$distro" in
     "Ubuntu" | "LinuxMint" | "Debian")
-        echo "===> apt-show-versions"
+        printf "===> ${BLUE}apt-show-versions${NC}\n"
         sudo apt-get update && apt-show-versions -u
         ;;
     "Fedora")
@@ -24,11 +30,11 @@ elif [[ "$platform" == 'Linux' ]]; then
     esac
 fi
 
-echo "===> gem outdated"
+printf "===> ${BLUE}gem${NC} outdated\n"
 gem outdated
 
-echo "===> pip outdated"
+printf "===> ${BLUE}pip${NC} outdated\n"
 pip list --outdated
 
-echo "===> npm outdated"
-npmout -g
+printf "===> ${BLUE}npm${NC} outdated --global\n"
+npm outdated --global
