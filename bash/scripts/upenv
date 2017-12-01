@@ -27,5 +27,5 @@ fi
 echo "===> gem outdated"
 gem outdated
 
-# echo "===> npm outdated"
-# npmout -g
+echo "===> npm outdated"
+npmout -g
