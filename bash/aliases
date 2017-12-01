@@ -34,7 +34,7 @@ function servethis() {
 }
 
 function ff() {
-    find . -name "${1}"\
+    find . -iname "${1}"\
         -not -path "./.git/*"\
         -not -path "./tmp/*"\
         -not -path "./node_modules/*"\
