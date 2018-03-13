@@ -88,10 +88,6 @@ alias mou="open -a Mou"
 alias vlc="open -a VLC"
 # alias vlc-radio="open -a VLC ~/Downloads/MyRadio-ua-61/MyRadio-ua-61.m3u"
 
-# gface grep: usage "gg searchterm"
-alias grep="grep --exclude-dir='.svn' --exclude-dir='.git'"
-alias gg='fn_gg(){ grep -rin $1 webroot/www/gf --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="doc" }; fn_gg'
-
 # python
 alias py="python"
 alias ipy="ipython"
