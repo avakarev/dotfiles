@@ -91,3 +91,8 @@ alias vlc="open -a VLC"
 # gface grep: usage "gg searchterm"
 alias grep="grep --exclude-dir='.svn' --exclude-dir='.git'"
 alias gg='fn_gg(){ grep -rin $1 webroot/www/gf --exclude-dir=".svn" --exclude-dir=".git" --exclude-dir="doc" }; fn_gg'
+
+# python
+alias py="python"
+alias ipy="ipython"
+alias autopep8="autopep8 --in-place --aggressive --aggressive"
