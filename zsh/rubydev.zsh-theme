@@ -34,7 +34,7 @@ local current_dir='${PWD/#$HOME/~}'
 local git_info='$(git_prompt_info)'
 local datetime='$(current_datetime)'
 
-
+# print all colors with `spectrum_ls`
 RPROMPT="%{$FG[238]%}using %{$FG[244]%}${rvm_ruby} ${git_info}"
 PROMPT="%{$FG[244]%}╭─%{$FG[146]%}%n%{$reset_color%} %{$FG[238]%}at%{$reset_color%} %{$FG[110]%}$(host_name)%{$reset_color%} %{$FG[238]%}in%{$reset_color%} %{$FG[244]%}[${current_dir}]%{$reset_color%} %{$FG[238]%}${datetime}%{$reset_color%}
 %{$FG[244]%}╰─%{$FG[244]%}$(prompt_char) %{$reset_color%}"

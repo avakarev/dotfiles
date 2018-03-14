@@ -1,7 +1,7 @@
 # That's how to replace current shell with zsh
 # chsh -s $(which zsh)
 
-# colors
+# print all colors with `spectrum_ls`
 local cl_blue="%{$fg[blue]%}"
 local cl_cyan="%{$fg[cyan]%}"
 local cl_grey="%{$fg[grey]%}"
