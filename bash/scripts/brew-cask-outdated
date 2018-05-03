@@ -69,7 +69,7 @@ def latest_version(cask)
     .join('.')
 end
 
-Hbc.installed.each do |cask|
+Hbc::Caskroom.casks.each do |cask|
   next unless cask.installed?
   current_short, current_full = current_version(plist_path(cask))
   latest = latest_version(cask)
