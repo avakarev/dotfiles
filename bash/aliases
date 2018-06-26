@@ -60,7 +60,6 @@ alias vimr="open -a vimr"
 alias jest="node_modules/jest/bin/jest.js"
 alias babel="node_modules/babel-cli/bin/babel-node.js"
 alias eslint="node_modules/eslint/bin/eslint.js --ignore-path .gitignore"
-alias ember="node_modules/ember-cli/bin/ember"
 
 # Ruby & RoR
 alias rmigrate="rake db:migrate && rake db:test:prepare"
