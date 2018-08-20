@@ -14,9 +14,6 @@ export MANPAGER="less -X"
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
-# Disable Rails' Spring
-export DISABLE_SPRING=1
-
 if [ -d $HOME/.mix/escripts ]; then
   PATH=$PATH:$HOME/.mix/escripts
   export PATH
