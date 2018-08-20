@@ -22,8 +22,6 @@ fi
 # Enable shell history in iex session
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export GOPATH=$HOME/Development/gowrkspace
-
 if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
   # source /usr/local/share/chruby/auto.sh
