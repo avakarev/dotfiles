@@ -16,8 +16,8 @@ ENV['HOMEBREW_OSX_VERSION'] = `/usr/bin/sw_vers -productVersion`.chomp
 ENV['HOMEBREW_OS_VERSION'] = "Mac OS X #{ENV['HOMEBREW_OSX_VERSION']}"
 
 $LOAD_PATH.unshift File.join(ENV['HOMEBREW_REPOSITORY'], 'Library', 'Homebrew')
+$LOAD_PATH.unshift File.join(ENV['HOMEBREW_REPOSITORY'], 'Library', 'Homebrew', 'cask', 'lib')
 require 'global'
-require 'tap'
 
 cask_tap = Tap.names.find { |tap| tap =~ /cask/ }
 unless cask_tap
