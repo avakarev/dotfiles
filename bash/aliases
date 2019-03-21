@@ -102,5 +102,5 @@ alias ipy="ipython"
 alias autopep8="autopep8 --in-place --aggressive --aggressive"
 
 # youtube-dl
-alias youtube-dl-mp3="youtube-dl --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3"
+alias youtube-dl-mp3="youtube-dl --output \"%(title)s.%(ext)s\" --extract-audio --audio-format mp3"
 alias youtube-dl-mp4="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
