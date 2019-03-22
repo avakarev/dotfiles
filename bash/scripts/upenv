@@ -12,8 +12,8 @@ if [[ "$platform" == 'Darwin' ]]; then
     brew outdated
     printf "===> brew ${BLUE}cask${NC} outdated\n"
     brew cask outdated
-    printf "===> ${BLUE}brew-cask-outdated${NC}\n"
-    brew-cask-outdated
+    # printf "===> ${BLUE}brew-cask-outdated${NC}\n"
+    # brew-cask-outdated
 elif [[ "$platform" == 'Linux' ]]; then
     distro=$(lsb_release -si)
     case "$distro" in
