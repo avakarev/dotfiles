@@ -1,22 +1,28 @@
 # That's how to replace current shell with zsh
 # chsh -s $(which zsh)
 
-# print all colors with `spectrum_ls`
-local cl_blue="%{$fg[blue]%}"
-local cl_cyan="%{$fg[cyan]%}"
-local cl_grey="%{$fg[grey]%}"
-local cl_yellow="%{$fg[yellow]%}"
-local cl_red="%{$fg[red]%}"
-local cl_green="%{$fg[green]%}"
-local cl_reset="%{$reset_color%}"
+function current_datetime {
+    date "+%d %b %H:%M:%S"
+}
 
+function prompt_char {
+    echo '○ $:>'
+}
 
 function host_name {
     [ -f ~/.host-name ] && cat ~/.host-name || hostname -s
 }
 
-local path_p="${cl_cyan}[%~% ]${cl_reset}"               # ~/current/path
-local host_p="${cl_blue} @$(host_name) %{$reset_color%}" # @host
+local current_dir='${PWD/#$HOME/~}'
+local git_info='$(git_prompt_info)'
+local datetime='$(current_datetime)'
 
-PROMPT="${path_p}${host_p}
-$:> "
+# print all colors with `spectrum_ls`
+RPROMPT="${git_info}"
+PROMPT="%{$FG[244]%}╭─%{$FG[146]%}%n%{$reset_color%} %{$FG[238]%}at%{$reset_color%} %{$FG[110]%}$(host_name)%{$reset_color%} %{$FG[238]%}in%{$reset_color%} %{$FG[244]%}[${current_dir}]%{$reset_color%} %{$FG[238]%}${datetime}%{$reset_color%}
+%{$FG[244]%}╰─%{$FG[244]%}$(prompt_char) %{$reset_color%}"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[238]%}on%{$reset_color%} %{$FG[244]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[202]%}✘✘✘"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[040]%}✔"

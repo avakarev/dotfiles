@@ -32,9 +32,8 @@ source $ZSH/oh-my-zsh.sh
 # fpath=($HOME/.zsh/completions/src $fpath)
 
 # My custom theme
-# source "$HOME/.zsh/avakarev.zsh-theme"
 if [ "$TERM" != "dumb" ]; then # not a MacVim
-    source "$HOME/.zsh/rubydev.zsh-theme"
+    source "$HOME/.zsh/avakarev.zsh-theme"
 fi
 
 # Apply exports.
