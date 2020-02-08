@@ -3,7 +3,6 @@ export LANG=en_US.UTF-8
 
 export EDITOR='vim'
 export SVN_EDITOR='vim'
-export GREP_OPTIONS='--color=auto'
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.bash/scripts
 export PATH
