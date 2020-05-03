@@ -30,11 +30,11 @@ elif [[ "$platform" == 'Linux' ]]; then
     esac
 fi
 
-printf "===> ${BLUE}gem${NC} outdated\n"
-gem outdated
+# printf "===> ${BLUE}gem${NC} outdated\n"
+# gem outdated
 
-printf "===> ${BLUE}pip${NC} outdated\n"
-pip list --outdated
+# printf "===> ${BLUE}pip${NC} outdated\n"
+# pip list --outdated
 
-printf "===> ${BLUE}npm${NC} outdated --global\n"
-npm outdated --global
+# printf "===> ${BLUE}npm${NC} outdated --global\n"
+# npm outdated --global
