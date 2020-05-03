@@ -41,6 +41,10 @@ function ff() {
         -not -path "./bower_components/*"
 }
 
+function fff() {
+    ff "*${1}*"
+}
+
 # Processes
 alias tu="top -o cpu"   # cpu
 alias tm="top -o vsize" # memory
