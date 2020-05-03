@@ -100,6 +100,8 @@ alias vlc="open -a VLC"
 alias py="python"
 alias ipy="ipython"
 alias autopep8="autopep8 --in-place --aggressive --aggressive"
+alias urldecode='xargs -0 python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias urlencode='xargs -0 python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 
 # youtube-dl
 alias youtube-dl-mp3="youtube-dl --output \"%(title)s.%(ext)s\" --extract-audio --audio-format mp3"
