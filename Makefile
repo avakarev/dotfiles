@@ -4,6 +4,7 @@
 BASH_BUNDLE := "bash" \
                "bash_profile" \
                "bashrc" \
+               "ignore" \
                "inputrc" \
                "taskrc"
 
