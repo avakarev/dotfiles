@@ -101,8 +101,6 @@ alias vlc="open -a VLC"
 # alias vlc-radio="open -a VLC ~/Downloads/MyRadio-ua-61/MyRadio-ua-61.m3u"
 
 # python
-alias py="python"
-alias ipy="ipython"
 alias autopep8="autopep8 --in-place --aggressive --aggressive"
 alias urldecode='xargs -0 python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
 alias urlencode='xargs -0 python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
