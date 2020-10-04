@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+const { exec } = require('child_process');
+
+function run() {
+  return new Promise((resolve, reject) => {
+    exec("git diff --staged -- package.json", (error, stdout, stderr) => {
+      if (error) {
+        return reject(error);
+      }
+      if (stderr) {
+        return new Error(stderr);
+      }
+      return resolve(stdout);
+    });
+  });
+}
+
+function strip(line) {
+  return line
+    .replace(/,\s*$/, '')
+    .replace(/^[+,-]\s*/, '');
+}
+
+function lines(raw) {
+  return raw
+    .split('\n')
+    .filter(l => l.startsWith('+ ') || l.startsWith('- '))
+    .map(strip);
+}
+
+function tree(lines) {
+  return lines.reduce((acc, curr) => {
+    const [name, ver] = curr.split(':').map(l => l.trim());
+    if (!acc[name]) {
+      acc[name] = [];
+    }
+    acc[name].push(ver);
+    return acc;
+  }, {});
+}
+
+function format(s) {
+  return s.replace(/"/g, '`');
+}
+
+function report(tree) {
+  console.log('Update deps:');
+  return Object
+    .entries(tree)
+    .map(([name, [before, after]]) =>
+      `${format(name)}: ${format(before)} => ${format(after)}`
+    )
+    .sort()
+    .forEach(e => console.log(`  * ${e}`));
+}
+
+run()
+  .then(lines)
+  .then(tree)
+  .then(report)
+  .catch(console.error)
+
