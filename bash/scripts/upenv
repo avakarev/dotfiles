@@ -11,7 +11,7 @@ if [[ "$platform" == 'Darwin' ]]; then
     brew up >/dev/null 2>&1
     brew outdated
     printf "===> brew ${BLUE}cask${NC} outdated\n"
-    brew cask outdated
+    brew outdated --cask
     # printf "===> ${BLUE}brew-cask-outdated${NC}\n"
     # brew-cask-outdated
 elif [[ "$platform" == 'Linux' ]]; then
