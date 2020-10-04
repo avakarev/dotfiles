@@ -1,39 +1,34 @@
 # zmodload zsh/zprof # uncoment to profile loading time
 
-# Path to your oh-my-zsh configuration.
+# Check the default zshrc template at ~/.zsh/ohmyzsh/templates/zshrc.zsh-template
+
+# Enable auto completion. You may have to force rebuild zcompdump: `rm -f ~/.zcompdump; compinit`
+autoload -Uz compinit
+compinit
+fpath=($HOME/.zsh/completions/src $fpath)
+
+# Path to your oh-my-zsh installation
 export ZSH=$HOME/.zsh/ohmyzsh
 
-# Set name of the theme to load.
-# Look in ~/.zsh/ohmyzsh/themes/
-# ZSH_THEME="robbyrussell"
+# Disable automatic upgrades
+DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE=true
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want disable red dots displayed while waiting for completion
-# DISABLE_COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.zsh/ohmyzsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws docker git git-flow golang kubectl mix node nvm osx pip python redis-cli yarn)
+# Load plugins from ~/.zsh/ohmyzsh/plugins/
+plugins=(
+  adb
+  aws
+  command-not-found
+  docker
+  docker-compose
+  nvm
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# Additional completion definitions for zsh
-# fpath=($HOME/.zsh/completions/src $fpath)
-
 # My custom theme
 if [ "$TERM" != "dumb" ]; then # not a MacVim
-    source "$HOME/.zsh/avakarev.zsh-theme"
+  source "$HOME/.zsh/avakarev.zsh-theme"
 fi
 
 # Apply exports
