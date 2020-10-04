@@ -46,8 +46,8 @@ function fff() {
 }
 
 # Processes
-alias tu="top -o cpu"   # cpu
-alias tm="top -o vsize" # memory
+alias topcpu="top -o cpu" # cpu
+alias topmem="top -o mem" # memory
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -q -t -W 'byline' '^(GET|POST) ' 'tcp and port 80'"
@@ -74,31 +74,11 @@ alias npmc="npm run compile"
 alias npmb="npm run build"
 alias npmt="npm run test"
 
-# Ruby & RoR
-alias rmigrate="rake db:migrate && rake db:test:prepare"
-alias rtest="rake cucumber:ok spec"
-alias be="bundle exec"
-alias bi="bundle install"
-alias bo="bundle outdated"
-alias bu="bundle update"
-alias rr="rake routes"
-alias rt="rake -T"
-# alias rakeb="bundle exec rake"
-# alias rspecb="bundle exec rspec"
-# alias cucumberb="bundle exec cucumber"
-
 # Elixir & Erlang
 alias iex="rlwrap -a -A iex"
 
 alias tree="tree -F -I '.git|.svn|.hg'"
 # tree -I 'test*|docs|bin|lib'
-alias stree="open -a SourceTree ."
-
-alias nw="/Applications/node-webkit.app/Contents/MacOS/node-webkit"
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias mou="open -a Mou"
-alias vlc="open -a VLC"
-# alias vlc-radio="open -a VLC ~/Downloads/MyRadio-ua-61/MyRadio-ua-61.m3u"
 
 # python
 alias autopep8="autopep8 --in-place --aggressive --aggressive"
