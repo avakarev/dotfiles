@@ -3,3 +3,7 @@
 yankring_history_v2.txt
 *.spl
 bash/local
+
+# go binaries
+bash/scripts/ark
+bash/scripts/bdgt
