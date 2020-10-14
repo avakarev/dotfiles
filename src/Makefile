@@ -1,21 +1,10 @@
-GO_CMDS = $(notdir $(shell go list ./go/cmd/...))
-GO_BUILD_TARGETS = $(addprefix build-go-,$(GO_CMDS))
-
 default: build
 
-gocmds:
-	@for cmd in ${GO_CMDS}; do\
-		echo $$cmd;\
-	done
-
-print-go:
-	@echo ">> Building using go $(shell go version | cut -c14-19):"
+build-go:
+	@make -C go
 
 build-go-%:
-	@echo "    * $*"
-	@go build -o ../bash/scripts/$* ./go/cmd/$*
-
-build-go: print-go $(GO_BUILD_TARGETS)
+	@make -C go build-$*
 
 build: build-go
 .PHONY: build
