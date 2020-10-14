@@ -1,6 +1,8 @@
 GO_CMDS = $(notdir $(shell go list ./go/cmd/...))
 GO_BUILD_TARGETS = $(addprefix build-go-,$(GO_CMDS))
 
+default: build
+
 gocmds:
 	@for cmd in ${GO_CMDS}; do\
 		echo $$cmd;\

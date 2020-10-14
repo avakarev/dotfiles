@@ -7,3 +7,4 @@ bash/local
 # go binaries
 bash/scripts/ark
 bash/scripts/bdgt
+bash/scripts/printpath
