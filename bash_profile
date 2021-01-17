@@ -1,2 +1,2 @@
-# Aplly ~/.bashrc with addition settings
+# Apply ~/.bashrc with addition settings
 source $HOME/.bashrc
