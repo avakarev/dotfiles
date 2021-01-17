@@ -61,7 +61,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Disable Homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-if [ $TERM_PROGRAM="iTerm.app" ]; then
+if [[ "$OSTYPE" == "darwin"* ]] && [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
     export ITERM_SHELL_INTEGRATION_SCRIPT=$HOME/Development/env/dotfiles/iterm2/iterm2_shell_integration.`basename $SHELL`
     if [[ -s $ITERM_SHELL_INTEGRATION_SCRIPT ]]; then
         source $ITERM_SHELL_INTEGRATION_SCRIPT
