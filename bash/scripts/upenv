@@ -18,8 +18,8 @@ elif [[ "$platform" == 'Linux' ]]; then
     distro=$(lsb_release -si)
     case "$distro" in
     "Ubuntu" | "LinuxMint" | "Debian")
-        printf "===> ${BLUE}apt-show-versions${NC}\n"
-        sudo apt-get update && apt-show-versions -u
+        printf "===> ${BLUE}update && list${NC}\n"
+        sudo apt update && apt list --upgradable
         ;;
     "Fedora")
         # TODO: yum
