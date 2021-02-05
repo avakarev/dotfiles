@@ -13,6 +13,10 @@ export MANPAGER="less -X"
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
+if [ -d /usr/local/go ]; then
+    PATH=$PATH:/usr/local/go/bin
+fi
+
 if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
   # source /usr/local/share/chruby/auto.sh
