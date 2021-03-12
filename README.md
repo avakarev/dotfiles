@@ -1,9 +1,11 @@
-### This is my repo for personal config files and so.
+# avakarev's dotfiles and other configuration files
 
-If you are going to use some of these config files, you are welcomed!
+## Installation
 
-Hopefully, you will find here something useful for you. But, please, be careful to run make command from the root repository directory.
+Download components included as git submodules:
 
-Take a look inside Makefile first.
+    git submodule update --init
 
-It could overwrite some of your existing files.
+Install [dotfiles-cli](https://github.com/avakarev/dotfiles-cli) and link the groups you need. For example:
+
+    dotfiles link macos git zsh
