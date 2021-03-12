@@ -6,6 +6,7 @@
 [core]
     editor = vim -u NONE
     excludesfile = ~/.gitignore-global
+    attributesfile = ~/.gitattributes-global
 [merge]
     tool = vimdiff
 [push]
