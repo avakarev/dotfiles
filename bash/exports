@@ -42,6 +42,10 @@ if [ -d $HOME/.nvm ]; then
     fi
 fi
 
+if [ -d $HOME/go ]; then
+    export PATH=$PATH:$HOME/go/bin
+fi
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
