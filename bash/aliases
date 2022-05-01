@@ -74,6 +74,11 @@ alias npmc="npm run compile"
 alias npmb="npm run build"
 alias npmt="npm run test"
 
+# Go
+# requires `go install github.com/psampaz/go-mod-outdated@v0.8.0`
+alias gout="go list -u -m -json all | go-mod-outdated -update -direct"
+alias gotidy="rm -rf go.sum && go mod tidy -v"
+
 # Elixir & Erlang
 alias iex="rlwrap -a -A iex"
 

@@ -17,6 +17,10 @@ if [ -d /usr/local/go ]; then
     PATH=$PATH:/usr/local/go/bin
 fi
 
+if [ -d $HOME/go ]; then
+    export PATH=$PATH:$HOME/go/bin
+fi
+
 if [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/chruby.sh
   # source /usr/local/share/chruby/auto.sh
@@ -40,10 +44,6 @@ if [ -d $HOME/.nvm ]; then
     else
         source "$(brew --prefix nvm)/nvm.sh"
     fi
-fi
-
-if [ -d $HOME/go ]; then
-    export PATH=$PATH:$HOME/go/bin
 fi
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
