@@ -1,18 +1,37 @@
 # --date = (relative|local|default|iso|rfc|short|raw)
 
-[user]
-    name = Andrii Vakarev
-    email = avakarev@gmail.com
-[core]
-    editor = vim -u NONE
-    excludesfile = ~/.gitignore-global
-    attributesfile = ~/.gitattributes-global
-[merge]
-    tool = vimdiff
-[push]
-    default = simple
-[master]
-    autosetuprebase = always
+[alias]
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    bl = branch --all --verbose --verbose
+    ca = commit --amend -C HEAD
+    ci = commit
+    cm = commit -m
+    co = checkout
+    dc = diff --cached
+    df = diff
+    ds = diff --staged
+    dst = diff --stat -r
+    dw = diff --word-diff --color-words
+    g = grep --line-number --ignore-case
+    gl  = log --color=always --all --graph --topo-order --pretty=\"format: %Cgreen%h%Creset %s%Cred%d%Creset%n\"
+    hist = log --pretty=format:\"%h %ad%x09%an%x09 | %s%d\" --graph --date=short
+    i = remote --verbose
+    lg = log --graph --full-history --all --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
+    lga = log --graph --decorate --pretty=oneline --abbrev-commit
+    lm = log --color=always --pretty=format:\"%Cgreen%h%Creset - %Cred%an%Creset, %ad (%ar): %C(yellow)%s%Creset\" --stat --date=short
+    ln = log --name-status
+    lp  = log --patch
+    ls = log --stat --relative-date
+    me = log --stat --author="vakarev"
+    rank = !git log --pretty=format:'%aN <%aE>' | sort | uniq -c | sort -rn
+    sl = stash list
+    sp = submodule update --remote
+    st = status -sbu
+    su = submodule update --init
+    tl = tag --list --sort version:refname
+    uc = reset --soft HEAD^ # retains commit as staged
+    what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    who = shortlog -s --
 [color]
     diff = auto
     status = auto
@@ -22,57 +41,28 @@
 [color "diff"]
     old = red
     new = green
-[color "status"]
-    added = green
-    changed = red bold
-    untracked = cyan
 [color "branch"]
     current = blue reverse
     local = green
     remote = yellow
-[alias]
-    st = status -sbu
-    stat = status
-    ci = commit
-    cm = commit -m
-    ca = commit --amend -C HEAD
-    uc = reset --soft HEAD^ # retains commit as staged
-    br = branch
-    bl = branch --all --verbose --verbose
-    tl = tag --list --sort version:refname
-    co = checkout
-    mm = merge master
-    dw = diff --word-diff --color-words
-    df = diff
-    dc = diff --cached
-    ds = diff --staged
-    dst = diff --stat -r
-    dff = diff --name-status -r
-    dm = diff master
-    dmf = diff master --name-status -r
-    dms = diff master --stat -r
-    g = grep --line-number --ignore-case
-    lp = log --patch
-    ln = log --name-status
-    ls = log --stat --relative-date
-    lga = log --graph --decorate --pretty=oneline --abbrev-commit
-    gl  = log --color=always --all --graph --topo-order --pretty=\"format: %Cgreen%h%Creset %s%Cred%d%Creset%n\"
-    lm = log --color=always --pretty=format:\"%Cgreen%h%Creset - %Cred%an%Creset, %ad (%ar): %C(yellow)%s%Creset\" --stat --date=short
-    hist = log --pretty=format:\"%h %ad%x09%an%x09 | %s%d\" --graph --date=short
-    l1 = log --pretty=oneline --abbrev-commit
-    l2 = log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
-    l3 = log --graph --full-history --all --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
-    i = remote --verbose
-    sl = stash list
-    sr = svn rebase
-    su = submodule update --init
-    sp = submodule foreach git pull origin master
-    who = shortlog -s --
-    what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-    me = log --stat --author="vakarev"
-    rank = !git log --pretty=format:'%aN <%aE>' | sort | uniq -c | sort -rn
-    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
-
-#   cheatsheet
-#
-#   git remote prune origin --dry-run
+[color "status"]
+    added = green
+    changed = red bold
+    untracked = cyan
+[core]
+    editor = vim -u NONE
+    excludesfile = ~/.gitignore-global
+    attributesfile = ~/.gitattributes-global
+[diff "sopsdiffer"]
+    textconv = sops -d
+[init]
+    defaultBranch = main
+[merge]
+    tool = vimdiff
+[pull]
+    ff = only
+[push]
+    default = simple
+[user]
+    name = Andrii Vakarev
+    email = avakarev@gmail.com
