@@ -30,7 +30,7 @@ function cdh() {
 
 function servethis() {
     open "http://localhost:${1:-8080}/"
-    ruby -run -ehttpd . -p ${1:-8080}
+    ruby -rwebrick -e "WEBrick::HTTPServer.new(:Port => ${1:-8080}, :DocumentRoot => Dir.pwd).start"
 }
 
 function ff() {
