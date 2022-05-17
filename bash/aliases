@@ -93,3 +93,11 @@ alias urlencode='xargs -0 python -c "import sys, urllib as ul; print ul.quote_pl
 # youtube-dl
 alias youtube-dl-mp3="youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --output \"%(title)s.%(ext)s\""
 alias youtube-dl-mp4="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+
+# Terraform
+alias tf="terraform"
+alias tfapply="terraform apply"
+alias tfinit="terraform init"
+alias tfplan="terraform plan"
+alias tfunlock="terraform force-unlock"
+alias tfup="terraform init -upgrade && tf validate && tf fmt"
