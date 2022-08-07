@@ -1,0 +1,12 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
+    "update.mode": "none",
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 15,
+    "workbench.editor.enablePreview": false,
+    "editor.fontLigatures": true,
+    "extensions.ignoreRecommendations": true,
+    "terminal.integrated.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace"
+}
