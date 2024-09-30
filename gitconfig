@@ -63,6 +63,7 @@
     ff = only
 [push]
     default = simple
+    autoSetupRemote = true
 [user]
     name = Andrii Vakarev
     email = avakarev@gmail.com
