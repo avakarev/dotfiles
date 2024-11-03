@@ -16,12 +16,14 @@ DISABLE_AUTO_UPDATE=true
 
 # Load plugins from ~/.zsh/ohmyzsh/plugins/
 plugins=(
-  adb
-  aws
+  # aws
   command-not-found
-  docker
-  docker-compose
-  nvm
+  # docker
+  # docker-compose
+  # helm
+  # kubectl
+  # kubectx
+  # nvm
 )
 
 source $ZSH/oh-my-zsh.sh
