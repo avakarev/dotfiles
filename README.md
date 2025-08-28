@@ -4,8 +4,12 @@
 
 Download components included as git submodules:
 
-    git submodule update --init
+    make init
 
-Install [dotfiles-cli](https://github.com/avakarev/dotfiles-cli) and link the groups you need. For example:
+Make sym-links to home directory:
 
-    dotfiles link macos git zsh
+    make link
+
+Set default shell to zsh:
+
+    chsh -s $(shell which zsh)
