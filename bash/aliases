@@ -12,7 +12,7 @@ alias lt='ls -Alhtr'
 alias lh='fn_lh(){ ls -lAp $1 | awk '\''{print $9" "$10" "$11}'\'' | egrep "^\."; }; fn_lh'
 # Lists the size of all the folders
 alias ldu='du -cks * | sort -rn | head -15'
-alias lsk='dpkg --list | egrep -i --color "linux-image|linux-headers|linux-modules"'
+alias lsk='dpkg --list | egrep -i --color "linux-image|linux-headers|linux-modules|linux-tools"'
 
 alias c="clear"
 alias cp="cp -i"
