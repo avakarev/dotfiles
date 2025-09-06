@@ -28,7 +28,7 @@
     sp = submodule update --remote
     st = status -sbu
     su = submodule update --init
-    tl = tag --list --sort version:refname
+    tl = for-each-ref --sort=-creatordate --format=\"%(refname:short) - %(creatordate:relative)\" refs/tags
     uc = reset --soft HEAD^ # retains commit as staged
     what = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     who = shortlog -s --
