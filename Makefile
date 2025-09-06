@@ -10,7 +10,8 @@ LINKS = \
 	zsh \
 	bashrc \
 	bash_profile \
-	bash
+	bash \
+	tmux.conf
 
 link: $(addprefix ~/.,$(LINKS))
 .PHONY: link
